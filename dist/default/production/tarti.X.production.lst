@@ -1,0 +1,661 @@
+
+
+Microchip Technology PIC LITE Macro Assembler V1.45 build -152302408 
+                                                                                               Sat Jan 20 13:31:26 2018
+
+Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160504
+     1                           	processor	16F628A
+     2                           	opt	pw 120
+     3                           	opt	lm
+     4                           	psect	cinit,global,class=CODE,merge=1,delta=2
+     5                           	psect	bssCOMMON,global,class=COMMON,space=1,delta=1
+     6                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1
+     7                           	psect	maintext,global,class=CODE,split=1,delta=2
+     8                           	psect	text1,local,class=CODE,merge=1,delta=2
+     9                           	psect	text2,local,class=CODE,merge=1,delta=2
+    10                           	psect	text3,local,class=CODE,merge=1,delta=2
+    11                           	psect	intentry,global,class=CODE,delta=2
+    12                           	dabs	1,0x7E,2
+    13  0000                     
+    14                           ; Version 1.45
+    15                           ; Generated 16/11/2017 GMT
+    16                           ; 
+    17                           ; Copyright © 2017, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    18                           ; All rights reserved.
+    19                           ; 
+    20                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    21                           ; 
+    22                           ; Redistribution and use in source and binary forms, with or without modification, are
+    23                           ; permitted provided that the following conditions are met:
+    24                           ; 
+    25                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    26                           ;        conditions and the following disclaimer.
+    27                           ; 
+    28                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    29                           ;        of conditions and the following disclaimer in the documentation and/or other
+    30                           ;        materials provided with the distribution.
+    31                           ; 
+    32                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    33                           ;        software without specific prior written permission.
+    34                           ; 
+    35                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    36                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    37                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    38                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    39                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    40                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    41                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    42                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    43                           ; 
+    44                           ; 
+    45                           ; Code-generator required, PIC16F628A Definitions
+    46                           ; 
+    47                           ; SFR Addresses
+    48  0000                     	;# 
+    49  0001                     	;# 
+    50  0002                     	;# 
+    51  0003                     	;# 
+    52  0004                     	;# 
+    53  0005                     	;# 
+    54  0006                     	;# 
+    55  000A                     	;# 
+    56  000B                     	;# 
+    57  000C                     	;# 
+    58  000E                     	;# 
+    59  000E                     	;# 
+    60  000F                     	;# 
+    61  0010                     	;# 
+    62  0011                     	;# 
+    63  0012                     	;# 
+    64  0015                     	;# 
+    65  0015                     	;# 
+    66  0016                     	;# 
+    67  0017                     	;# 
+    68  0018                     	;# 
+    69  0019                     	;# 
+    70  001A                     	;# 
+    71  001F                     	;# 
+    72  0081                     	;# 
+    73  0085                     	;# 
+    74  0086                     	;# 
+    75  008C                     	;# 
+    76  008E                     	;# 
+    77  0092                     	;# 
+    78  0098                     	;# 
+    79  0099                     	;# 
+    80  009A                     	;# 
+    81  009B                     	;# 
+    82  009C                     	;# 
+    83  009D                     	;# 
+    84  009F                     	;# 
+    85  0018                     _RCSTAbits	set	24
+    86  000B                     _INTCONbits	set	11
+    87  0019                     _TXREG	set	25
+    88  0006                     _PORTBbits	set	6
+    89  0099                     _SPBRG	set	153
+    90  0081                     _OPTION_REGbits	set	129
+    91  0098                     _TXSTAbits	set	152
+    92  0085                     _TRISA	set	133
+    93  0086                     _TRISB	set	134
+    94                           
+    95                           ; #config settings
+    96  0000                     
+    97                           	psect	cinit
+    98  0011                     start_initialization:	
+    99  0011                     __initialization:	
+   100                           
+   101                           ; Clear objects allocated to COMMON
+   102  0011  01F5               	clrf	__pbssCOMMON& (0+127)
+   103  0012  01F6               	clrf	(__pbssCOMMON+1)& (0+127)
+   104  0013  01F7               	clrf	(__pbssCOMMON+2)& (0+127)
+   105  0014  01F8               	clrf	(__pbssCOMMON+3)& (0+127)
+   106  0015                     end_of_initialization:	
+   107                           ;End of C runtime variable initialization code
+   108                           
+   109  0015                     __end_of__initialization:	
+   110  0015  0183               	clrf	3
+   111  0016  2817               	ljmp	_main	;jump to C main() function
+   112                           
+   113                           	psect	bssCOMMON
+   114  0075                     __pbssCOMMON:	
+   115  0075                     _timetick:	
+   116  0075                     	ds	4
+   117                           
+   118                           	psect	cstackCOMMON
+   119  0070                     __pcstackCOMMON:	
+   120  0070                     ?_T0_init:	
+   121  0070                     ?_serial_init:	
+   122                           ; 1 bytes @ 0x0
+   123                           
+   124  0070                     ?_main:	
+   125                           ; 1 bytes @ 0x0
+   126                           
+   127  0070                     ?_kes:	
+   128                           ; 1 bytes @ 0x0
+   129                           
+   130  0070                     ??_kes:	
+   131                           ; 1 bytes @ 0x0
+   132                           
+   133                           
+   134                           ; 1 bytes @ 0x0
+   135  0070                     	ds	4
+   136  0074                     ??_T0_init:	
+   137  0074                     ??_serial_init:	
+   138                           ; 1 bytes @ 0x4
+   139                           
+   140  0074                     ??_main:	
+   141                           ; 1 bytes @ 0x4
+   142                           
+   143                           
+   144                           ; 1 bytes @ 0x4
+   145  0074                     	ds	1
+   146                           
+   147                           	psect	maintext
+   148  0017                     __pmaintext:	
+   149 ;;
+   150 ;;Main: autosize = 0, tempsize = 1, incstack = 0, save=0
+   151 ;;
+   152 ;; *************** function _main *****************
+   153 ;; Defined at:
+   154 ;;		line 20 in file "tarti.c"
+   155 ;; Parameters:    Size  Location     Type
+   156 ;;		None
+   157 ;; Auto vars:     Size  Location     Type
+   158 ;;		None
+   159 ;; Return value:  Size  Location     Type
+   160 ;;                  1    wreg      void 
+   161 ;; Registers used:
+   162 ;;		wreg, status,2, status,0, pclath, cstack
+   163 ;; Tracked objects:
+   164 ;;		On entry : B00/0
+   165 ;;		On exit  : 0/0
+   166 ;;		Unchanged: 0/0
+   167 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+   168 ;;      Params:         0       0       0       0
+   169 ;;      Locals:         0       0       0       0
+   170 ;;      Temps:          1       0       0       0
+   171 ;;      Totals:         1       0       0       0
+   172 ;;Total ram usage:        1 bytes
+   173 ;; Hardware stack levels required when called:    2
+   174 ;; This function calls:
+   175 ;;		_T0_init
+   176 ;;		_serial_init
+   177 ;; This function is called by:
+   178 ;;		Startup code after reset
+   179 ;; This function uses a non-reentrant model
+   180 ;;
+   181                           
+   182                           
+   183                           ;psect for function _main
+   184  0017                     _main:	
+   185                           
+   186                           ;tarti.c: 21: TRISB=0x00;
+   187                           
+   188                           ;incstack = 0
+   189                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
+   190  0017  1683               	bsf	3,5	;RP0=1, select bank1
+   191  0018  1303               	bcf	3,6	;RP1=0, select bank1
+   192  0019  0186               	clrf	6	;volatile
+   193                           
+   194                           ;tarti.c: 22: TRISA=0x00;
+   195  001A  0185               	clrf	5	;volatile
+   196                           
+   197                           ;tarti.c: 23: T0_init();
+   198  001B  207D               	fcall	_T0_init
+   199                           
+   200                           ;tarti.c: 24: serial_init();
+   201  001C  206D               	fcall	_serial_init
+   202                           
+   203                           ;tarti.c: 32: PORTBbits.RB7 =1;
+   204  001D  1283               	bcf	3,5	;RP0=0, select bank0
+   205  001E  1303               	bcf	3,6	;RP1=0, select bank0
+   206  001F  1786               	bsf	6,7	;volatile
+   207  0020                     l522:	
+   208                           ;tarti.c: 33: while (1) {
+   209                           
+   210                           
+   211                           ;tarti.c: 34: if(timetick>=10000){
+   212  0020  0878               	movf	_timetick+3,w
+   213  0021  1D03               	btfss	3,2
+   214  0022  2830               	goto	l524
+   215  0023  0877               	movf	_timetick+2,w
+   216  0024  1D03               	btfss	3,2
+   217  0025  2830               	goto	l524
+   218  0026  3027               	movlw	39
+   219  0027  0276               	subwf	_timetick+1,w
+   220  0028  1D03               	skipz
+   221  0029  282E               	goto	u13
+   222  002A  3010               	movlw	16
+   223  002B  0275               	subwf	_timetick,w
+   224  002C  1D03               	skipz
+   225  002D  282E               	goto	u13
+   226  002E                     u13:	
+   227  002E  1C03               	btfss	3,0
+   228  002F  2820               	goto	l522
+   229  0030                     l524:	
+   230                           
+   231                           ;tarti.c: 35: PORTBbits.RB7 ^=1;
+   232  0030  1283               	bcf	3,5	;RP0=0, select bank0
+   233  0031  1303               	bcf	3,6	;RP1=0, select bank0
+   234  0032  0D06               	rlf	6,w	;volatile
+   235  0033  0D06               	rlf	6,w	;volatile
+   236  0034  3901               	andlw	1
+   237  0035  00F4               	movwf	??_main
+   238  0036  3001               	movlw	1
+   239  0037  06F4               	xorwf	??_main,f
+   240  0038  0CF4               	rrf	??_main,f
+   241  0039  0CF4               	rrf	??_main,f
+   242  003A  0806               	movf	6,w	;volatile
+   243  003B  0674               	xorwf	??_main,w
+   244  003C  397F               	andlw	-129
+   245  003D  0674               	xorwf	??_main,w
+   246  003E  0086               	movwf	6	;volatile
+   247                           
+   248                           ;tarti.c: 36: timetick=0;
+   249  003F  3000               	movlw	0
+   250  0040  00F8               	movwf	_timetick+3
+   251  0041  3000               	movlw	0
+   252  0042  00F7               	movwf	_timetick+2
+   253  0043  3000               	movlw	0
+   254  0044  00F6               	movwf	_timetick+1
+   255  0045  3000               	movlw	0
+   256  0046  00F5               	movwf	_timetick
+   257  0047                     l31:	
+   258                           ;tarti.c: 37: while(!TXSTAbits.TRMT);
+   259                           
+   260  0047  1683               	bsf	3,5	;RP0=1, select bank1
+   261  0048  1303               	bcf	3,6	;RP1=0, select bank1
+   262  0049  1C98               	btfss	24,1	;volatile
+   263  004A  2847               	goto	l31
+   264                           
+   265                           ;tarti.c: 38: TXREG='F';
+   266  004B  3046               	movlw	70
+   267  004C  1283               	bcf	3,5	;RP0=0, select bank0
+   268  004D  1303               	bcf	3,6	;RP1=0, select bank0
+   269  004E  0099               	movwf	25	;volatile
+   270  004F  2820               	goto	l522
+   271  0050                     __end_of_main:	
+   272                           ;tarti.c: 40: }
+   273                           ;tarti.c: 42: }
+   274                           ;tarti.c: 46: return;
+   275                           
+   276                           
+   277                           	psect	text1
+   278  006D                     __ptext1:	
+   279 ;; *************** function _serial_init *****************
+   280 ;; Defined at:
+   281 ;;		line 63 in file "tarti.c"
+   282 ;; Parameters:    Size  Location     Type
+   283 ;;		None
+   284 ;; Auto vars:     Size  Location     Type
+   285 ;;		None
+   286 ;; Return value:  Size  Location     Type
+   287 ;;                  1    wreg      void 
+   288 ;; Registers used:
+   289 ;;		wreg
+   290 ;; Tracked objects:
+   291 ;;		On entry : 0/0
+   292 ;;		On exit  : 0/0
+   293 ;;		Unchanged: 0/0
+   294 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+   295 ;;      Params:         0       0       0       0
+   296 ;;      Locals:         0       0       0       0
+   297 ;;      Temps:          0       0       0       0
+   298 ;;      Totals:         0       0       0       0
+   299 ;;Total ram usage:        0 bytes
+   300 ;; Hardware stack levels used:    1
+   301 ;; Hardware stack levels required when called:    1
+   302 ;; This function calls:
+   303 ;;		Nothing
+   304 ;; This function is called by:
+   305 ;;		_main
+   306 ;; This function uses a non-reentrant model
+   307 ;;
+   308                           
+   309                           
+   310                           ;psect for function _serial_init
+   311  006D                     _serial_init:	
+   312                           
+   313                           ;tarti.c: 64: TXSTAbits.TX9=0;
+   314                           
+   315                           ;incstack = 0
+   316                           ; Regs used in _serial_init: [wreg]
+   317  006D  1683               	bsf	3,5	;RP0=1, select bank1
+   318  006E  1303               	bcf	3,6	;RP1=0, select bank1
+   319  006F  1318               	bcf	24,6	;volatile
+   320                           
+   321                           ;tarti.c: 65: TXSTAbits.TXEN=1;
+   322  0070  1698               	bsf	24,5	;volatile
+   323                           
+   324                           ;tarti.c: 66: TXSTAbits.SYNC=0;
+   325  0071  1218               	bcf	24,4	;volatile
+   326                           
+   327                           ;tarti.c: 67: TXSTAbits.BRGH=1;
+   328  0072  1518               	bsf	24,2	;volatile
+   329                           
+   330                           ;tarti.c: 69: RCSTAbits.SPEN=1;
+   331  0073  1283               	bcf	3,5	;RP0=0, select bank0
+   332  0074  1303               	bcf	3,6	;RP1=0, select bank0
+   333  0075  1798               	bsf	24,7	;volatile
+   334                           
+   335                           ;tarti.c: 70: RCSTAbits.RX9=0;
+   336  0076  1318               	bcf	24,6	;volatile
+   337                           
+   338                           ;tarti.c: 71: RCSTAbits.CREN=1;
+   339  0077  1618               	bsf	24,4	;volatile
+   340                           
+   341                           ;tarti.c: 73: SPBRG=129;
+   342  0078  3081               	movlw	129
+   343  0079  1683               	bsf	3,5	;RP0=1, select bank1
+   344  007A  1303               	bcf	3,6	;RP1=0, select bank1
+   345  007B  0099               	movwf	25	;volatile
+   346  007C  0008               	return
+   347  007D                     __end_of_serial_init:	
+   348                           
+   349                           	psect	text2
+   350  007D                     __ptext2:	
+   351 ;; *************** function _T0_init *****************
+   352 ;; Defined at:
+   353 ;;		line 49 in file "tarti.c"
+   354 ;; Parameters:    Size  Location     Type
+   355 ;;		None
+   356 ;; Auto vars:     Size  Location     Type
+   357 ;;		None
+   358 ;; Return value:  Size  Location     Type
+   359 ;;                  1    wreg      void 
+   360 ;; Registers used:
+   361 ;;		None
+   362 ;; Tracked objects:
+   363 ;;		On entry : 0/0
+   364 ;;		On exit  : 0/0
+   365 ;;		Unchanged: 0/0
+   366 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+   367 ;;      Params:         0       0       0       0
+   368 ;;      Locals:         0       0       0       0
+   369 ;;      Temps:          0       0       0       0
+   370 ;;      Totals:         0       0       0       0
+   371 ;;Total ram usage:        0 bytes
+   372 ;; Hardware stack levels used:    1
+   373 ;; Hardware stack levels required when called:    1
+   374 ;; This function calls:
+   375 ;;		Nothing
+   376 ;; This function is called by:
+   377 ;;		_main
+   378 ;; This function uses a non-reentrant model
+   379 ;;
+   380                           
+   381                           
+   382                           ;psect for function _T0_init
+   383  007D                     _T0_init:	
+   384                           
+   385                           ;tarti.c: 50: INTCONbits.GIE=1;
+   386                           
+   387                           ;incstack = 0
+   388                           ; Regs used in _T0_init: []
+   389  007D  178B               	bsf	11,7	;volatile
+   390                           
+   391                           ;tarti.c: 51: INTCONbits.T0IE=1;
+   392  007E  168B               	bsf	11,5	;volatile
+   393                           
+   394                           ;tarti.c: 52: INTCONbits.T0IF=0;
+   395  007F  110B               	bcf	11,2	;volatile
+   396                           
+   397                           ;tarti.c: 54: OPTION_REGbits.T0CS=0;
+   398  0080  1683               	bsf	3,5	;RP0=1, select bank1
+   399  0081  1303               	bcf	3,6	;RP1=0, select bank1
+   400  0082  1281               	bcf	1,5	;volatile
+   401                           
+   402                           ;tarti.c: 55: OPTION_REGbits.T0SE=0;
+   403  0083  1201               	bcf	1,4	;volatile
+   404                           
+   405                           ;tarti.c: 56: OPTION_REGbits.PSA=0;
+   406  0084  1181               	bcf	1,3	;volatile
+   407                           
+   408                           ;tarti.c: 57: OPTION_REGbits.PS0=0;
+   409  0085  1001               	bcf	1,0	;volatile
+   410                           
+   411                           ;tarti.c: 58: OPTION_REGbits.PS1=0;
+   412  0086  1081               	bcf	1,1	;volatile
+   413                           
+   414                           ;tarti.c: 59: OPTION_REGbits.PS2=0;
+   415  0087  1101               	bcf	1,2	;volatile
+   416  0088  0008               	return
+   417  0089                     __end_of_T0_init:	
+   418                           
+   419                           	psect	text3
+   420  0050                     __ptext3:	
+   421 ;; *************** function _kes *****************
+   422 ;; Defined at:
+   423 ;;		line 76 in file "tarti.c"
+   424 ;; Parameters:    Size  Location     Type
+   425 ;;		None
+   426 ;; Auto vars:     Size  Location     Type
+   427 ;;		None
+   428 ;; Return value:  Size  Location     Type
+   429 ;;                  1    wreg      void 
+   430 ;; Registers used:
+   431 ;;		wreg
+   432 ;; Tracked objects:
+   433 ;;		On entry : 0/0
+   434 ;;		On exit  : 0/0
+   435 ;;		Unchanged: 0/0
+   436 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+   437 ;;      Params:         0       0       0       0
+   438 ;;      Locals:         0       0       0       0
+   439 ;;      Temps:          4       0       0       0
+   440 ;;      Totals:         4       0       0       0
+   441 ;;Total ram usage:        4 bytes
+   442 ;; Hardware stack levels used:    1
+   443 ;; This function calls:
+   444 ;;		Nothing
+   445 ;; This function is called by:
+   446 ;;		Interrupt level 1
+   447 ;; This function uses a non-reentrant model
+   448 ;;
+   449                           
+   450                           
+   451                           ;psect for function _kes
+   452  0050                     _kes:	
+   453                           
+   454                           ;tarti.c: 77: if(INTCONbits.T0IF && INTCONbits.T0IE){
+   455  0050  190B               	btfsc	11,2	;volatile
+   456  0051  1E8B               	btfss	11,5	;volatile
+   457  0052  2862               	goto	i1l48
+   458                           
+   459                           ;tarti.c: 78: timetick++;
+   460  0053  3001               	movlw	1
+   461  0054  07F5               	addwf	_timetick,f
+   462  0055  3000               	movlw	0
+   463  0056  1803               	skipnc
+   464  0057  3001               	movlw	1
+   465  0058  07F6               	addwf	_timetick+1,f
+   466  0059  3000               	movlw	0
+   467  005A  1803               	skipnc
+   468  005B  3001               	movlw	1
+   469  005C  07F7               	addwf	_timetick+2,f
+   470  005D  3000               	movlw	0
+   471  005E  1803               	skipnc
+   472  005F  3001               	movlw	1
+   473  0060  07F8               	addwf	_timetick+3,f
+   474                           
+   475                           ;tarti.c: 79: INTCONbits.T0IF=0;
+   476  0061  110B               	bcf	11,2	;volatile
+   477  0062                     i1l48:	
+   478  0062  0873               	movf	??_kes+3,w
+   479  0063  00FF               	movwf	127
+   480  0064  0872               	movf	??_kes+2,w
+   481  0065  008A               	movwf	10
+   482  0066  0871               	movf	??_kes+1,w
+   483  0067  0084               	movwf	4
+   484  0068  0E70               	swapf	??_kes^(0+-128),w
+   485  0069  0083               	movwf	3
+   486  006A  0EFE               	swapf	126,f
+   487  006B  0E7E               	swapf	126,w
+   488  006C  0009               	retfie
+   489  006D                     __end_of_kes:	
+   490  007E                     btemp	set	126	;btemp
+   491  007E                     wtemp0	set	126
+   492                           
+   493                           	psect	intentry
+   494  0004                     __pintentry:	
+   495                           ;incstack = 0
+   496                           ; Regs used in _kes: [wreg]
+   497                           
+   498  0004                     interrupt_function:	
+   499  007E                     saved_w	set	btemp
+   500  0004  00FE               	movwf	btemp
+   501  0005  0E03               	swapf	3,w
+   502  0006  00F0               	movwf	??_kes
+   503  0007  0804               	movf	4,w
+   504  0008  00F1               	movwf	??_kes+1
+   505  0009  080A               	movf	10,w
+   506  000A  00F2               	movwf	??_kes+2
+   507  000B  1283               	bcf	3,5	;RP0=0, select bank0
+   508  000C  1303               	bcf	3,6	;RP1=0, select bank0
+   509  000D  087F               	movf	btemp+1,w
+   510  000E  00F3               	movwf	??_kes+3
+   511  000F  2850               	ljmp	_kes
+
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         4
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON           14      5       9
+    BANK0            80      0       0
+    BANK1            80      0       0
+    BANK2            48      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMMON
+
+    None.
+
+Critical Paths under _kes in COMMON
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _kes in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _kes in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _kes in BANK2
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 1     1      0       0
+                                              4 COMMON     1     1      0
+                            _T0_init
+                        _serial_init
+ ---------------------------------------------------------------------------------
+ (1) _serial_init                                          0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _T0_init                                              0     0      0       0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 1
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (2) _kes                                                  4     4      0       0
+                                              0 COMMON     4     4      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 2
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _T0_init
+   _serial_init
+
+ _kes (ROOT)
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BITCOMMON            E      0       0       0        0.0%
+EEDATA              80      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+COMMON               E      5       9       1       64.3%
+BITSFR0              0      0       0       1        0.0%
+SFR0                 0      0       0       1        0.0%
+BITSFR1              0      0       0       2        0.0%
+SFR1                 0      0       0       2        0.0%
+STACK                0      0       0       2        0.0%
+BANK0               50      0       0       3        0.0%
+BITSFR3              0      0       0       4        0.0%
+SFR3                 0      0       0       4        0.0%
+ABS                  0      0       9       4        0.0%
+BITBANK0            50      0       0       5        0.0%
+BITSFR2              0      0       0       5        0.0%
+SFR2                 0      0       0       5        0.0%
+BITBANK1            50      0       0       6        0.0%
+BANK1               50      0       0       7        0.0%
+BITBANK2            30      0       0       8        0.0%
+BANK2               30      0       0       9        0.0%
+DATA                 0      0       9      10        0.0%
+
+
+Microchip Technology PIC Macro Assembler V1.45 build -152302408 
+Symbol Table                                                                                   Sat Jan 20 13:31:26 2018
+
+            __CFG_CP$OFF 0000                       l31 0047                       u13 002E  
+                    l522 0020                      l524 0030             __CFG_CPD$OFF 0000  
+                    _kes 0050                      fsr0 0004             __CFG_FOSC$HS 0000  
+           __CFG_LVP$OFF 0000                     ?_kes 0070                     i1l48 0062  
+        __end_of_T0_init 0089                     _main 0017                     btemp 007E  
+                   start 0010                    ??_kes 0070                    ?_main 0070  
+          __CFG_WDTE$OFF 0000                    _SPBRG 0099                    _TRISA 0085  
+                  _TRISB 0086                    _TXREG 0019           __CFG_BOREN$OFF 0000  
+                  pclath 000A                    status 0003                    wtemp0 007E  
+         __CFG_MCLRE$OFF 0000          __initialization 0011             __end_of_main 0050  
+                 ??_main 0074                ??_T0_init 0074           __CFG_PWRTE$OFF 0000  
+           ?_serial_init 0070                   saved_w 007E  __end_of__initialization 0015  
+         __pcstackCOMMON 0070           _OPTION_REGbits 0081               __pmaintext 0017  
+             __pintentry 0004                  _T0_init 007D     __size_of_serial_init 0010  
+                __ptext1 006D                  __ptext2 007D                  __ptext3 0050  
+           __size_of_kes 001D     end_of_initialization 0015                _RCSTAbits 0018  
+              _PORTBbits 0006                _TXSTAbits 0098      start_initialization 0011  
+            __end_of_kes 006D              __pbssCOMMON 0075                ___latbits 0000  
+               ?_T0_init 0070        interrupt_function 0004            ??_serial_init 0074  
+       __size_of_T0_init 000C      __end_of_serial_init 007D            __size_of_main 0039  
+               _timetick 0075               _INTCONbits 000B                 intlevel1 0000  
+            _serial_init 006D  
