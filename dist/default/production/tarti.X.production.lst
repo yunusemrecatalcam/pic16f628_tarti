@@ -1,687 +1,1133 @@
 
 
 Microchip Technology PIC LITE Macro Assembler V1.45 build -152302408 
-                                                                                               Sat Jan 20 17:52:21 2018
+                                                                                               Fri Jan 26 16:30:17 2018
 
 Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160504
      1                           	processor	16F628A
      2                           	opt	pw 120
      3                           	opt	lm
-     4                           	psect	nvCOMMON,global,class=COMMON,space=1,delta=1
-     5                           	psect	cinit,global,class=CODE,merge=1,delta=2
-     6                           	psect	bssCOMMON,global,class=COMMON,space=1,delta=1
-     7                           	psect	bssBANK0,global,class=BANK0,space=1,delta=1
-     8                           	psect	clrtext,global,class=CODE,delta=2
-     9                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1
-    10                           	psect	maintext,global,class=CODE,split=1,delta=2
-    11                           	psect	text1,local,class=CODE,merge=1,delta=2
-    12                           	psect	text2,local,class=CODE,merge=1,delta=2
-    13                           	psect	text3,local,class=CODE,merge=1,delta=2
-    14                           	psect	intentry,global,class=CODE,delta=2
-    15                           	dabs	1,0x7E,2
-    16  0000                     
-    17                           ; Version 1.45
-    18                           ; Generated 16/11/2017 GMT
-    19                           ; 
-    20                           ; Copyright © 2017, Microchip Technology Inc. and its subsidiaries ("Microchip")
-    21                           ; All rights reserved.
-    22                           ; 
-    23                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+     4                           	psect	idataCOMMON,global,class=CODE,delta=2
+     5                           	psect	idataBANK1,global,class=CODE,delta=2
+     6                           	psect	cinit,global,class=CODE,merge=1,delta=2
+     7                           	psect	dataCOMMON,global,class=COMMON,space=1,delta=1
+     8                           	psect	bssBANK0,global,class=BANK0,space=1,delta=1
+     9                           	psect	dataBANK1,global,class=BANK1,space=1,delta=1
+    10                           	psect	inittext,global,class=CODE,delta=2
+    11                           	psect	clrtext,global,class=CODE,delta=2
+    12                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1
+    13                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1
+    14                           	psect	maintext,global,class=CODE,split=1,delta=2
+    15                           	psect	text1,local,class=CODE,merge=1,delta=2
+    16                           	psect	text2,local,class=CODE,merge=1,delta=2
+    17                           	psect	text3,local,class=CODE,merge=1,delta=2
+    18                           	psect	text4,local,class=CODE,merge=1,delta=2
+    19                           	psect	text5,local,class=CODE,merge=1,delta=2
+    20                           	psect	intentry,global,class=CODE,delta=2
+    21                           	dabs	1,0x7E,2
+    22  0000                     
+    23                           ; Version 1.45
+    24                           ; Generated 16/11/2017 GMT
+    25                           ; 
+    26                           ; Copyright © 2017, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    27                           ; All rights reserved.
+    28                           ; 
+    29                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
       +                          ip").
-    24                           ; 
-    25                           ; Redistribution and use in source and binary forms, with or without modification, are
-    26                           ; permitted provided that the following conditions are met:
-    27                           ; 
-    28                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
-      +                          t of
-    29                           ;        conditions and the following disclaimer.
     30                           ; 
-    31                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+    31                           ; Redistribution and use in source and binary forms, with or without modification, are
+    32                           ; permitted provided that the following conditions are met:
+    33                           ; 
+    34                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    35                           ;        conditions and the following disclaimer.
+    36                           ; 
+    37                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
       +                          list
-    32                           ;        of conditions and the following disclaimer in the documentation and/or other
-    33                           ;        materials provided with the distribution.
-    34                           ; 
-    35                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+    38                           ;        of conditions and the following disclaimer in the documentation and/or other
+    39                           ;        materials provided with the distribution.
+    40                           ; 
+    41                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
       +                          is
-    36                           ;        software without specific prior written permission.
-    37                           ; 
-    38                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
-    39                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+    42                           ;        software without specific prior written permission.
+    43                           ; 
+    44                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    45                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
       +                          OR
-    40                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+    46                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
       +                          T,
-    41                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
-    42                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
-    43                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+    47                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    48                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    49                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
       +                          RICT
-    44                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+    50                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
       +                          SE OF
-    45                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-    46                           ; 
-    47                           ; 
-    48                           ; Code-generator required, PIC16F628A Definitions
-    49                           ; 
-    50                           ; SFR Addresses
-    51  0000                     	;# 
-    52  0001                     	;# 
-    53  0002                     	;# 
-    54  0003                     	;# 
-    55  0004                     	;# 
-    56  0005                     	;# 
-    57  0006                     	;# 
-    58  000A                     	;# 
-    59  000B                     	;# 
-    60  000C                     	;# 
-    61  000E                     	;# 
-    62  000E                     	;# 
-    63  000F                     	;# 
-    64  0010                     	;# 
-    65  0011                     	;# 
-    66  0012                     	;# 
-    67  0015                     	;# 
-    68  0015                     	;# 
-    69  0016                     	;# 
-    70  0017                     	;# 
-    71  0018                     	;# 
-    72  0019                     	;# 
-    73  001A                     	;# 
-    74  001F                     	;# 
-    75  0081                     	;# 
-    76  0085                     	;# 
-    77  0086                     	;# 
-    78  008C                     	;# 
-    79  008E                     	;# 
-    80  0092                     	;# 
-    81  0098                     	;# 
-    82  0099                     	;# 
-    83  009A                     	;# 
-    84  009B                     	;# 
-    85  009C                     	;# 
-    86  009D                     	;# 
-    87  009F                     	;# 
-    88                           
-    89                           	psect	nvCOMMON
-    90  007B                     __pnvCOMMON:	
-    91  007B                     _hell:	
-    92  007B                     	ds	1
-    93  0019                     _TXREG	set	25
-    94  000C                     _PIR1bits	set	12
-    95  0018                     _RCSTAbits	set	24
-    96  000B                     _INTCONbits	set	11
-    97  001A                     _RCREG	set	26
-    98  0006                     _PORTBbits	set	6
-    99  0099                     _SPBRG	set	153
-   100  008C                     _PIE1bits	set	140
-   101  0086                     _TRISBbits	set	134
-   102  0098                     _TXSTAbits	set	152
-   103  0081                     _OPTION_REGbits	set	129
-   104  0085                     _TRISA	set	133
-   105  0086                     _TRISB	set	134
-   106                           
-   107                           ; #config settings
-   108  0000                     
-   109                           	psect	cinit
-   110  0011                     start_initialization:	
-   111  0011                     __initialization:	
-   112                           
-   113                           ; Clear objects allocated to COMMON
-   114  0011  3077               	movlw	low __pbssCOMMON
-   115  0012  0084               	movwf	4
-   116  0013  307B               	movlw	low (__pbssCOMMON+4)
-   117  0014  20D4               	fcall	clear_ram0
-   118                           
-   119                           ; Clear objects allocated to BANK0
-   120  0015  1383               	bcf	3,7	;select IRP bank0
-   121  0016  3020               	movlw	low __pbssBANK0
-   122  0017  0084               	movwf	4
-   123  0018  303D               	movlw	low (__pbssBANK0+29)
-   124  0019  20D4               	fcall	clear_ram0
-   125  001A                     end_of_initialization:	
-   126                           ;End of C runtime variable initialization code
-   127                           
-   128  001A                     __end_of__initialization:	
-   129  001A  0183               	clrf	3
-   130  001B  281C               	ljmp	_main	;jump to C main() function
-   131                           
-   132                           	psect	bssCOMMON
-   133  0077                     __pbssCOMMON:	
-   134  0077                     _timetick:	
-   135  0077                     	ds	4
-   136                           
-   137                           	psect	bssBANK0
-   138  0020                     __pbssBANK0:	
-   139  0020                     _tarti:	
-   140  0020                     	ds	29
-   141                           
-   142                           	psect	clrtext
-   143  00D4                     clear_ram0:	
-   144                           ;	Called with FSR containing the base address, and
-   145                           ;	W with the last address+1
-   146                           
-   147  00D4  0064               	clrwdt	;clear the watchdog before getting into this loop
-   148  00D5                     clrloop0:	
-   149  00D5  0180               	clrf	0	;clear RAM location pointed to by FSR
-   150  00D6  0A84               	incf	4,f	;increment pointer
-   151  00D7  0604               	xorwf	4,w	;XOR with final address
-   152  00D8  1903               	btfsc	3,2	;have we reached the end yet?
-   153  00D9  3400               	retlw	0	;all done for this memory range, return
-   154  00DA  0604               	xorwf	4,w	;XOR again to restore value
-   155  00DB  28D5               	goto	clrloop0	;do the next byte
-   156                           
-   157                           	psect	cstackCOMMON
-   158  0070                     __pcstackCOMMON:	
-   159  0070                     ?_T0_init:	
-   160  0070                     ?_serial_init:	
-   161                           ; 1 bytes @ 0x0
-   162                           
-   163  0070                     ?_main:	
-   164                           ; 1 bytes @ 0x0
-   165                           
-   166  0070                     ?_kes:	
-   167                           ; 1 bytes @ 0x0
-   168                           
-   169  0070                     ??_kes:	
-   170                           ; 1 bytes @ 0x0
-   171                           
-   172                           
-   173                           ; 1 bytes @ 0x0
-   174  0070                     	ds	5
-   175  0075                     ??_T0_init:	
-   176  0075                     ??_serial_init:	
-   177                           ; 1 bytes @ 0x5
-   178                           
-   179  0075                     ??_main:	
-   180                           ; 1 bytes @ 0x5
-   181                           
-   182                           
-   183                           ; 1 bytes @ 0x5
-   184  0075                     	ds	2
+    51                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    52                           ; 
+    53                           ; 
+    54                           ; Code-generator required, PIC16F628A Definitions
+    55                           ; 
+    56                           ; SFR Addresses
+    57  0000                     	;# 
+    58  0001                     	;# 
+    59  0002                     	;# 
+    60  0003                     	;# 
+    61  0004                     	;# 
+    62  0005                     	;# 
+    63  0006                     	;# 
+    64  000A                     	;# 
+    65  000B                     	;# 
+    66  000C                     	;# 
+    67  000E                     	;# 
+    68  000E                     	;# 
+    69  000F                     	;# 
+    70  0010                     	;# 
+    71  0011                     	;# 
+    72  0012                     	;# 
+    73  0015                     	;# 
+    74  0015                     	;# 
+    75  0016                     	;# 
+    76  0017                     	;# 
+    77  0018                     	;# 
+    78  0019                     	;# 
+    79  001A                     	;# 
+    80  001F                     	;# 
+    81  0081                     	;# 
+    82  0085                     	;# 
+    83  0086                     	;# 
+    84  008C                     	;# 
+    85  008E                     	;# 
+    86  0092                     	;# 
+    87  0098                     	;# 
+    88  0099                     	;# 
+    89  009A                     	;# 
+    90  009B                     	;# 
+    91  009C                     	;# 
+    92  009D                     	;# 
+    93  009F                     	;# 
+    94                           
+    95                           	psect	idataCOMMON
+    96  01C1                     __pidataCOMMON:	
+    97                           
+    98                           ;initializer for _counter
+    99  01C1  3418               	retlw	24
+   100  01C2  3400               	retlw	0
+   101                           
+   102                           	psect	idataBANK1
+   103  0153                     __pidataBANK1:	
+   104                           
+   105                           ;initializer for _tarti_data
+   106  0153  3401               	retlw	1
+   107  0154  3400               	retlw	0
+   108  0155  3401               	retlw	1
+   109  0156  3400               	retlw	0
+   110  0157  3400               	retlw	0
+   111  0158  3400               	retlw	0
+   112  0159  3400               	retlw	0
+   113  015A  3400               	retlw	0
+   114  015B  3400               	retlw	0
+   115  015C  3400               	retlw	0
+   116  015D  3400               	retlw	0
+   117  015E  3400               	retlw	0
+   118  015F  3400               	retlw	0
+   119  0160  3400               	retlw	0
+   120  0161  3400               	retlw	0
+   121  0162  3400               	retlw	0
+   122  0163  3400               	retlw	0
+   123  0164  3400               	retlw	0
+   124  0165  3400               	retlw	0
+   125  0166  3400               	retlw	0
+   126  0167  3400               	retlw	0
+   127  0168  3400               	retlw	0
+   128  0169  3400               	retlw	0
+   129  016A  3400               	retlw	0
+   130  016B  3400               	retlw	0
+   131  016C  3400               	retlw	0
+   132  016D  3400               	retlw	0
+   133  016E  3400               	retlw	0
+   134  016F  3400               	retlw	0
+   135  0170  3400               	retlw	0
+   136  0171  3400               	retlw	0
+   137  0172  3400               	retlw	0
+   138  0173  3400               	retlw	0
+   139  0174  3400               	retlw	0
+   140  0175  3400               	retlw	0
+   141  0176  3400               	retlw	0
+   142  0177  3400               	retlw	0
+   143  0178  3400               	retlw	0
+   144  0179  3400               	retlw	0
+   145  017A  3400               	retlw	0
+   146  017B  3400               	retlw	0
+   147  017C  3400               	retlw	0
+   148  017D  3400               	retlw	0
+   149  017E  3400               	retlw	0
+   150  017F  3400               	retlw	0
+   151  0180  3400               	retlw	0
+   152  0181  3400               	retlw	0
+   153  0182  3400               	retlw	0
+   154  001A                     _RCREG	set	26
+   155  000C                     _PIR1bits	set	12
+   156  0018                     _RCSTAbits	set	24
+   157  000B                     _INTCONbits	set	11
+   158  0019                     _TXREG	set	25
+   159  0006                     _PORTBbits	set	6
+   160  0099                     _SPBRG	set	153
+   161  008C                     _PIE1bits	set	140
+   162  0086                     _TRISBbits	set	134
+   163  0081                     _OPTION_REGbits	set	129
+   164  0098                     _TXSTAbits	set	152
+   165  0085                     _TRISA	set	133
+   166  0086                     _TRISB	set	134
+   167                           
+   168                           ; #config settings
+   169  0000                     
+   170                           	psect	cinit
+   171  0011                     start_initialization:	
+   172  0011                     __initialization:	
+   173                           
+   174                           ; Initialize objects allocated to BANK1
+   175  0011  1383               	bcf	3,7	;select IRP bank0
+   176  0012  30D0               	movlw	low (__pdataBANK1+48)
+   177  0013  00FD               	movwf	btemp+-1
+   178  0014  3001               	movlw	high __pidataBANK1
+   179  0015  00FE               	movwf	btemp
+   180  0016  3053               	movlw	low __pidataBANK1
+   181  0017  00FF               	movwf	btemp+1
+   182  0018  30A0               	movlw	low __pdataBANK1
+   183  0019  0084               	movwf	4
+   184  001A  219D               	fcall	init_ram0
    185                           
-   186                           	psect	maintext
-   187  001C                     __pmaintext:	
-   188 ;;
-   189 ;;Main: autosize = 0, tempsize = 2, incstack = 0, save=0
-   190 ;;
-   191 ;; *************** function _main *****************
-   192 ;; Defined at:
-   193 ;;		line 30 in file "tarti.c"
-   194 ;; Parameters:    Size  Location     Type
-   195 ;;		None
-   196 ;; Auto vars:     Size  Location     Type
-   197 ;;		None
-   198 ;; Return value:  Size  Location     Type
-   199 ;;                  1    wreg      void 
-   200 ;; Registers used:
-   201 ;;		wreg, status,2, status,0, btemp+1, pclath, cstack
-   202 ;; Tracked objects:
-   203 ;;		On entry : B00/0
-   204 ;;		On exit  : 0/0
-   205 ;;		Unchanged: 0/0
-   206 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
-   207 ;;      Params:         0       0       0       0
-   208 ;;      Locals:         0       0       0       0
-   209 ;;      Temps:          2       0       0       0
-   210 ;;      Totals:         2       0       0       0
-   211 ;;Total ram usage:        2 bytes
-   212 ;; Hardware stack levels required when called:    2
-   213 ;; This function calls:
-   214 ;;		_T0_init
-   215 ;;		_serial_init
-   216 ;; This function is called by:
-   217 ;;		Startup code after reset
-   218 ;; This function uses a non-reentrant model
-   219 ;;
+   186                           ; Initialize objects allocated to COMMON
+   187  001B  21C1               	fcall	__pidataCOMMON	;fetch initializer
+   188  001C  00F7               	movwf	__pdataCOMMON& (0+127)
+   189  001D  21C2               	fcall	__pidataCOMMON+1	;fetch initializer
+   190  001E  00F8               	movwf	(__pdataCOMMON+1)& (0+127)
+   191                           
+   192                           ; Clear objects allocated to BANK0
+   193  001F  3020               	movlw	low __pbssBANK0
+   194  0020  0084               	movwf	4
+   195  0021  3040               	movlw	low (__pbssBANK0+32)
+   196  0022  21B4               	fcall	clear_ram0
+   197  0023                     end_of_initialization:	
+   198                           ;End of C runtime variable initialization code
+   199                           
+   200  0023                     __end_of__initialization:	
+   201  0023  0183               	clrf	3
+   202  0024  2825               	ljmp	_main	;jump to C main() function
+   203                           
+   204                           	psect	dataCOMMON
+   205  0077                     __pdataCOMMON:	
+   206  0077                     _counter:	
+   207  0077                     	ds	2
+   208                           
+   209                           	psect	bssBANK0
+   210  0020                     __pbssBANK0:	
+   211  0020                     _tarti:	
+   212  0020                     	ds	28
+   213  003C                     _timetick:	
+   214  003C                     	ds	4
+   215                           
+   216                           	psect	dataBANK1
+   217  00A0                     __pdataBANK1:	
+   218  00A0                     _tarti_data:	
+   219  00A0                     	ds	48
    220                           
-   221                           
-   222                           ;psect for function _main
-   223  001C                     _main:	
+   221                           	psect	inittext
+   222  0199                     init_fetch0:	
+   223                           ;	Called with low address in FSR and high address in W
    224                           
-   225                           ;tarti.c: 31: TRISB=0b00000110;
-   226                           
-   227                           ;incstack = 0
-   228                           ; Regs used in _main: [wreg+status,2+status,0+btemp+1+pclath+cstack]
-   229  001C  3006               	movlw	6
-   230  001D  1683               	bsf	3,5	;RP0=1, select bank1
-   231  001E  1303               	bcf	3,6	;RP1=0, select bank1
-   232  001F  0086               	movwf	6	;volatile
-   233                           
-   234                           ;tarti.c: 32: TRISA=0x00;
-   235  0020  0185               	clrf	5	;volatile
-   236                           
-   237                           ;tarti.c: 33: T0_init();
-   238  0021  20C8               	fcall	_T0_init
-   239                           
-   240                           ;tarti.c: 34: serial_init();
-   241  0022  20B5               	fcall	_serial_init
-   242                           
-   243                           ;tarti.c: 36: tarti.wr_index=0;
-   244  0023  1283               	bcf	3,5	;RP0=0, select bank0
-   245  0024  1303               	bcf	3,6	;RP1=0, select bank0
-   246  0025  01B9               	clrf	_tarti+25
-   247  0026  01BA               	clrf	_tarti+26
-   248                           
-   249                           ;tarti.c: 37: tarti.rd_index=0;
-   250  0027  01BB               	clrf	_tarti+27
-   251  0028  01BC               	clrf	_tarti+28
+   225  0199  087E               	movf	126,w
+   226  019A  008A               	movwf	10
+   227  019B  087F               	movf	127,w
+   228  019C  0082               	movwf	2
+   229  019D                     init_ram0:	
+   230                           ;Called with:
+   231                           ;	high address of idata address in btemp 
+   232                           ;	low address of idata address in btemp+1 
+   233                           ;	low address of data in FSR
+   234                           ;	high address + 1 of data in btemp-1
+   235                           
+   236  019D  2199               	fcall	init_fetch0
+   237  019E  0080               	movwf	0
+   238  019F  0A84               	incf	4,f
+   239  01A0  0804               	movf	4,w
+   240  01A1  067D               	xorwf	125,w
+   241  01A2  1903               	btfsc	3,2
+   242  01A3  3400               	retlw	0
+   243  01A4  0AFF               	incf	127,f
+   244  01A5  1903               	btfsc	3,2
+   245  01A6  0AFE               	incf	126,f
+   246  01A7  299D               	goto	init_ram0
+   247                           
+   248                           	psect	clrtext
+   249  01B4                     clear_ram0:	
+   250                           ;	Called with FSR containing the base address, and
+   251                           ;	W with the last address+1
    252                           
-   253                           ;tarti.c: 39: PORTBbits.RB7 =1;
-   254  0029  1786               	bsf	6,7	;volatile
-   255                           
-   256                           ;tarti.c: 41: hell=RCREG;
-   257  002A  081A               	movf	26,w	;volatile
-   258  002B  00F5               	movwf	??_main
-   259  002C  0875               	movf	??_main,w
-   260  002D  00FB               	movwf	_hell
-   261  002E                     l542:	
-   262                           ;tarti.c: 43: while (1) {
-   263                           
-   264                           
-   265                           ;tarti.c: 44: if(timetick>=10000){
-   266  002E  087A               	movf	_timetick+3,w
-   267  002F  1D03               	btfss	3,2
-   268  0030  283E               	goto	l544
-   269  0031  0879               	movf	_timetick+2,w
-   270  0032  1D03               	btfss	3,2
-   271  0033  283E               	goto	l544
-   272  0034  3027               	movlw	39
-   273  0035  0278               	subwf	_timetick+1,w
-   274  0036  1D03               	skipz
-   275  0037  283C               	goto	u13
-   276  0038  3010               	movlw	16
-   277  0039  0277               	subwf	_timetick,w
-   278  003A  1D03               	skipz
-   279  003B  283C               	goto	u13
-   280  003C                     u13:	
-   281  003C  1C03               	btfss	3,0
-   282  003D  2846               	goto	l546
-   283  003E                     l544:	
+   253  01B4  0064               	clrwdt	;clear the watchdog before getting into this loop
+   254  01B5                     clrloop0:	
+   255  01B5  0180               	clrf	0	;clear RAM location pointed to by FSR
+   256  01B6  0A84               	incf	4,f	;increment pointer
+   257  01B7  0604               	xorwf	4,w	;XOR with final address
+   258  01B8  1903               	btfsc	3,2	;have we reached the end yet?
+   259  01B9  3400               	retlw	0	;all done for this memory range, return
+   260  01BA  0604               	xorwf	4,w	;XOR again to restore value
+   261  01BB  29B5               	goto	clrloop0	;do the next byte
+   262                           
+   263                           	psect	cstackCOMMON
+   264  0070                     __pcstackCOMMON:	
+   265  0070                     ?_T0_init:	
+   266  0070                     ?_serial_init:	
+   267                           ; 1 bytes @ 0x0
+   268                           
+   269  0070                     ?_tarti_init:	
+   270                           ; 1 bytes @ 0x0
+   271                           
+   272  0070                     ?_Read_tarti:	
+   273                           ; 1 bytes @ 0x0
+   274                           
+   275  0070                     ?_main:	
+   276                           ; 1 bytes @ 0x0
+   277                           
+   278  0070                     ?_kes:	
+   279                           ; 1 bytes @ 0x0
+   280                           
+   281  0070                     ??_kes:	
+   282                           ; 1 bytes @ 0x0
+   283                           
    284                           
-   285                           ;tarti.c: 46: timetick=0;
-   286  003E  3000               	movlw	0
-   287  003F  00FA               	movwf	_timetick+3
-   288  0040  3000               	movlw	0
-   289  0041  00F9               	movwf	_timetick+2
-   290  0042  3000               	movlw	0
-   291  0043  00F8               	movwf	_timetick+1
-   292  0044  3000               	movlw	0
-   293  0045  00F7               	movwf	_timetick
-   294  0046                     l546:	
-   295                           
-   296                           ;tarti.c: 49: }
-   297                           ;tarti.c: 62: if(tarti.rd_index>=24)
-   298  0046  083C               	movf	_tarti+28,w
-   299  0047  3A80               	xorlw	128
-   300  0048  00FF               	movwf	127
-   301  0049  3080               	movlw	128
-   302  004A  027F               	subwf	127,w
-   303  004B  1D03               	skipz
-   304  004C  284F               	goto	u25
-   305  004D  3018               	movlw	24
-   306  004E  023B               	subwf	_tarti+27,w
-   307  004F                     u25:	
-   308  004F  1C03               	skipc
-   309  0050  2855               	goto	l550
-   310                           
-   311                           ;tarti.c: 63: tarti.rd_index=0;
-   312  0051  1283               	bcf	3,5	;RP0=0, select bank0
-   313  0052  1303               	bcf	3,6	;RP1=0, select bank0
-   314  0053  01BB               	clrf	_tarti+27
-   315  0054  01BC               	clrf	_tarti+28
-   316  0055                     l550:	
-   317                           
-   318                           ;tarti.c: 65: if(tarti.wr_index>=24)
-   319  0055  1283               	bcf	3,5	;RP0=0, select bank0
-   320  0056  1303               	bcf	3,6	;RP1=0, select bank0
-   321  0057  083A               	movf	_tarti+26,w
-   322  0058  3A80               	xorlw	128
-   323  0059  00FF               	movwf	127
-   324  005A  3080               	movlw	128
-   325  005B  027F               	subwf	127,w
-   326  005C  1D03               	skipz
-   327  005D  2860               	goto	u35
-   328  005E  3018               	movlw	24
-   329  005F  0239               	subwf	_tarti+25,w
-   330  0060                     u35:	
-   331  0060  1C03               	skipc
-   332  0061  2866               	goto	l554
-   333                           
-   334                           ;tarti.c: 66: tarti.wr_index=0;
-   335  0062  1283               	bcf	3,5	;RP0=0, select bank0
-   336  0063  1303               	bcf	3,6	;RP1=0, select bank0
-   337  0064  01B9               	clrf	_tarti+25
-   338  0065  01BA               	clrf	_tarti+26
-   339  0066                     l554:	
-   340                           
-   341                           ;tarti.c: 68: if(tarti.wr_index%4==0)
-   342  0066  3003               	movlw	3
-   343  0067  1283               	bcf	3,5	;RP0=0, select bank0
-   344  0068  1303               	bcf	3,6	;RP1=0, select bank0
-   345  0069  0539               	andwf	_tarti+25,w
-   346  006A  00F5               	movwf	??_main
-   347  006B  3000               	movlw	0
-   348  006C  053A               	andwf	_tarti+26,w
-   349  006D  00F6               	movwf	??_main+1
-   350  006E  0875               	movf	??_main,w
-   351  006F  0476               	iorwf	??_main+1,w
-   352  0070  1D03               	btfss	3,2
-   353  0071  282E               	goto	l542
-   354                           
-   355                           ;tarti.c: 69: PORTBbits.RB7 ^=1;
-   356  0072  0D06               	rlf	6,w	;volatile
-   357  0073  0D06               	rlf	6,w	;volatile
-   358  0074  3901               	andlw	1
-   359  0075  00F5               	movwf	??_main
-   360  0076  3001               	movlw	1
-   361  0077  06F5               	xorwf	??_main,f
-   362  0078  0CF5               	rrf	??_main,f
-   363  0079  0CF5               	rrf	??_main,f
-   364  007A  0806               	movf	6,w	;volatile
-   365  007B  0675               	xorwf	??_main,w
-   366  007C  397F               	andlw	-129
-   367  007D  0675               	xorwf	??_main,w
-   368  007E  0086               	movwf	6	;volatile
-   369  007F  282E               	goto	l542
-   370  0080                     __end_of_main:	
-   371                           ;tarti.c: 71: }
-   372                           ;tarti.c: 75: return;
-   373                           
+   285                           ; 1 bytes @ 0x0
+   286  0070                     	ds	5
+   287  0075                     ??_T0_init:	
+   288  0075                     ??_serial_init:	
+   289                           ; 1 bytes @ 0x5
+   290                           
+   291  0075                     ??_tarti_init:	
+   292                           ; 1 bytes @ 0x5
+   293                           
+   294  0075                     ??_Read_tarti:	
+   295                           ; 1 bytes @ 0x5
+   296                           
+   297                           
+   298                           ; 1 bytes @ 0x5
+   299  0075                     	ds	1
+   300  0076                     ??_main:	
+   301                           
+   302                           ; 1 bytes @ 0x6
+   303  0076                     	ds	1
+   304                           
+   305                           	psect	cstackBANK0
+   306  0040                     __pcstackBANK0:	
+   307  0040                     Read_tarti@i:	
+   308                           
+   309                           ; 2 bytes @ 0x0
+   310  0040                     	ds	2
+   311  0042                     main@k:	
+   312                           
+   313                           ; 2 bytes @ 0x2
+   314  0042                     	ds	2
+   315                           
+   316                           	psect	maintext
+   317  0025                     __pmaintext:	
+   318 ;;
+   319 ;;Main: autosize = 0, tempsize = 1, incstack = 0, save=0
+   320 ;;
+   321 ;; *************** function _main *****************
+   322 ;; Defined at:
+   323 ;;		line 37 in file "tarti.c"
+   324 ;; Parameters:    Size  Location     Type
+   325 ;;		None
+   326 ;; Auto vars:     Size  Location     Type
+   327 ;;  k               2    2[BANK0 ] int 
+   328 ;; Return value:  Size  Location     Type
+   329 ;;                  1    wreg      void 
+   330 ;; Registers used:
+   331 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
+   332 ;; Tracked objects:
+   333 ;;		On entry : B00/0
+   334 ;;		On exit  : 0/0
+   335 ;;		Unchanged: 0/0
+   336 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+   337 ;;      Params:         0       0       0       0
+   338 ;;      Locals:         0       2       0       0
+   339 ;;      Temps:          1       0       0       0
+   340 ;;      Totals:         1       2       0       0
+   341 ;;Total ram usage:        3 bytes
+   342 ;; Hardware stack levels required when called:    2
+   343 ;; This function calls:
+   344 ;;		_Read_tarti
+   345 ;;		_T0_init
+   346 ;;		_serial_init
+   347 ;;		_tarti_init
+   348 ;; This function is called by:
+   349 ;;		Startup code after reset
+   350 ;; This function uses a non-reentrant model
+   351 ;;
+   352                           
+   353                           
+   354                           ;psect for function _main
+   355  0025                     _main:	
+   356                           
+   357                           ;tarti.c: 38: TRISB=0b00000110;
+   358                           
+   359                           ;incstack = 0
+   360                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
+   361  0025  3006               	movlw	6
+   362  0026  1683               	bsf	3,5	;RP0=1, select bank1
+   363  0027  1303               	bcf	3,6	;RP1=0, select bank1
+   364  0028  0086               	movwf	6	;volatile
+   365                           
+   366                           ;tarti.c: 39: TRISA=0x00;
+   367  0029  0185               	clrf	5	;volatile
+   368                           
+   369                           ;tarti.c: 40: T0_init();
+   370  002A  21A8               	fcall	_T0_init
+   371                           
+   372                           ;tarti.c: 41: serial_init();
+   373  002B  2183               	fcall	_serial_init
    374                           
-   375                           	psect	text1
-   376  00B5                     __ptext1:	
-   377 ;; *************** function _serial_init *****************
-   378 ;; Defined at:
-   379 ;;		line 92 in file "tarti.c"
-   380 ;; Parameters:    Size  Location     Type
-   381 ;;		None
-   382 ;; Auto vars:     Size  Location     Type
-   383 ;;		None
-   384 ;; Return value:  Size  Location     Type
-   385 ;;                  1    wreg      void 
-   386 ;; Registers used:
-   387 ;;		wreg
-   388 ;; Tracked objects:
-   389 ;;		On entry : 0/0
-   390 ;;		On exit  : 0/0
-   391 ;;		Unchanged: 0/0
-   392 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
-   393 ;;      Params:         0       0       0       0
-   394 ;;      Locals:         0       0       0       0
-   395 ;;      Temps:          0       0       0       0
-   396 ;;      Totals:         0       0       0       0
-   397 ;;Total ram usage:        0 bytes
-   398 ;; Hardware stack levels used:    1
-   399 ;; Hardware stack levels required when called:    1
-   400 ;; This function calls:
-   401 ;;		Nothing
-   402 ;; This function is called by:
-   403 ;;		_main
-   404 ;; This function uses a non-reentrant model
-   405 ;;
+   375                           ;tarti.c: 42: tarti_init();
+   376  002C  21BC               	fcall	_tarti_init
+   377                           
+   378                           ;tarti.c: 44: tarti.wr_index=0;
+   379  002D  1283               	bcf	3,5	;RP0=0, select bank0
+   380  002E  1303               	bcf	3,6	;RP1=0, select bank0
+   381  002F  01B8               	clrf	_tarti+24
+   382  0030  01B9               	clrf	_tarti+25
+   383                           
+   384                           ;tarti.c: 45: tarti.rd_index=0;
+   385  0031  01BA               	clrf	_tarti+26
+   386  0032  01BB               	clrf	_tarti+27
+   387                           
+   388                           ;tarti.c: 47: PORTBbits.RB7 =1;
+   389  0033  1786               	bsf	6,7	;volatile
+   390  0034                     l798:	
+   391                           ;tarti.c: 49: while (1) {
+   392                           
+   393                           
+   394                           ;tarti.c: 51: if(tarti.rd_index != tarti.wr_index){
+   395  0034  1283               	bcf	3,5	;RP0=0, select bank0
+   396  0035  1303               	bcf	3,6	;RP1=0, select bank0
+   397  0036  0839               	movf	_tarti+25,w
+   398  0037  063B               	xorwf	_tarti+27,w
+   399  0038  1D03               	skipz
+   400  0039  283C               	goto	u395
+   401  003A  0838               	movf	_tarti+24,w
+   402  003B  063A               	xorwf	_tarti+26,w
+   403  003C                     u395:	
+   404  003C  1903               	skipnz
+   405  003D  2834               	goto	l798
    406                           
-   407                           
-   408                           ;psect for function _serial_init
-   409  00B5                     _serial_init:	
-   410                           
-   411                           ;tarti.c: 93: TXSTAbits.TX9=0;
-   412                           
-   413                           ;incstack = 0
-   414                           ; Regs used in _serial_init: [wreg]
-   415  00B5  1683               	bsf	3,5	;RP0=1, select bank1
-   416  00B6  1303               	bcf	3,6	;RP1=0, select bank1
-   417  00B7  1318               	bcf	24,6	;volatile
-   418                           
-   419                           ;tarti.c: 94: TXSTAbits.TXEN=1;
-   420  00B8  1698               	bsf	24,5	;volatile
-   421                           
-   422                           ;tarti.c: 95: TXSTAbits.SYNC=0;
-   423  00B9  1218               	bcf	24,4	;volatile
-   424                           
-   425                           ;tarti.c: 96: TXSTAbits.BRGH=1;
-   426  00BA  1518               	bsf	24,2	;volatile
-   427                           
-   428                           ;tarti.c: 98: RCSTAbits.SPEN=1;
-   429  00BB  1283               	bcf	3,5	;RP0=0, select bank0
-   430  00BC  1303               	bcf	3,6	;RP1=0, select bank0
-   431  00BD  1798               	bsf	24,7	;volatile
-   432                           
-   433                           ;tarti.c: 99: RCSTAbits.RX9=0;
-   434  00BE  1318               	bcf	24,6	;volatile
+   407                           ;tarti.c: 52: if(tarti.command[tarti.rd_index]=='a'){
+   408  003E  083A               	movf	_tarti+26,w
+   409  003F  3E20               	addlw	(low (_tarti| 0))& (0+255)
+   410  0040  0084               	movwf	4
+   411  0041  3061               	movlw	97
+   412  0042  1383               	bcf	3,7	;select IRP bank0
+   413  0043  0600               	xorwf	0,w
+   414  0044  1D03               	btfss	3,2
+   415  0045  2848               	goto	l804
+   416                           
+   417                           ;tarti.c: 53: PORTBbits.RB7 =1;
+   418  0046  1786               	bsf	6,7	;volatile
+   419                           
+   420                           ;tarti.c: 54: }else{
+   421  0047  284F               	goto	l808
+   422  0048                     l804:	
+   423                           
+   424                           ;tarti.c: 55: if(tarti.command[tarti.rd_index]=='k'){
+   425  0048  083A               	movf	_tarti+26,w
+   426  0049  3E20               	addlw	(low (_tarti| 0))& (0+255)
+   427  004A  0084               	movwf	4
+   428  004B  306B               	movlw	107
+   429  004C  0600               	xorwf	0,w
+   430  004D  1903               	btfsc	3,2
+   431                           
+   432                           ;tarti.c: 56: PORTBbits.RB7=0;
+   433  004E  1386               	bcf	6,7	;volatile
+   434  004F                     l808:	
    435                           
-   436                           ;tarti.c: 100: RCSTAbits.CREN=1;
-   437  00BF  1618               	bsf	24,4	;volatile
-   438                           
-   439                           ;tarti.c: 102: TRISBbits.TRISB1=1;
-   440  00C0  1683               	bsf	3,5	;RP0=1, select bank1
-   441  00C1  1303               	bcf	3,6	;RP1=0, select bank1
-   442  00C2  1486               	bsf	6,1	;volatile
-   443                           
-   444                           ;tarti.c: 103: TRISBbits.TRISB2=1;
-   445  00C3  1506               	bsf	6,2	;volatile
+   436                           ;tarti.c: 57: }
+   437                           ;tarti.c: 58: }
+   438                           ;tarti.c: 61: if(tarti.command[tarti.rd_index]=='o'){
+   439  004F  083A               	movf	_tarti+26,w
+   440  0050  3E20               	addlw	(low (_tarti| 0))& (0+255)
+   441  0051  0084               	movwf	4
+   442  0052  306F               	movlw	111
+   443  0053  0600               	xorwf	0,w
+   444  0054  1D03               	btfss	3,2
+   445  0055  2893               	goto	l826
    446                           
-   447                           ;tarti.c: 105: PIE1bits.RCIE=1;
-   448  00C4  168C               	bsf	12,5	;volatile
+   447                           ;tarti.c: 62: Read_tarti();
+   448  0056  2101               	fcall	_Read_tarti
    449                           
-   450                           ;tarti.c: 106: SPBRG=129;
-   451  00C5  3081               	movlw	129
-   452  00C6  0099               	movwf	25	;volatile
-   453  00C7  0008               	return
-   454  00C8                     __end_of_serial_init:	
-   455                           
-   456                           	psect	text2
-   457  00C8                     __ptext2:	
-   458 ;; *************** function _T0_init *****************
-   459 ;; Defined at:
-   460 ;;		line 78 in file "tarti.c"
-   461 ;; Parameters:    Size  Location     Type
-   462 ;;		None
-   463 ;; Auto vars:     Size  Location     Type
-   464 ;;		None
-   465 ;; Return value:  Size  Location     Type
-   466 ;;                  1    wreg      void 
-   467 ;; Registers used:
-   468 ;;		None
-   469 ;; Tracked objects:
-   470 ;;		On entry : 0/0
-   471 ;;		On exit  : 0/0
-   472 ;;		Unchanged: 0/0
-   473 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
-   474 ;;      Params:         0       0       0       0
-   475 ;;      Locals:         0       0       0       0
-   476 ;;      Temps:          0       0       0       0
-   477 ;;      Totals:         0       0       0       0
-   478 ;;Total ram usage:        0 bytes
-   479 ;; Hardware stack levels used:    1
-   480 ;; Hardware stack levels required when called:    1
-   481 ;; This function calls:
-   482 ;;		Nothing
-   483 ;; This function is called by:
-   484 ;;		_main
-   485 ;; This function uses a non-reentrant model
-   486 ;;
-   487                           
-   488                           
-   489                           ;psect for function _T0_init
-   490  00C8                     _T0_init:	
-   491                           
-   492                           ;tarti.c: 79: INTCONbits.GIE=1;
-   493                           
-   494                           ;incstack = 0
-   495                           ; Regs used in _T0_init: []
-   496  00C8  178B               	bsf	11,7	;volatile
-   497                           
-   498                           ;tarti.c: 80: INTCONbits.T0IE=1;
-   499  00C9  168B               	bsf	11,5	;volatile
-   500                           
-   501                           ;tarti.c: 81: INTCONbits.T0IF=0;
-   502  00CA  110B               	bcf	11,2	;volatile
-   503                           
-   504                           ;tarti.c: 83: OPTION_REGbits.T0CS=0;
-   505  00CB  1683               	bsf	3,5	;RP0=1, select bank1
-   506  00CC  1303               	bcf	3,6	;RP1=0, select bank1
-   507  00CD  1281               	bcf	1,5	;volatile
-   508                           
-   509                           ;tarti.c: 84: OPTION_REGbits.T0SE=0;
-   510  00CE  1201               	bcf	1,4	;volatile
-   511                           
-   512                           ;tarti.c: 85: OPTION_REGbits.PSA=0;
-   513  00CF  1181               	bcf	1,3	;volatile
-   514                           
-   515                           ;tarti.c: 86: OPTION_REGbits.PS0=0;
-   516  00D0  1001               	bcf	1,0	;volatile
-   517                           
-   518                           ;tarti.c: 87: OPTION_REGbits.PS1=0;
-   519  00D1  1081               	bcf	1,1	;volatile
-   520                           
-   521                           ;tarti.c: 88: OPTION_REGbits.PS2=0;
-   522  00D2  1101               	bcf	1,2	;volatile
-   523  00D3  0008               	return
-   524  00D4                     __end_of_T0_init:	
-   525                           
-   526                           	psect	text3
-   527  0080                     __ptext3:	
-   528 ;; *************** function _kes *****************
-   529 ;; Defined at:
-   530 ;;		line 109 in file "tarti.c"
-   531 ;; Parameters:    Size  Location     Type
-   532 ;;		None
-   533 ;; Auto vars:     Size  Location     Type
-   534 ;;		None
-   535 ;; Return value:  Size  Location     Type
-   536 ;;                  1    wreg      void 
-   537 ;; Registers used:
-   538 ;;		wreg, fsr0l, fsr0h, status,2, status,0
-   539 ;; Tracked objects:
-   540 ;;		On entry : 0/0
-   541 ;;		On exit  : 0/0
-   542 ;;		Unchanged: 0/0
-   543 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
-   544 ;;      Params:         0       0       0       0
-   545 ;;      Locals:         0       0       0       0
-   546 ;;      Temps:          5       0       0       0
-   547 ;;      Totals:         5       0       0       0
-   548 ;;Total ram usage:        5 bytes
-   549 ;; Hardware stack levels used:    1
-   550 ;; This function calls:
-   551 ;;		Nothing
-   552 ;; This function is called by:
-   553 ;;		Interrupt level 1
-   554 ;; This function uses a non-reentrant model
-   555 ;;
-   556                           
-   557                           
-   558                           ;psect for function _kes
-   559  0080                     _kes:	
-   560                           
-   561                           ;tarti.c: 110: if(INTCONbits.T0IF && INTCONbits.T0IE){
-   562  0080  190B               	btfsc	11,2	;volatile
-   563  0081  1E8B               	btfss	11,5	;volatile
-   564  0082  2892               	goto	i1l566
-   565                           
-   566                           ;tarti.c: 111: timetick++;
-   567  0083  3001               	movlw	1
-   568  0084  07F7               	addwf	_timetick,f
-   569  0085  3000               	movlw	0
-   570  0086  1803               	skipnc
-   571  0087  3001               	movlw	1
-   572  0088  07F8               	addwf	_timetick+1,f
-   573  0089  3000               	movlw	0
-   574  008A  1803               	skipnc
-   575  008B  3001               	movlw	1
-   576  008C  07F9               	addwf	_timetick+2,f
-   577  008D  3000               	movlw	0
-   578  008E  1803               	skipnc
-   579  008F  3001               	movlw	1
-   580  0090  07FA               	addwf	_timetick+3,f
-   581                           
-   582                           ;tarti.c: 112: INTCONbits.T0IF=0;
-   583  0091  110B               	bcf	11,2	;volatile
-   584  0092                     i1l566:	
-   585                           
-   586                           ;tarti.c: 114: }
-   587                           ;tarti.c: 116: if(PIR1bits.RCIF){
-   588  0092  1E8C               	btfss	12,5	;volatile
-   589  0093  28AA               	goto	i1l64
-   590                           
-   591                           ;tarti.c: 117: tarti.command[tarti.wr_index]=RCREG;
-   592  0094  081A               	movf	26,w	;volatile
-   593  0095  00F0               	movwf	??_kes
-   594  0096  0839               	movf	_tarti+25,w
-   595  0097  3E20               	addlw	(low (_tarti| 0))& (0+255)
-   596  0098  0084               	movwf	4
-   597  0099  0870               	movf	??_kes,w
-   598  009A  1383               	bcf	3,7	;select IRP bank0
-   599  009B  0080               	movwf	0
-   600  009C                     i1l61:	
-   601                           ;tarti.c: 118: while(!TXSTAbits.TRMT);
-   602                           
-   603  009C  1683               	bsf	3,5	;RP0=1, select bank1
-   604  009D  1303               	bcf	3,6	;RP1=0, select bank1
-   605  009E  1C98               	btfss	24,1	;volatile
-   606  009F  289C               	goto	i1l61
-   607                           
-   608                           ;tarti.c: 119: TXREG='F';
-   609  00A0  3046               	movlw	70
-   610  00A1  1283               	bcf	3,5	;RP0=0, select bank0
-   611  00A2  1303               	bcf	3,6	;RP1=0, select bank0
-   612  00A3  0099               	movwf	25	;volatile
-   613                           
-   614                           ;tarti.c: 120: tarti.wr_index++;
-   615  00A4  3001               	movlw	1
-   616  00A5  07B9               	addwf	_tarti+25,f
-   617  00A6  1803               	skipnc
-   618  00A7  0ABA               	incf	_tarti+26,f
-   619  00A8  3000               	movlw	0
-   620  00A9  07BA               	addwf	_tarti+26,f
-   621  00AA                     i1l64:	
-   622  00AA  0874               	movf	??_kes+4,w
-   623  00AB  00FF               	movwf	127
-   624  00AC  0873               	movf	??_kes+3,w
-   625  00AD  008A               	movwf	10
-   626  00AE  0872               	movf	??_kes+2,w
-   627  00AF  0084               	movwf	4
-   628  00B0  0E71               	swapf	(??_kes+1)^(0+-128),w
-   629  00B1  0083               	movwf	3
-   630  00B2  0EFE               	swapf	126,f
-   631  00B3  0E7E               	swapf	126,w
-   632  00B4  0009               	retfie
-   633  00B5                     __end_of_kes:	
-   634  007E                     btemp	set	126	;btemp
-   635  007E                     wtemp0	set	126
-   636                           
-   637                           	psect	intentry
-   638  0004                     __pintentry:	
-   639                           ;incstack = 0
-   640                           ; Regs used in _kes: [wreg-fsr0h+status,2+status,0]
+   450                           ;tarti.c: 63: PORTBbits.RB7 ^=1;
+   451  0057  1283               	bcf	3,5	;RP0=0, select bank0
+   452  0058  1303               	bcf	3,6	;RP1=0, select bank0
+   453  0059  0D06               	rlf	6,w	;volatile
+   454  005A  0D06               	rlf	6,w	;volatile
+   455  005B  3901               	andlw	1
+   456  005C  00F6               	movwf	??_main
+   457  005D  3001               	movlw	1
+   458  005E  06F6               	xorwf	??_main,f
+   459  005F  0CF6               	rrf	??_main,f
+   460  0060  0CF6               	rrf	??_main,f
+   461  0061  0806               	movf	6,w	;volatile
+   462  0062  0676               	xorwf	??_main,w
+   463  0063  397F               	andlw	-129
+   464  0064  0676               	xorwf	??_main,w
+   465  0065  0086               	movwf	6	;volatile
+   466                           
+   467                           ;tarti.c: 65: for(int k=0;k<24;k++){
+   468  0066  01C2               	clrf	main@k
+   469  0067  01C3               	clrf	main@k+1
+   470  0068  0843               	movf	main@k+1,w
+   471  0069  3A80               	xorlw	128
+   472  006A  00FF               	movwf	127
+   473  006B  3080               	movlw	128
+   474  006C  027F               	subwf	127,w
+   475  006D  1D03               	skipz
+   476  006E  2871               	goto	u435
+   477  006F  3018               	movlw	24
+   478  0070  0242               	subwf	main@k,w
+   479  0071                     u435:	
+   480  0071  1803               	btfsc	3,0
+   481  0072  2893               	goto	l826
+   482  0073                     l55:	
+   483                           ;tarti.c: 66: while(!TXSTAbits.TRMT);
+   484                           
+   485  0073  1683               	bsf	3,5	;RP0=1, select bank1
+   486  0074  1303               	bcf	3,6	;RP1=0, select bank1
+   487  0075  1C98               	btfss	24,1	;volatile
+   488  0076  2873               	goto	l55
+   489                           
+   490                           ;tarti.c: 67: TXREG=(tarti_data[k]+'0');
+   491  0077  1283               	bcf	3,5	;RP0=0, select bank0
+   492  0078  1303               	bcf	3,6	;RP1=0, select bank0
+   493  0079  0842               	movf	main@k,w
+   494  007A  00F6               	movwf	??_main
+   495  007B  0776               	addwf	??_main,w
+   496  007C  3EA0               	addlw	(low (_tarti_data| 0))& (0+255)
+   497  007D  0084               	movwf	4
+   498  007E  1383               	bcf	3,7	;select IRP bank1
+   499  007F  0800               	movf	0,w
+   500  0080  3E30               	addlw	48
+   501  0081  0099               	movwf	25	;volatile
+   502  0082  3001               	movlw	1
+   503  0083  07C2               	addwf	main@k,f
+   504  0084  1803               	skipnc
+   505  0085  0AC3               	incf	main@k+1,f
+   506  0086  3000               	movlw	0
+   507  0087  07C3               	addwf	main@k+1,f
+   508  0088  0843               	movf	main@k+1,w
+   509  0089  3A80               	xorlw	128
+   510  008A  00FF               	movwf	127
+   511  008B  3080               	movlw	128
+   512  008C  027F               	subwf	127,w
+   513  008D  1D03               	skipz
+   514  008E  2891               	goto	u455
+   515  008F  3018               	movlw	24
+   516  0090  0242               	subwf	main@k,w
+   517  0091                     u455:	
+   518  0091  1C03               	skipc
+   519  0092  2873               	goto	l55
+   520  0093                     l826:	
+   521                           
+   522                           ;tarti.c: 68: }
+   523                           ;tarti.c: 70: }
+   524                           ;tarti.c: 71: tarti.rd_index++;
+   525  0093  3001               	movlw	1
+   526  0094  1283               	bcf	3,5	;RP0=0, select bank0
+   527  0095  1303               	bcf	3,6	;RP1=0, select bank0
+   528  0096  07BA               	addwf	_tarti+26,f
+   529  0097  1803               	skipnc
+   530  0098  0ABB               	incf	_tarti+27,f
+   531  0099  3000               	movlw	0
+   532  009A  07BB               	addwf	_tarti+27,f
+   533                           
+   534                           ;tarti.c: 73: if(tarti.rd_index>=24)
+   535  009B  083B               	movf	_tarti+27,w
+   536  009C  3A80               	xorlw	128
+   537  009D  00FF               	movwf	127
+   538  009E  3080               	movlw	128
+   539  009F  027F               	subwf	127,w
+   540  00A0  1D03               	skipz
+   541  00A1  28A4               	goto	u465
+   542  00A2  3018               	movlw	24
+   543  00A3  023A               	subwf	_tarti+26,w
+   544  00A4                     u465:	
+   545  00A4  1C03               	skipc
+   546  00A5  2834               	goto	l798
+   547                           
+   548                           ;tarti.c: 74: tarti.rd_index=0;
+   549  00A6  1283               	bcf	3,5	;RP0=0, select bank0
+   550  00A7  1303               	bcf	3,6	;RP1=0, select bank0
+   551  00A8  01BA               	clrf	_tarti+26
+   552  00A9  01BB               	clrf	_tarti+27
+   553  00AA  2834               	goto	l798
+   554  00AB                     __end_of_main:	
+   555                           ;tarti.c: 76: }
+   556                           ;tarti.c: 77: }
+   557                           ;tarti.c: 79: return;
+   558                           
+   559                           
+   560                           	psect	text1
+   561  01BC                     __ptext1:	
+   562 ;; *************** function _tarti_init *****************
+   563 ;; Defined at:
+   564 ;;		line 136 in file "tarti.c"
+   565 ;; Parameters:    Size  Location     Type
+   566 ;;		None
+   567 ;; Auto vars:     Size  Location     Type
+   568 ;;		None
+   569 ;; Return value:  Size  Location     Type
+   570 ;;                  1    wreg      void 
+   571 ;; Registers used:
+   572 ;;		None
+   573 ;; Tracked objects:
+   574 ;;		On entry : 0/0
+   575 ;;		On exit  : 0/0
+   576 ;;		Unchanged: 0/0
+   577 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+   578 ;;      Params:         0       0       0       0
+   579 ;;      Locals:         0       0       0       0
+   580 ;;      Temps:          0       0       0       0
+   581 ;;      Totals:         0       0       0       0
+   582 ;;Total ram usage:        0 bytes
+   583 ;; Hardware stack levels used:    1
+   584 ;; Hardware stack levels required when called:    1
+   585 ;; This function calls:
+   586 ;;		Nothing
+   587 ;; This function is called by:
+   588 ;;		_main
+   589 ;; This function uses a non-reentrant model
+   590 ;;
+   591                           
+   592                           
+   593                           ;psect for function _tarti_init
+   594  01BC                     _tarti_init:	
+   595                           
+   596                           ;tarti.c: 139: TRISBbits.TRISB2=0;
+   597                           
+   598                           ;incstack = 0
+   599                           ; Regs used in _tarti_init: []
+   600  01BC  1683               	bsf	3,5	;RP0=1, select bank1
+   601  01BD  1303               	bcf	3,6	;RP1=0, select bank1
+   602  01BE  1106               	bcf	6,2	;volatile
+   603                           
+   604                           ;tarti.c: 140: TRISBbits.TRISB5=1;
+   605  01BF  1686               	bsf	6,5	;volatile
+   606  01C0  0008               	return
+   607  01C1                     __end_of_tarti_init:	
+   608                           
+   609                           	psect	text2
+   610  0183                     __ptext2:	
+   611 ;; *************** function _serial_init *****************
+   612 ;; Defined at:
+   613 ;;		line 96 in file "tarti.c"
+   614 ;; Parameters:    Size  Location     Type
+   615 ;;		None
+   616 ;; Auto vars:     Size  Location     Type
+   617 ;;		None
+   618 ;; Return value:  Size  Location     Type
+   619 ;;                  1    wreg      void 
+   620 ;; Registers used:
+   621 ;;		wreg
+   622 ;; Tracked objects:
+   623 ;;		On entry : 0/0
+   624 ;;		On exit  : 0/0
+   625 ;;		Unchanged: 0/0
+   626 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+   627 ;;      Params:         0       0       0       0
+   628 ;;      Locals:         0       0       0       0
+   629 ;;      Temps:          0       0       0       0
+   630 ;;      Totals:         0       0       0       0
+   631 ;;Total ram usage:        0 bytes
+   632 ;; Hardware stack levels used:    1
+   633 ;; Hardware stack levels required when called:    1
+   634 ;; This function calls:
+   635 ;;		Nothing
+   636 ;; This function is called by:
+   637 ;;		_main
+   638 ;; This function uses a non-reentrant model
+   639 ;;
+   640                           
    641                           
-   642  0004                     interrupt_function:	
-   643  007E                     saved_w	set	btemp
-   644  0004  00FE               	movwf	btemp
-   645  0005  0E03               	swapf	3,w
-   646  0006  00F1               	movwf	??_kes+1
-   647  0007  0804               	movf	4,w
-   648  0008  00F2               	movwf	??_kes+2
-   649  0009  080A               	movf	10,w
-   650  000A  00F3               	movwf	??_kes+3
-   651  000B  1283               	bcf	3,5	;RP0=0, select bank0
-   652  000C  1303               	bcf	3,6	;RP1=0, select bank0
-   653  000D  087F               	movf	btemp+1,w
-   654  000E  00F4               	movwf	??_kes+4
-   655  000F  2880               	ljmp	_kes
+   642                           ;psect for function _serial_init
+   643  0183                     _serial_init:	
+   644                           
+   645                           ;tarti.c: 97: TXSTAbits.TX9=0;
+   646                           
+   647                           ;incstack = 0
+   648                           ; Regs used in _serial_init: [wreg]
+   649  0183  1683               	bsf	3,5	;RP0=1, select bank1
+   650  0184  1303               	bcf	3,6	;RP1=0, select bank1
+   651  0185  1318               	bcf	24,6	;volatile
+   652                           
+   653                           ;tarti.c: 98: TXSTAbits.TXEN=1;
+   654  0186  1698               	bsf	24,5	;volatile
+   655                           
+   656                           ;tarti.c: 99: TXSTAbits.SYNC=0;
+   657  0187  1218               	bcf	24,4	;volatile
+   658                           
+   659                           ;tarti.c: 100: TXSTAbits.BRGH=1;
+   660  0188  1518               	bsf	24,2	;volatile
+   661                           
+   662                           ;tarti.c: 102: RCSTAbits.SPEN=1;
+   663  0189  1283               	bcf	3,5	;RP0=0, select bank0
+   664  018A  1303               	bcf	3,6	;RP1=0, select bank0
+   665  018B  1798               	bsf	24,7	;volatile
+   666                           
+   667                           ;tarti.c: 103: RCSTAbits.RX9=0;
+   668  018C  1318               	bcf	24,6	;volatile
+   669                           
+   670                           ;tarti.c: 104: RCSTAbits.CREN=1;
+   671  018D  1618               	bsf	24,4	;volatile
+   672                           
+   673                           ;tarti.c: 106: TRISBbits.TRISB1=1;
+   674  018E  1683               	bsf	3,5	;RP0=1, select bank1
+   675  018F  1303               	bcf	3,6	;RP1=0, select bank1
+   676  0190  1486               	bsf	6,1	;volatile
+   677                           
+   678                           ;tarti.c: 107: TRISBbits.TRISB2=1;
+   679  0191  1506               	bsf	6,2	;volatile
+   680                           
+   681                           ;tarti.c: 109: PIE1bits.RCIE=1;
+   682  0192  168C               	bsf	12,5	;volatile
+   683                           
+   684                           ;tarti.c: 110: SPBRG=129;
+   685  0193  3081               	movlw	129
+   686  0194  0099               	movwf	25	;volatile
+   687                           
+   688                           ;tarti.c: 112: PIR1bits.RCIF=0;
+   689  0195  1283               	bcf	3,5	;RP0=0, select bank0
+   690  0196  1303               	bcf	3,6	;RP1=0, select bank0
+   691  0197  128C               	bcf	12,5	;volatile
+   692  0198  0008               	return
+   693  0199                     __end_of_serial_init:	
+   694                           
+   695                           	psect	text3
+   696  01A8                     __ptext3:	
+   697 ;; *************** function _T0_init *****************
+   698 ;; Defined at:
+   699 ;;		line 82 in file "tarti.c"
+   700 ;; Parameters:    Size  Location     Type
+   701 ;;		None
+   702 ;; Auto vars:     Size  Location     Type
+   703 ;;		None
+   704 ;; Return value:  Size  Location     Type
+   705 ;;                  1    wreg      void 
+   706 ;; Registers used:
+   707 ;;		None
+   708 ;; Tracked objects:
+   709 ;;		On entry : 0/0
+   710 ;;		On exit  : 0/0
+   711 ;;		Unchanged: 0/0
+   712 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+   713 ;;      Params:         0       0       0       0
+   714 ;;      Locals:         0       0       0       0
+   715 ;;      Temps:          0       0       0       0
+   716 ;;      Totals:         0       0       0       0
+   717 ;;Total ram usage:        0 bytes
+   718 ;; Hardware stack levels used:    1
+   719 ;; Hardware stack levels required when called:    1
+   720 ;; This function calls:
+   721 ;;		Nothing
+   722 ;; This function is called by:
+   723 ;;		_main
+   724 ;; This function uses a non-reentrant model
+   725 ;;
+   726                           
+   727                           
+   728                           ;psect for function _T0_init
+   729  01A8                     _T0_init:	
+   730                           
+   731                           ;tarti.c: 83: INTCONbits.GIE=1;
+   732                           
+   733                           ;incstack = 0
+   734                           ; Regs used in _T0_init: []
+   735  01A8  178B               	bsf	11,7	;volatile
+   736                           
+   737                           ;tarti.c: 84: INTCONbits.T0IE=1;
+   738  01A9  168B               	bsf	11,5	;volatile
+   739                           
+   740                           ;tarti.c: 85: INTCONbits.T0IF=0;
+   741  01AA  110B               	bcf	11,2	;volatile
+   742                           
+   743                           ;tarti.c: 87: OPTION_REGbits.T0CS=0;
+   744  01AB  1683               	bsf	3,5	;RP0=1, select bank1
+   745  01AC  1303               	bcf	3,6	;RP1=0, select bank1
+   746  01AD  1281               	bcf	1,5	;volatile
+   747                           
+   748                           ;tarti.c: 88: OPTION_REGbits.T0SE=0;
+   749  01AE  1201               	bcf	1,4	;volatile
+   750                           
+   751                           ;tarti.c: 89: OPTION_REGbits.PSA=0;
+   752  01AF  1181               	bcf	1,3	;volatile
+   753                           
+   754                           ;tarti.c: 90: OPTION_REGbits.PS0=0;
+   755  01B0  1001               	bcf	1,0	;volatile
+   756                           
+   757                           ;tarti.c: 91: OPTION_REGbits.PS1=0;
+   758  01B1  1081               	bcf	1,1	;volatile
+   759                           
+   760                           ;tarti.c: 92: OPTION_REGbits.PS2=0;
+   761  01B2  1101               	bcf	1,2	;volatile
+   762  01B3  0008               	return
+   763  01B4                     __end_of_T0_init:	
+   764                           
+   765                           	psect	text4
+   766  0101                     __ptext4:	
+   767 ;; *************** function _Read_tarti *****************
+   768 ;; Defined at:
+   769 ;;		line 143 in file "tarti.c"
+   770 ;; Parameters:    Size  Location     Type
+   771 ;;		None
+   772 ;; Auto vars:     Size  Location     Type
+   773 ;;  i               2    0[BANK0 ] int 
+   774 ;; Return value:  Size  Location     Type
+   775 ;;                  1    wreg      void 
+   776 ;; Registers used:
+   777 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1
+   778 ;; Tracked objects:
+   779 ;;		On entry : 0/0
+   780 ;;		On exit  : 0/0
+   781 ;;		Unchanged: 0/0
+   782 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+   783 ;;      Params:         0       0       0       0
+   784 ;;      Locals:         0       2       0       0
+   785 ;;      Temps:          1       0       0       0
+   786 ;;      Totals:         1       2       0       0
+   787 ;;Total ram usage:        3 bytes
+   788 ;; Hardware stack levels used:    1
+   789 ;; Hardware stack levels required when called:    1
+   790 ;; This function calls:
+   791 ;;		Nothing
+   792 ;; This function is called by:
+   793 ;;		_main
+   794 ;; This function uses a non-reentrant model
+   795 ;;
+   796                           
+   797                           
+   798                           ;psect for function _Read_tarti
+   799  0101                     _Read_tarti:	
+   800                           
+   801                           ;tarti.c: 144: int i=-1;
+   802                           
+   803                           ;incstack = 0
+   804                           ; Regs used in _Read_tarti: [wreg-fsr0h+status,2+status,0+btemp+1]
+   805  0101  30FF               	movlw	255
+   806  0102  1283               	bcf	3,5	;RP0=0, select bank0
+   807  0103  1303               	bcf	3,6	;RP1=0, select bank0
+   808  0104  00C0               	movwf	Read_tarti@i
+   809  0105  30FF               	movlw	255
+   810  0106  00C1               	movwf	Read_tarti@i+1
+   811                           
+   812                           ;tarti.c: 145: counter=23;
+   813  0107  3017               	movlw	23
+   814  0108  00F7               	movwf	_counter
+   815  0109  3000               	movlw	0
+   816  010A  00F8               	movwf	_counter+1
+   817  010B                     l766:	
+   818                           ;tarti.c: 146: while(counter>=0){
+   819                           
+   820  010B  1BF8               	btfsc	_counter+1,7
+   821  010C  291D               	goto	l84
+   822                           
+   823                           ;tarti.c: 147: tarti_data[counter]=0;
+   824  010D  0877               	movf	_counter,w
+   825  010E  00F5               	movwf	??_Read_tarti
+   826  010F  0775               	addwf	??_Read_tarti,w
+   827  0110  3EA0               	addlw	(low (_tarti_data| 0))& (0+255)
+   828  0111  0084               	movwf	4
+   829  0112  1383               	bcf	3,7	;select IRP bank1
+   830  0113  0180               	clrf	0
+   831  0114  0A84               	incf	4,f
+   832  0115  0180               	clrf	0
+   833                           
+   834                           ;tarti.c: 148: counter--;
+   835  0116  30FF               	movlw	255
+   836  0117  07F7               	addwf	_counter,f
+   837  0118  1803               	skipnc
+   838  0119  0AF8               	incf	_counter+1,f
+   839  011A  30FF               	movlw	255
+   840  011B  07F8               	addwf	_counter+1,f
+   841  011C  290B               	goto	l766
+   842  011D                     l84:	
+   843                           
+   844                           ;tarti.c: 149: }
+   845                           ;tarti.c: 150: PORTBbits.RB5=1;
+   846  011D  1283               	bcf	3,5	;RP0=0, select bank0
+   847  011E  1303               	bcf	3,6	;RP1=0, select bank0
+   848  011F  1686               	bsf	6,5	;volatile
+   849                           
+   850                           ;tarti.c: 151: PORTBbits.RB2=0;
+   851  0120  1106               	bcf	6,2	;volatile
+   852  0121                     l85:	
+   853                           ;tarti.c: 152: while(PORTBbits.RB5);
+   854                           
+   855  0121  1E86               	btfss	6,5	;volatile
+   856  0122  293B               	goto	l776
+   857  0123  2921               	goto	l85
+   858  0124                     l89:	
+   859                           ;tarti.c: 153: while(i<24){
+   860                           
+   861                           
+   862                           ;tarti.c: 154: PORTBbits.RB2=0;
+   863  0124  1283               	bcf	3,5	;RP0=0, select bank0
+   864  0125  1303               	bcf	3,6	;RP1=0, select bank0
+   865  0126  1106               	bcf	6,2	;volatile
+   866                           
+   867                           ;tarti.c: 155: i++;
+   868  0127  3001               	movlw	1
+   869  0128  07C0               	addwf	Read_tarti@i,f
+   870  0129  1803               	skipnc
+   871  012A  0AC1               	incf	Read_tarti@i+1,f
+   872  012B  3000               	movlw	0
+   873  012C  07C1               	addwf	Read_tarti@i+1,f
+   874                           
+   875                           ;tarti.c: 156: PORTBbits.RB2=1;
+   876  012D  1506               	bsf	6,2	;volatile
+   877                           
+   878                           ;tarti.c: 157: if(PORTBbits.RB5)
+   879  012E  1E86               	btfss	6,5	;volatile
+   880  012F  293B               	goto	l776
+   881                           
+   882                           ;tarti.c: 158: tarti_data[i]=1;
+   883  0130  0840               	movf	Read_tarti@i,w
+   884  0131  00F5               	movwf	??_Read_tarti
+   885  0132  0775               	addwf	??_Read_tarti,w
+   886  0133  3EA0               	addlw	(low (_tarti_data| 0))& (0+255)
+   887  0134  0084               	movwf	4
+   888  0135  3001               	movlw	1
+   889  0136  1383               	bcf	3,7	;select IRP bank1
+   890  0137  0080               	movwf	0
+   891  0138  0A84               	incf	4,f
+   892  0139  3000               	movlw	0
+   893  013A  0080               	movwf	0
+   894  013B                     l776:	
+   895  013B  0841               	movf	Read_tarti@i+1,w
+   896  013C  3A80               	xorlw	128
+   897  013D  00FF               	movwf	127
+   898  013E  3080               	movlw	128
+   899  013F  027F               	subwf	127,w
+   900  0140  1D03               	skipz
+   901  0141  2944               	goto	u385
+   902  0142  3018               	movlw	24
+   903  0143  0240               	subwf	Read_tarti@i,w
+   904  0144                     u385:	
+   905  0144  1C03               	skipc
+   906  0145  2924               	goto	l89
+   907                           
+   908                           ;tarti.c: 162: }
+   909                           ;tarti.c: 164: PORTBbits.RB2=1;
+   910  0146  1283               	bcf	3,5	;RP0=0, select bank0
+   911  0147  1303               	bcf	3,6	;RP1=0, select bank0
+   912  0148  1506               	bsf	6,2	;volatile
+   913                           
+   914                           ;tarti.c: 165: tarti_data[23] ^=1;
+   915  0149  3001               	movlw	1
+   916  014A  1683               	bsf	3,5	;RP0=1, select bank1
+   917  014B  1303               	bcf	3,6	;RP1=0, select bank1
+   918  014C  06CE               	xorwf	(_tarti_data^(0+128)+46),f
+   919  014D  3000               	movlw	0
+   920  014E  06CF               	xorwf	((_tarti_data+1)^(0+128)+46),f
+   921                           
+   922                           ;tarti.c: 166: PORTBbits.RB2=0;
+   923  014F  1283               	bcf	3,5	;RP0=0, select bank0
+   924  0150  1303               	bcf	3,6	;RP1=0, select bank0
+   925  0151  1106               	bcf	6,2	;volatile
+   926  0152  0008               	return
+   927  0153                     __end_of_Read_tarti:	
+   928                           
+   929                           	psect	text5
+   930  00AB                     __ptext5:	
+   931 ;; *************** function _kes *****************
+   932 ;; Defined at:
+   933 ;;		line 115 in file "tarti.c"
+   934 ;; Parameters:    Size  Location     Type
+   935 ;;		None
+   936 ;; Auto vars:     Size  Location     Type
+   937 ;;		None
+   938 ;; Return value:  Size  Location     Type
+   939 ;;                  1    wreg      void 
+   940 ;; Registers used:
+   941 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1
+   942 ;; Tracked objects:
+   943 ;;		On entry : 0/0
+   944 ;;		On exit  : 0/0
+   945 ;;		Unchanged: 0/0
+   946 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+   947 ;;      Params:         0       0       0       0
+   948 ;;      Locals:         0       0       0       0
+   949 ;;      Temps:          5       0       0       0
+   950 ;;      Totals:         5       0       0       0
+   951 ;;Total ram usage:        5 bytes
+   952 ;; Hardware stack levels used:    1
+   953 ;; This function calls:
+   954 ;;		Nothing
+   955 ;; This function is called by:
+   956 ;;		Interrupt level 1
+   957 ;; This function uses a non-reentrant model
+   958 ;;
+   959                           
+   960                           
+   961                           ;psect for function _kes
+   962  00AB                     _kes:	
+   963                           
+   964                           ;tarti.c: 116: if(INTCONbits.T0IF && INTCONbits.T0IE){
+   965  00AB  190B               	btfsc	11,2	;volatile
+   966  00AC  1E8B               	btfss	11,5	;volatile
+   967  00AD  28BD               	goto	i1l746
+   968                           
+   969                           ;tarti.c: 117: timetick++;
+   970  00AE  3001               	movlw	1
+   971  00AF  07BC               	addwf	_timetick,f
+   972  00B0  3000               	movlw	0
+   973  00B1  1803               	skipnc
+   974  00B2  3001               	movlw	1
+   975  00B3  07BD               	addwf	_timetick+1,f
+   976  00B4  3000               	movlw	0
+   977  00B5  1803               	skipnc
+   978  00B6  3001               	movlw	1
+   979  00B7  07BE               	addwf	_timetick+2,f
+   980  00B8  3000               	movlw	0
+   981  00B9  1803               	skipnc
+   982  00BA  3001               	movlw	1
+   983  00BB  07BF               	addwf	_timetick+3,f
+   984                           
+   985                           ;tarti.c: 118: INTCONbits.T0IF=0;
+   986  00BC  110B               	bcf	11,2	;volatile
+   987  00BD                     i1l746:	
+   988                           
+   989                           ;tarti.c: 120: }
+   990                           ;tarti.c: 122: if(timetick>=10000){
+   991  00BD  083F               	movf	_timetick+3,w
+   992  00BE  1D03               	btfss	3,2
+   993  00BF  28CD               	goto	i1l748
+   994  00C0  083E               	movf	_timetick+2,w
+   995  00C1  1D03               	btfss	3,2
+   996  00C2  28CD               	goto	i1l748
+   997  00C3  3027               	movlw	39
+   998  00C4  023D               	subwf	_timetick+1,w
+   999  00C5  1D03               	skipz
+  1000  00C6  28CB               	goto	u32_23
+  1001  00C7  3010               	movlw	16
+  1002  00C8  023C               	subwf	_timetick,w
+  1003  00C9  1D03               	skipz
+  1004  00CA  28CB               	goto	u32_23
+  1005  00CB                     u32_23:	
+  1006  00CB  1C03               	btfss	3,0
+  1007  00CC  28D5               	goto	i1l750
+  1008  00CD                     i1l748:	
+  1009                           
+  1010                           ;tarti.c: 123: timetick=0;
+  1011  00CD  3000               	movlw	0
+  1012  00CE  00BF               	movwf	_timetick+3
+  1013  00CF  3000               	movlw	0
+  1014  00D0  00BE               	movwf	_timetick+2
+  1015  00D1  3000               	movlw	0
+  1016  00D2  00BD               	movwf	_timetick+1
+  1017  00D3  3000               	movlw	0
+  1018  00D4  00BC               	movwf	_timetick
+  1019  00D5                     i1l750:	
+  1020                           
+  1021                           ;tarti.c: 124: }
+  1022                           ;tarti.c: 126: if(PIR1bits.RCIF){
+  1023  00D5  1E8C               	btfss	12,5	;volatile
+  1024  00D6  28E5               	goto	i1l756
+  1025                           
+  1026                           ;tarti.c: 127: tarti.command[tarti.wr_index]=RCREG;
+  1027  00D7  081A               	movf	26,w	;volatile
+  1028  00D8  00F0               	movwf	??_kes
+  1029  00D9  0838               	movf	_tarti+24,w
+  1030  00DA  3E20               	addlw	(low (_tarti| 0))& (0+255)
+  1031  00DB  0084               	movwf	4
+  1032  00DC  0870               	movf	??_kes,w
+  1033  00DD  1383               	bcf	3,7	;select IRP bank0
+  1034  00DE  0080               	movwf	0
+  1035                           
+  1036                           ;tarti.c: 129: tarti.wr_index++;
+  1037  00DF  3001               	movlw	1
+  1038  00E0  07B8               	addwf	_tarti+24,f
+  1039  00E1  1803               	skipnc
+  1040  00E2  0AB9               	incf	_tarti+25,f
+  1041  00E3  3000               	movlw	0
+  1042  00E4  07B9               	addwf	_tarti+25,f
+  1043  00E5                     i1l756:	
+  1044                           
+  1045                           ;tarti.c: 130: }
+  1046                           ;tarti.c: 132: if(tarti.wr_index>=24)
+  1047  00E5  0839               	movf	_tarti+25,w
+  1048  00E6  3A80               	xorlw	128
+  1049  00E7  00FF               	movwf	127
+  1050  00E8  3080               	movlw	128
+  1051  00E9  027F               	subwf	127,w
+  1052  00EA  1D03               	skipz
+  1053  00EB  28EE               	goto	u34_25
+  1054  00EC  3018               	movlw	24
+  1055  00ED  0238               	subwf	_tarti+24,w
+  1056  00EE                     u34_25:	
+  1057  00EE  1C03               	skipc
+  1058  00EF  28F4               	goto	i1l76
+  1059                           
+  1060                           ;tarti.c: 133: tarti.wr_index=0;
+  1061  00F0  1283               	bcf	3,5	;RP0=0, select bank0
+  1062  00F1  1303               	bcf	3,6	;RP1=0, select bank0
+  1063  00F2  01B8               	clrf	_tarti+24
+  1064  00F3  01B9               	clrf	_tarti+25
+  1065  00F4                     i1l76:	
+  1066  00F4  0874               	movf	??_kes+4,w
+  1067  00F5  1283               	bcf	3,5	;RP0=0, select bank0
+  1068  00F6  1303               	bcf	3,6	;RP1=0, select bank0
+  1069  00F7  00FF               	movwf	127
+  1070  00F8  0873               	movf	??_kes+3,w
+  1071  00F9  008A               	movwf	10
+  1072  00FA  0872               	movf	??_kes+2,w
+  1073  00FB  0084               	movwf	4
+  1074  00FC  0E71               	swapf	(??_kes+1)^(0+-128),w
+  1075  00FD  0083               	movwf	3
+  1076  00FE  0EFE               	swapf	126,f
+  1077  00FF  0E7E               	swapf	126,w
+  1078  0100  0009               	retfie
+  1079  0101                     __end_of_kes:	
+  1080  007E                     btemp	set	126	;btemp
+  1081  007E                     wtemp0	set	126
+  1082                           
+  1083                           	psect	intentry
+  1084  0004                     __pintentry:	
+  1085                           ;incstack = 0
+  1086                           ; Regs used in _kes: [wreg-fsr0h+status,2+status,0+btemp+1]
+  1087                           
+  1088  0004                     interrupt_function:	
+  1089  007E                     saved_w	set	btemp
+  1090  0004  00FE               	movwf	btemp
+  1091  0005  0E03               	swapf	3,w
+  1092  0006  00F1               	movwf	??_kes+1
+  1093  0007  0804               	movf	4,w
+  1094  0008  00F2               	movwf	??_kes+2
+  1095  0009  080A               	movf	10,w
+  1096  000A  00F3               	movwf	??_kes+3
+  1097  000B  1283               	bcf	3,5	;RP0=0, select bank0
+  1098  000C  1303               	bcf	3,6	;RP1=0, select bank0
+  1099  000D  087F               	movf	btemp+1,w
+  1100  000E  00F4               	movwf	??_kes+4
+  1101  000F  28AB               	ljmp	_kes
 
 
 Data Sizes:
     Strings     0
     Constant    0
-    Data        0
-    BSS         33
-    Persistent  1
+    Data        50
+    BSS         32
+    Persistent  0
     Stack       0
 
 Auto Spaces:
     Space          Size  Autos    Used
-    COMMON           14      7      12
-    BANK0            80      0      29
-    BANK1            80      0       0
+    COMMON           14      7       9
+    BANK0            80      4      36
+    BANK1            80      0      48
     BANK2            48      0       0
 
 Pointer List with Targets:
@@ -690,7 +1136,7 @@ Pointer List with Targets:
 
 Critical Paths under _main in COMMON
 
-    None.
+    _main->_Read_tarti
 
 Critical Paths under _kes in COMMON
 
@@ -698,7 +1144,7 @@ Critical Paths under _kes in COMMON
 
 Critical Paths under _main in BANK0
 
-    None.
+    _main->_Read_tarti
 
 Critical Paths under _kes in BANK0
 
@@ -725,14 +1171,23 @@ Call Graph Tables:
  ---------------------------------------------------------------------------------
  (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
  ---------------------------------------------------------------------------------
- (0) _main                                                 2     2      0       0
-                                              5 COMMON     2     2      0
+ (0) _main                                                 3     3      0     167
+                                              6 COMMON     1     1      0
+                                              2 BANK0      2     2      0
+                         _Read_tarti
                             _T0_init
                         _serial_init
+                         _tarti_init
+ ---------------------------------------------------------------------------------
+ (1) _tarti_init                                           0     0      0       0
  ---------------------------------------------------------------------------------
  (1) _serial_init                                          0     0      0       0
  ---------------------------------------------------------------------------------
  (1) _T0_init                                              0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _Read_tarti                                           3     3      0      68
+                                              5 COMMON     1     1      0
+                                              0 BANK0      2     2      0
  ---------------------------------------------------------------------------------
  Estimated maximum stack depth 1
  ---------------------------------------------------------------------------------
@@ -747,65 +1202,77 @@ Call Graph Tables:
  Call Graph Graphs:
 
  _main (ROOT)
+   _Read_tarti
    _T0_init
    _serial_init
+   _tarti_init
 
  _kes (ROOT)
 
  Address spaces:
 Name               Size   Autos  Total    Cost      Usage
-BITCOMMON            E      0       0       0        0.0%
-EEDATA              80      0       0       0        0.0%
-NULL                 0      0       0       0        0.0%
-CODE                 0      0       0       0        0.0%
-COMMON               E      7       C       1       85.7%
-BITSFR0              0      0       0       1        0.0%
-SFR0                 0      0       0       1        0.0%
-BITSFR1              0      0       0       2        0.0%
-SFR1                 0      0       0       2        0.0%
-STACK                0      0       0       2        0.0%
-BANK0               50      0      1D       3       36.3%
-BITSFR3              0      0       0       4        0.0%
 SFR3                 0      0       0       4        0.0%
-ABS                  0      0      29       4        0.0%
-BITBANK0            50      0       0       5        0.0%
-BITSFR2              0      0       0       5        0.0%
-SFR2                 0      0       0       5        0.0%
-BITBANK1            50      0       0       6        0.0%
-BANK1               50      0       0       7        0.0%
-BITBANK2            30      0       0       8        0.0%
+BITSFR3              0      0       0       4        0.0%
 BANK2               30      0       0       9        0.0%
-DATA                 0      0      29      10        0.0%
+BITBANK2            30      0       0       8        0.0%
+SFR2                 0      0       0       5        0.0%
+BITSFR2              0      0       0       5        0.0%
+BANK1               50      0      30       7       60.0%
+BITBANK1            50      0       0       6        0.0%
+SFR1                 0      0       0       2        0.0%
+BITSFR1              0      0       0       2        0.0%
+BANK0               50      4      24       3       45.0%
+BITBANK0            50      0       0       5        0.0%
+SFR0                 0      0       0       1        0.0%
+BITSFR0              0      0       0       1        0.0%
+COMMON               E      7       9       1       64.3%
+BITCOMMON            E      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+DATA                 0      0      5D      10        0.0%
+ABS                  0      0      5D       4        0.0%
+NULL                 0      0       0       0        0.0%
+STACK                0      0       0       2        0.0%
+EEDATA              80      0       0       0        0.0%
 
 
 Microchip Technology PIC Macro Assembler V1.45 build -152302408 
-Symbol Table                                                                                   Sat Jan 20 17:52:21 2018
+Symbol Table                                                                                   Fri Jan 26 16:30:17 2018
 
-            __CFG_CP$OFF 0000                       u13 003C                       u25 004F  
-                     u35 0060                       fsr 0004                      l550 0055  
-                    l542 002E                      l544 003E                      l554 0066  
-                    l546 0046             __CFG_CPD$OFF 0000                      _kes 0080  
-                    fsr0 0004                      indf 0000             __CFG_FOSC$HS 0000  
-           __CFG_LVP$OFF 0000                     ?_kes 0070                     i1l61 009C  
-                   i1l64 00AA          __end_of_T0_init 00D4                     _hell 007B  
-                   _main 001C                     btemp 007E                     start 0010  
+                      pc 0002              __CFG_CP$OFF 0000                       l55 0073  
+                     l84 011D                       l85 0121                       l89 0124  
+                     fsr 0004                      l804 0048                      l808 004F  
+                    l826 0093                      l766 010B                      l776 013B  
+                    l798 0034             __CFG_CPD$OFF 0000                      u435 0071  
+                    u455 0091                      u385 0144                      u465 00A4  
+                    u395 003C                      _kes 00AB                      fsr0 0004  
+                    indf 0000             __CFG_FOSC$HS 0000             __CFG_LVP$OFF 0000  
+                   ?_kes 0070                     i1l76 00F4          __end_of_T0_init 01B4  
+                   _main 0025                     btemp 007E                     start 0010  
                   ??_kes 0070                    ?_main 0070            __CFG_WDTE$OFF 0000  
-                  i1l566 0092                    _RCREG 001A                    _SPBRG 0099  
-                  _TRISA 0085                    _TRISB 0086                    _TXREG 0019  
-                  _tarti 0020           __CFG_BOREN$OFF 0000                    pclath 000A  
+                  i1l750 00D5                    i1l746 00BD                    i1l756 00E5  
+                  i1l748 00CD                    _RCREG 001A                    u32_23 00CB  
+                  _SPBRG 0099                    u34_25 00EE                    _TRISA 0085  
+                  _TRISB 0086                    _TXREG 0019                    _tarti 0020  
+                  main@k 0042           __CFG_BOREN$OFF 0000                    pclath 000A  
                   status 0003                    wtemp0 007E           __CFG_MCLRE$OFF 0000  
-        __initialization 0011             __end_of_main 0080                   ??_main 0075  
-              ??_T0_init 0075           __CFG_PWRTE$OFF 0000             ?_serial_init 0070  
-                 saved_w 007E  __end_of__initialization 001A           __pcstackCOMMON 0070  
-         _OPTION_REGbits 0081               __pbssBANK0 0020               __pnvCOMMON 007B  
-             __pmaintext 001C               __pintentry 0004                  _T0_init 00C8  
-   __size_of_serial_init 0013                  __ptext1 00B5                  __ptext2 00C8  
-                __ptext3 0080             __size_of_kes 0035                  clrloop0 00D5  
-   end_of_initialization 001A                _RCSTAbits 0018                _PORTBbits 0006  
-              _TRISBbits 0086                _TXSTAbits 0098      start_initialization 0011  
-            __end_of_kes 00B5              __pbssCOMMON 0077                ___latbits 0000  
-               ?_T0_init 0070        interrupt_function 0004                clear_ram0 00D4  
-               _PIE1bits 008C                 _PIR1bits 000C            ??_serial_init 0075  
-       __size_of_T0_init 000C      __end_of_serial_init 00C8            __size_of_main 0064  
-               _timetick 0077               _INTCONbits 000B                 intlevel1 0000  
-            _serial_init 00B5  
+        __initialization 0011             __end_of_main 00AB               _Read_tarti 0101  
+                 ??_main 0076              Read_tarti@i 0040                ??_T0_init 0075  
+         __CFG_PWRTE$OFF 0000             ?_serial_init 0070             __pdataCOMMON 0077  
+                 saved_w 007E  __end_of__initialization 0023           __pcstackCOMMON 0070  
+           __pidataBANK1 0153              ?_Read_tarti 0070           _OPTION_REGbits 0081  
+             __pbssBANK0 0020               __pmaintext 0025               __pintentry 0004  
+                _T0_init 01A8      __size_of_Read_tarti 0052     __size_of_serial_init 0016  
+                __ptext1 01BC                  __ptext2 0183                  __ptext3 01A8  
+                __ptext4 0101                  __ptext5 00AB                  _counter 0077  
+           __size_of_kes 0056                  clrloop0 01B5     end_of_initialization 0023  
+              _RCSTAbits 0018               _tarti_data 00A0               _tarti_init 01BC  
+              _PORTBbits 0006                _TRISBbits 0086                _TXSTAbits 0098  
+           ??_Read_tarti 0075            __pidataCOMMON 01C1      start_initialization 0011  
+            __end_of_kes 0101       __end_of_Read_tarti 0153              ?_tarti_init 0070  
+             init_fetch0 0199              __pdataBANK1 00A0                ___latbits 0000  
+          __pcstackBANK0 0040                 ?_T0_init 0070      __size_of_tarti_init 0005  
+      interrupt_function 0004                clear_ram0 01B4                 _PIE1bits 008C  
+               _PIR1bits 000C            ??_serial_init 0075         __size_of_T0_init 000C  
+    __end_of_serial_init 0199            __size_of_main 0086             ??_tarti_init 0075  
+               _timetick 003C               _INTCONbits 000B                 init_ram0 019D  
+               intlevel1 0000       __end_of_tarti_init 01C1              _serial_init 0183  

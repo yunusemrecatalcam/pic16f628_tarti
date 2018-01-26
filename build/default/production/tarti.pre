@@ -936,15 +936,20 @@ typedef int16_t intptr_t;
 
 typedef uint16_t uintptr_t;
 
-# 16 "tarti.c"
+# 18 "tarti.c"
 uint32_t timetick=0;
 
 void T0_init(void);
 void serial_init(void);
-char hell;
+
+void Read_tarti(void);
+void tarti_init(void);
+int tarti_data[24]={1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+int counter=24;
+
 
 struct Serial_Ops{
-char command[25];
+char command[24];
 int wr_index;
 int rd_index;
 };
@@ -956,35 +961,42 @@ TRISB=0b00000110;
 TRISA=0x00;
 T0_init();
 serial_init();
+tarti_init();
 
 tarti.wr_index=0;
 tarti.rd_index=0;
 
 PORTBbits.RB7 =1;
 
-hell=RCREG;
-
 while (1) {
-if(timetick>=10000){
 
-timetick=0;
-
-
+if(tarti.rd_index != tarti.wr_index){
+if(tarti.command[tarti.rd_index]=='a'){
+PORTBbits.RB7 =1;
+}else{
+if(tarti.command[tarti.rd_index]=='k'){
+PORTBbits.RB7=0;
+}
 }
 
-# 62
+
+if(tarti.command[tarti.rd_index]=='o'){
+Read_tarti();
+PORTBbits.RB7 ^=1;
+
+for(int k=0;k<24;k++){
+while(!TXSTAbits.TRMT);
+TXREG=(tarti_data[k]+'0');
+}
+
+}
+tarti.rd_index++;
+
 if(tarti.rd_index>=24)
 tarti.rd_index=0;
 
-if(tarti.wr_index>=24)
-tarti.wr_index=0;
-
-if(tarti.wr_index%4==0)
-PORTBbits.RB7 ^=1;
-
 }
-
-
+}
 
 return;
 }
@@ -1018,6 +1030,8 @@ TRISBbits.TRISB2=1;
 
 PIE1bits.RCIE=1;
 SPBRG=129;
+
+PIR1bits.RCIF=0;
 }
 
 void interrupt kes(void){
@@ -1027,12 +1041,51 @@ INTCONbits.T0IF=0;
 
 }
 
+if(timetick>=10000){
+timetick=0;
+}
+
 if(PIR1bits.RCIF){
 tarti.command[tarti.wr_index]=RCREG;
-while(!TXSTAbits.TRMT);
-TXREG='F';
+
 tarti.wr_index++;
+}
+
+if(tarti.wr_index>=24)
+tarti.wr_index=0;
+
+}
+void tarti_init(){
+
+
+TRISBbits.TRISB2=0;
+TRISBbits.TRISB5=1;
+}
+
+void Read_tarti(){
+int i=-1;
+counter=23;
+while(counter>=0){
+tarti_data[counter]=0;
+counter--;
+}
+PORTBbits.RB5=1;
+PORTBbits.RB2=0;
+while(PORTBbits.RB5);
+while(i<24){
+PORTBbits.RB2=0;
+i++;
+PORTBbits.RB2=1;
+if(PORTBbits.RB5)
+tarti_data[i]=1;
+
 
 
 }
+
+PORTBbits.RB2=1;
+tarti_data[23] ^=1;
+PORTBbits.RB2=0;
+
+
 }

@@ -1,16 +1,18 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"22 tarti.c
-[s S51 `uc -> 25 `i `i 1 `i 1 ]
+"29 tarti.c
+[s S51 `uc -> 24 `i `i 1 `i 1 ]
 [n S51 Serial_Ops command wr_index rd_index ]
 [p mainexit ]
 "967 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f628a.h
 [v _TRISB `Vuc ~T0 @X0 0 e@134 ]
 "905
 [v _TRISA `Vuc ~T0 @X0 0 e@133 ]
-"18 tarti.c
+"20 tarti.c
 [v _T0_init `(v ~T0 @X0 0 ef ]
-"19
+"21
 [v _serial_init `(v ~T0 @X0 0 ef ]
+"24
+[v _tarti_init `(v ~T0 @X0 0 ef ]
 "232 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f628a.h
 [s S8 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S8 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
@@ -19,8 +21,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S7 . . ]
 "243
 [v _PORTBbits `VS7 ~T0 @X0 0 e@6 ]
-"758
-[v _RCREG `Vuc ~T0 @X0 0 e@26 ]
+"23 tarti.c
+[v _Read_tarti `(v ~T0 @X0 0 ef ]
+"1148 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f628a.h
+[s S45 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S45 . TX9D TRMT BRGH . SYNC TXEN TX9 CSRC ]
+"1147
+[u S44 `S45 1 ]
+[n S44 . . ]
+"1159
+[v _TXSTAbits `VS44 ~T0 @X0 0 e@152 ]
+"751
+[v _TXREG `Vuc ~T0 @X0 0 e@25 ]
 "314
 [s S12 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S12 . RBIF INTF T0IF RBIE INTE T0IE PEIE GIE ]
@@ -43,14 +55,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S31 . . . ]
 "855
 [v _OPTION_REGbits `VS31 ~T0 @X0 0 e@129 ]
-"1148
-[s S45 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S45 . TX9D TRMT BRGH . SYNC TXEN TX9 CSRC ]
-"1147
-[u S44 `S45 1 ]
-[n S44 . . ]
-"1159
-[v _TXSTAbits `VS44 ~T0 @X0 0 e@152 ]
 "686
 [s S26 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S26 . RX9D OERR FERR ADEN CREN SREN RX9 SPEN ]
@@ -88,8 +92,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S14 . . ]
 "403
 [v _PIR1bits `VS14 ~T0 @X0 0 e@12 ]
-"751
-[v _TXREG `Vuc ~T0 @X0 0 e@25 ]
+"758
+[v _RCREG `Vuc ~T0 @X0 0 e@26 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -701,233 +705,437 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdint.h: 205: typedef uint32_t uintmax_t;
 [; ;stdint.h: 210: typedef int16_t intptr_t;
 [; ;stdint.h: 215: typedef uint16_t uintptr_t;
-"16 tarti.c
+"18 tarti.c
 [v _timetick `ul ~T0 @X0 1 e ]
 [i _timetick
 -> -> -> 0 `i `l `ul
 ]
-[; ;tarti.c: 16: uint32_t timetick=0;
-[; ;tarti.c: 18: void T0_init(void);
-[; ;tarti.c: 19: void serial_init(void);
-"20
-[v _hell `uc ~T0 @X0 1 e ]
-[; ;tarti.c: 20: char hell;
-[; ;tarti.c: 22: struct Serial_Ops{
-[; ;tarti.c: 23: char command[25];
-[; ;tarti.c: 24: int wr_index;
-[; ;tarti.c: 25: int rd_index;
-[; ;tarti.c: 26: };
-"28
+[; ;tarti.c: 18: uint32_t timetick=0;
+[; ;tarti.c: 20: void T0_init(void);
+[; ;tarti.c: 21: void serial_init(void);
+[; ;tarti.c: 23: void Read_tarti(void);
+[; ;tarti.c: 24: void tarti_init(void);
+"25
+[v _tarti_data `i ~T0 @X0 -> 24 `i e ]
+[i _tarti_data
+:U ..
+-> 1 `i
+-> 1 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+..
+]
+[; ;tarti.c: 25: int tarti_data[24]={1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+"26
+[v _counter `i ~T0 @X0 1 e ]
+[i _counter
+-> 24 `i
+]
+[; ;tarti.c: 26: int counter=24;
+[; ;tarti.c: 29: struct Serial_Ops{
+[; ;tarti.c: 30: char command[24];
+[; ;tarti.c: 31: int wr_index;
+[; ;tarti.c: 32: int rd_index;
+[; ;tarti.c: 33: };
+"35
 [v _tarti `S51 ~T0 @X0 1 e ]
-[; ;tarti.c: 28: struct Serial_Ops tarti;
+[; ;tarti.c: 35: struct Serial_Ops tarti;
 [v $root$_main `(v ~T0 @X0 0 e ]
-"30
+"37
 [v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;tarti.c: 30: void main(void) {
+[; ;tarti.c: 37: void main(void) {
 [e :U _main ]
 [f ]
-[; ;tarti.c: 31: TRISB=0b00000110;
-"31
+[; ;tarti.c: 38: TRISB=0b00000110;
+"38
 [e = _TRISB -> -> 6 `i `uc ]
-[; ;tarti.c: 32: TRISA=0x00;
-"32
-[e = _TRISA -> -> 0 `i `uc ]
-[; ;tarti.c: 33: T0_init();
-"33
-[e ( _T0_init ..  ]
-[; ;tarti.c: 34: serial_init();
-"34
-[e ( _serial_init ..  ]
-[; ;tarti.c: 36: tarti.wr_index=0;
-"36
-[e = . _tarti 1 -> 0 `i ]
-[; ;tarti.c: 37: tarti.rd_index=0;
-"37
-[e = . _tarti 2 -> 0 `i ]
-[; ;tarti.c: 39: PORTBbits.RB7 =1;
+[; ;tarti.c: 39: TRISA=0x00;
 "39
-[e = . . _PORTBbits 0 7 -> -> 1 `i `uc ]
-[; ;tarti.c: 41: hell=RCREG;
+[e = _TRISA -> -> 0 `i `uc ]
+[; ;tarti.c: 40: T0_init();
+"40
+[e ( _T0_init ..  ]
+[; ;tarti.c: 41: serial_init();
 "41
-[e = _hell _RCREG ]
-[; ;tarti.c: 43: while (1) {
-"43
+[e ( _serial_init ..  ]
+[; ;tarti.c: 42: tarti_init();
+"42
+[e ( _tarti_init ..  ]
+[; ;tarti.c: 44: tarti.wr_index=0;
+"44
+[e = . _tarti 1 -> 0 `i ]
+[; ;tarti.c: 45: tarti.rd_index=0;
+"45
+[e = . _tarti 2 -> 0 `i ]
+[; ;tarti.c: 47: PORTBbits.RB7 =1;
+"47
+[e = . . _PORTBbits 0 7 -> -> 1 `i `uc ]
+[; ;tarti.c: 49: while (1) {
+"49
 [e :U 54 ]
 {
-[; ;tarti.c: 44: if(timetick>=10000){
-"44
-[e $ ! >= _timetick -> -> -> 10000 `i `l `ul 56  ]
+[; ;tarti.c: 51: if(tarti.rd_index != tarti.wr_index){
+"51
+[e $ ! != . _tarti 2 . _tarti 1 56  ]
 {
-[; ;tarti.c: 46: timetick=0;
-"46
-[e = _timetick -> -> -> 0 `i `l `ul ]
-"49
+[; ;tarti.c: 52: if(tarti.command[tarti.rd_index]=='a'){
+"52
+[e $ ! == -> *U + &U . _tarti 0 * -> -> . _tarti 2 `ui `ux -> -> # *U &U . _tarti 0 `ui `ux `ui -> 97 `ui 57  ]
+{
+[; ;tarti.c: 53: PORTBbits.RB7 =1;
+"53
+[e = . . _PORTBbits 0 7 -> -> 1 `i `uc ]
+"54
+}
+[; ;tarti.c: 54: }else{
+[e $U 58  ]
+[e :U 57 ]
+{
+[; ;tarti.c: 55: if(tarti.command[tarti.rd_index]=='k'){
+"55
+[e $ ! == -> *U + &U . _tarti 0 * -> -> . _tarti 2 `ui `ux -> -> # *U &U . _tarti 0 `ui `ux `ui -> 107 `ui 59  ]
+{
+[; ;tarti.c: 56: PORTBbits.RB7=0;
+"56
+[e = . . _PORTBbits 0 7 -> -> 0 `i `uc ]
+"57
+}
+[e :U 59 ]
+"58
+}
+[e :U 58 ]
+[; ;tarti.c: 57: }
+[; ;tarti.c: 58: }
+[; ;tarti.c: 61: if(tarti.command[tarti.rd_index]=='o'){
+"61
+[e $ ! == -> *U + &U . _tarti 0 * -> -> . _tarti 2 `ui `ux -> -> # *U &U . _tarti 0 `ui `ux `ui -> 111 `ui 60  ]
+{
+[; ;tarti.c: 62: Read_tarti();
+"62
+[e ( _Read_tarti ..  ]
+[; ;tarti.c: 63: PORTBbits.RB7 ^=1;
+"63
+[e =^ . . _PORTBbits 0 7 -> -> 1 `i `uc ]
+[; ;tarti.c: 65: for(int k=0;k<24;k++){
+"65
+{
+[v _k `i ~T0 @X0 1 a ]
+[e = _k -> 0 `i ]
+[e $ < _k -> 24 `i 61  ]
+[e $U 62  ]
+[e :U 61 ]
+{
+[; ;tarti.c: 66: while(!TXSTAbits.TRMT);
+"66
+[e $U 64  ]
+[e :U 65 ]
+[e :U 64 ]
+[e $ ! != -> . . _TXSTAbits 0 1 `i -> -> -> 0 `i `Vuc `i 65  ]
+[e :U 66 ]
+[; ;tarti.c: 67: TXREG=(tarti_data[k]+'0');
+"67
+[e = _TXREG -> + -> *U + &U _tarti_data * -> -> _k `ui `ux -> -> # *U &U _tarti_data `ui `ux `ui -> 48 `ui `uc ]
+"68
+}
+"65
+[e ++ _k -> 1 `i ]
+[e $ < _k -> 24 `i 61  ]
+[e :U 62 ]
+"68
+}
+"70
+}
+[e :U 60 ]
+[; ;tarti.c: 68: }
+[; ;tarti.c: 70: }
+[; ;tarti.c: 71: tarti.rd_index++;
+"71
+[e ++ . _tarti 2 -> 1 `i ]
+[; ;tarti.c: 73: if(tarti.rd_index>=24)
+"73
+[e $ ! >= . _tarti 2 -> 24 `i 67  ]
+[; ;tarti.c: 74: tarti.rd_index=0;
+"74
+[e = . _tarti 2 -> 0 `i ]
+[e :U 67 ]
+"76
 }
 [e :U 56 ]
-[; ;tarti.c: 49: }
-[; ;tarti.c: 62: if(tarti.rd_index>=24)
-"62
-[e $ ! >= . _tarti 2 -> 24 `i 57  ]
-[; ;tarti.c: 63: tarti.rd_index=0;
-"63
-[e = . _tarti 2 -> 0 `i ]
-[e :U 57 ]
-[; ;tarti.c: 65: if(tarti.wr_index>=24)
-"65
-[e $ ! >= . _tarti 1 -> 24 `i 58  ]
-[; ;tarti.c: 66: tarti.wr_index=0;
-"66
-[e = . _tarti 1 -> 0 `i ]
-[e :U 58 ]
-[; ;tarti.c: 68: if(tarti.wr_index%4==0)
-"68
-[e $ ! == % . _tarti 1 -> 4 `i -> 0 `i 59  ]
-[; ;tarti.c: 69: PORTBbits.RB7 ^=1;
-"69
-[e =^ . . _PORTBbits 0 7 -> -> 1 `i `uc ]
-[e :U 59 ]
-"71
+"77
 }
 [e :U 53 ]
-"43
+"49
 [e $U 54  ]
 [e :U 55 ]
-[; ;tarti.c: 71: }
-[; ;tarti.c: 75: return;
-"75
-[e $UE 52  ]
 [; ;tarti.c: 76: }
-"76
+[; ;tarti.c: 77: }
+[; ;tarti.c: 79: return;
+"79
+[e $UE 52  ]
+[; ;tarti.c: 80: }
+"80
 [e :UE 52 ]
 }
-"78
+"82
 [v _T0_init `(v ~T0 @X0 1 ef ]
 {
-[; ;tarti.c: 78: void T0_init(){
+[; ;tarti.c: 82: void T0_init(){
 [e :U _T0_init ]
 [f ]
-[; ;tarti.c: 79: INTCONbits.GIE=1;
-"79
-[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
-[; ;tarti.c: 80: INTCONbits.T0IE=1;
-"80
-[e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
-[; ;tarti.c: 81: INTCONbits.T0IF=0;
-"81
-[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
-[; ;tarti.c: 83: OPTION_REGbits.T0CS=0;
+[; ;tarti.c: 83: INTCONbits.GIE=1;
 "83
-[e = . . _OPTION_REGbits 0 3 -> -> 0 `i `uc ]
-[; ;tarti.c: 84: OPTION_REGbits.T0SE=0;
+[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
+[; ;tarti.c: 84: INTCONbits.T0IE=1;
 "84
-[e = . . _OPTION_REGbits 0 2 -> -> 0 `i `uc ]
-[; ;tarti.c: 85: OPTION_REGbits.PSA=0;
+[e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
+[; ;tarti.c: 85: INTCONbits.T0IF=0;
 "85
-[e = . . _OPTION_REGbits 0 1 -> -> 0 `i `uc ]
-[; ;tarti.c: 86: OPTION_REGbits.PS0=0;
-"86
-[e = . . _OPTION_REGbits 1 0 -> -> 0 `i `uc ]
-[; ;tarti.c: 87: OPTION_REGbits.PS1=0;
+[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
+[; ;tarti.c: 87: OPTION_REGbits.T0CS=0;
 "87
-[e = . . _OPTION_REGbits 1 1 -> -> 0 `i `uc ]
-[; ;tarti.c: 88: OPTION_REGbits.PS2=0;
+[e = . . _OPTION_REGbits 0 3 -> -> 0 `i `uc ]
+[; ;tarti.c: 88: OPTION_REGbits.T0SE=0;
 "88
-[e = . . _OPTION_REGbits 1 2 -> -> 0 `i `uc ]
-[; ;tarti.c: 90: }
+[e = . . _OPTION_REGbits 0 2 -> -> 0 `i `uc ]
+[; ;tarti.c: 89: OPTION_REGbits.PSA=0;
+"89
+[e = . . _OPTION_REGbits 0 1 -> -> 0 `i `uc ]
+[; ;tarti.c: 90: OPTION_REGbits.PS0=0;
 "90
-[e :UE 60 ]
-}
+[e = . . _OPTION_REGbits 1 0 -> -> 0 `i `uc ]
+[; ;tarti.c: 91: OPTION_REGbits.PS1=0;
+"91
+[e = . . _OPTION_REGbits 1 1 -> -> 0 `i `uc ]
+[; ;tarti.c: 92: OPTION_REGbits.PS2=0;
 "92
+[e = . . _OPTION_REGbits 1 2 -> -> 0 `i `uc ]
+[; ;tarti.c: 94: }
+"94
+[e :UE 68 ]
+}
+"96
 [v _serial_init `(v ~T0 @X0 1 ef ]
 {
-[; ;tarti.c: 92: void serial_init(){
+[; ;tarti.c: 96: void serial_init(){
 [e :U _serial_init ]
 [f ]
-[; ;tarti.c: 93: TXSTAbits.TX9=0;
-"93
+[; ;tarti.c: 97: TXSTAbits.TX9=0;
+"97
 [e = . . _TXSTAbits 0 6 -> -> 0 `i `uc ]
-[; ;tarti.c: 94: TXSTAbits.TXEN=1;
-"94
-[e = . . _TXSTAbits 0 5 -> -> 1 `i `uc ]
-[; ;tarti.c: 95: TXSTAbits.SYNC=0;
-"95
-[e = . . _TXSTAbits 0 4 -> -> 0 `i `uc ]
-[; ;tarti.c: 96: TXSTAbits.BRGH=1;
-"96
-[e = . . _TXSTAbits 0 2 -> -> 1 `i `uc ]
-[; ;tarti.c: 98: RCSTAbits.SPEN=1;
+[; ;tarti.c: 98: TXSTAbits.TXEN=1;
 "98
-[e = . . _RCSTAbits 0 7 -> -> 1 `i `uc ]
-[; ;tarti.c: 99: RCSTAbits.RX9=0;
+[e = . . _TXSTAbits 0 5 -> -> 1 `i `uc ]
+[; ;tarti.c: 99: TXSTAbits.SYNC=0;
 "99
-[e = . . _RCSTAbits 0 6 -> -> 0 `i `uc ]
-[; ;tarti.c: 100: RCSTAbits.CREN=1;
+[e = . . _TXSTAbits 0 4 -> -> 0 `i `uc ]
+[; ;tarti.c: 100: TXSTAbits.BRGH=1;
 "100
-[e = . . _RCSTAbits 0 4 -> -> 1 `i `uc ]
-[; ;tarti.c: 102: TRISBbits.TRISB1=1;
+[e = . . _TXSTAbits 0 2 -> -> 1 `i `uc ]
+[; ;tarti.c: 102: RCSTAbits.SPEN=1;
 "102
-[e = . . _TRISBbits 0 1 -> -> 1 `i `uc ]
-[; ;tarti.c: 103: TRISBbits.TRISB2=1;
+[e = . . _RCSTAbits 0 7 -> -> 1 `i `uc ]
+[; ;tarti.c: 103: RCSTAbits.RX9=0;
 "103
-[e = . . _TRISBbits 0 2 -> -> 1 `i `uc ]
-[; ;tarti.c: 105: PIE1bits.RCIE=1;
-"105
-[e = . . _PIE1bits 0 5 -> -> 1 `i `uc ]
-[; ;tarti.c: 106: SPBRG=129;
+[e = . . _RCSTAbits 0 6 -> -> 0 `i `uc ]
+[; ;tarti.c: 104: RCSTAbits.CREN=1;
+"104
+[e = . . _RCSTAbits 0 4 -> -> 1 `i `uc ]
+[; ;tarti.c: 106: TRISBbits.TRISB1=1;
 "106
-[e = _SPBRG -> -> 129 `i `uc ]
-[; ;tarti.c: 107: }
+[e = . . _TRISBbits 0 1 -> -> 1 `i `uc ]
+[; ;tarti.c: 107: TRISBbits.TRISB2=1;
 "107
-[e :UE 61 ]
+[e = . . _TRISBbits 0 2 -> -> 1 `i `uc ]
+[; ;tarti.c: 109: PIE1bits.RCIE=1;
+"109
+[e = . . _PIE1bits 0 5 -> -> 1 `i `uc ]
+[; ;tarti.c: 110: SPBRG=129;
+"110
+[e = _SPBRG -> -> 129 `i `uc ]
+[; ;tarti.c: 112: PIR1bits.RCIF=0;
+"112
+[e = . . _PIR1bits 0 5 -> -> 0 `i `uc ]
+[; ;tarti.c: 113: }
+"113
+[e :UE 69 ]
 }
 [v $root$_kes `(v ~T0 @X0 0 e ]
-[v F649 `(v ~T0 @X0 1 tf ]
-"109
-[v _kes `IF649 ~T0 @X0 1 e ]
+[v F655 `(v ~T0 @X0 1 tf ]
+"115
+[v _kes `IF655 ~T0 @X0 1 e ]
 {
-[; ;tarti.c: 109: void interrupt kes(void){
+[; ;tarti.c: 115: void interrupt kes(void){
 [e :U _kes ]
 [f ]
-[; ;tarti.c: 110: if(INTCONbits.T0IF && INTCONbits.T0IE){
-"110
-[e $ ! && != -> . . _INTCONbits 0 2 `i -> -> -> 0 `i `Vuc `i != -> . . _INTCONbits 0 5 `i -> -> -> 0 `i `Vuc `i 63  ]
-{
-[; ;tarti.c: 111: timetick++;
-"111
-[e ++ _timetick -> -> -> 1 `i `l `ul ]
-[; ;tarti.c: 112: INTCONbits.T0IF=0;
-"112
-[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
-"114
-}
-[e :U 63 ]
-[; ;tarti.c: 114: }
-[; ;tarti.c: 116: if(PIR1bits.RCIF){
+[; ;tarti.c: 116: if(INTCONbits.T0IF && INTCONbits.T0IE){
 "116
-[e $ ! != -> . . _PIR1bits 0 5 `i -> -> -> 0 `i `Vuc `i 64  ]
+[e $ ! && != -> . . _INTCONbits 0 2 `i -> -> -> 0 `i `Vuc `i != -> . . _INTCONbits 0 5 `i -> -> -> 0 `i `Vuc `i 71  ]
 {
-[; ;tarti.c: 117: tarti.command[tarti.wr_index]=RCREG;
+[; ;tarti.c: 117: timetick++;
 "117
-[e = *U + &U . _tarti 0 * -> -> . _tarti 1 `ui `ux -> -> # *U &U . _tarti 0 `ui `ux _RCREG ]
-[; ;tarti.c: 118: while(!TXSTAbits.TRMT);
+[e ++ _timetick -> -> -> 1 `i `l `ul ]
+[; ;tarti.c: 118: INTCONbits.T0IF=0;
 "118
-[e $U 65  ]
-[e :U 66 ]
-[e :U 65 ]
-[e $ ! != -> . . _TXSTAbits 0 1 `i -> -> -> 0 `i `Vuc `i 66  ]
-[e :U 67 ]
-[; ;tarti.c: 119: TXREG='F';
-"119
-[e = _TXREG -> -> 70 `ui `uc ]
-[; ;tarti.c: 120: tarti.wr_index++;
+[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
 "120
-[e ++ . _tarti 1 -> 1 `i ]
-"123
 }
-[e :U 64 ]
-[; ;tarti.c: 123: }
-[; ;tarti.c: 124: }
+[e :U 71 ]
+[; ;tarti.c: 120: }
+[; ;tarti.c: 122: if(timetick>=10000){
+"122
+[e $ ! >= _timetick -> -> -> 10000 `i `l `ul 72  ]
+{
+[; ;tarti.c: 123: timetick=0;
+"123
+[e = _timetick -> -> -> 0 `i `l `ul ]
 "124
-[e :UE 62 ]
+}
+[e :U 72 ]
+[; ;tarti.c: 124: }
+[; ;tarti.c: 126: if(PIR1bits.RCIF){
+"126
+[e $ ! != -> . . _PIR1bits 0 5 `i -> -> -> 0 `i `Vuc `i 73  ]
+{
+[; ;tarti.c: 127: tarti.command[tarti.wr_index]=RCREG;
+"127
+[e = *U + &U . _tarti 0 * -> -> . _tarti 1 `ui `ux -> -> # *U &U . _tarti 0 `ui `ux _RCREG ]
+[; ;tarti.c: 129: tarti.wr_index++;
+"129
+[e ++ . _tarti 1 -> 1 `i ]
+"130
+}
+[e :U 73 ]
+[; ;tarti.c: 130: }
+[; ;tarti.c: 132: if(tarti.wr_index>=24)
+"132
+[e $ ! >= . _tarti 1 -> 24 `i 74  ]
+[; ;tarti.c: 133: tarti.wr_index=0;
+"133
+[e = . _tarti 1 -> 0 `i ]
+[e :U 74 ]
+[; ;tarti.c: 135: }
+"135
+[e :UE 70 ]
+}
+"136
+[v _tarti_init `(v ~T0 @X0 1 ef ]
+{
+[; ;tarti.c: 136: void tarti_init(){
+[e :U _tarti_init ]
+[f ]
+[; ;tarti.c: 139: TRISBbits.TRISB2=0;
+"139
+[e = . . _TRISBbits 0 2 -> -> 0 `i `uc ]
+[; ;tarti.c: 140: TRISBbits.TRISB5=1;
+"140
+[e = . . _TRISBbits 0 5 -> -> 1 `i `uc ]
+[; ;tarti.c: 141: }
+"141
+[e :UE 75 ]
+}
+"143
+[v _Read_tarti `(v ~T0 @X0 1 ef ]
+{
+[; ;tarti.c: 143: void Read_tarti(){
+[e :U _Read_tarti ]
+[f ]
+"144
+[v _i `i ~T0 @X0 1 a ]
+[; ;tarti.c: 144: int i=-1;
+[e = _i -U -> 1 `i ]
+[; ;tarti.c: 145: counter=23;
+"145
+[e = _counter -> 23 `i ]
+[; ;tarti.c: 146: while(counter>=0){
+"146
+[e $U 77  ]
+[e :U 78 ]
+{
+[; ;tarti.c: 147: tarti_data[counter]=0;
+"147
+[e = *U + &U _tarti_data * -> -> _counter `ui `ux -> -> # *U &U _tarti_data `ui `ux -> 0 `i ]
+[; ;tarti.c: 148: counter--;
+"148
+[e -- _counter -> 1 `i ]
+"149
+}
+[e :U 77 ]
+"146
+[e $ >= _counter -> 0 `i 78  ]
+[e :U 79 ]
+[; ;tarti.c: 149: }
+[; ;tarti.c: 150: PORTBbits.RB5=1;
+"150
+[e = . . _PORTBbits 0 5 -> -> 1 `i `uc ]
+[; ;tarti.c: 151: PORTBbits.RB2=0;
+"151
+[e = . . _PORTBbits 0 2 -> -> 0 `i `uc ]
+[; ;tarti.c: 152: while(PORTBbits.RB5);
+"152
+[e $U 80  ]
+[e :U 81 ]
+[e :U 80 ]
+[e $ != -> . . _PORTBbits 0 5 `i -> -> -> 0 `i `Vuc `i 81  ]
+[e :U 82 ]
+[; ;tarti.c: 153: while(i<24){
+"153
+[e $U 83  ]
+[e :U 84 ]
+{
+[; ;tarti.c: 154: PORTBbits.RB2=0;
+"154
+[e = . . _PORTBbits 0 2 -> -> 0 `i `uc ]
+[; ;tarti.c: 155: i++;
+"155
+[e ++ _i -> 1 `i ]
+[; ;tarti.c: 156: PORTBbits.RB2=1;
+"156
+[e = . . _PORTBbits 0 2 -> -> 1 `i `uc ]
+[; ;tarti.c: 157: if(PORTBbits.RB5)
+"157
+[e $ ! != -> . . _PORTBbits 0 5 `i -> -> -> 0 `i `Vuc `i 86  ]
+[; ;tarti.c: 158: tarti_data[i]=1;
+"158
+[e = *U + &U _tarti_data * -> -> _i `ui `ux -> -> # *U &U _tarti_data `ui `ux -> 1 `i ]
+[e :U 86 ]
+"162
+}
+[e :U 83 ]
+"153
+[e $ < _i -> 24 `i 84  ]
+[e :U 85 ]
+[; ;tarti.c: 162: }
+[; ;tarti.c: 164: PORTBbits.RB2=1;
+"164
+[e = . . _PORTBbits 0 2 -> -> 1 `i `uc ]
+[; ;tarti.c: 165: tarti_data[23] ^=1;
+"165
+[e =^ *U + &U _tarti_data * -> -> -> 23 `i `ui `ux -> -> # *U &U _tarti_data `ui `ux -> 1 `i ]
+[; ;tarti.c: 166: PORTBbits.RB2=0;
+"166
+[e = . . _PORTBbits 0 2 -> -> 0 `i `uc ]
+[; ;tarti.c: 169: }
+"169
+[e :UE 76 ]
 }

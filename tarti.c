@@ -11,13 +11,20 @@
 #include<stdint.h>
 
 #define _XTAL_FREQ  20000000
-#define BUFFSIZE    25
+#define BUFFSIZE    24
+#define SCK         PORTBbits.RB2
+#define DATA        PORTBbits.RB5
 
 uint32_t timetick=0;
 
 void T0_init(void);
 void serial_init(void);
-char hell;
+
+void Read_tarti(void);
+void tarti_init(void);
+int tarti_data[BUFFSIZE]={1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+int counter=BUFFSIZE;
+
 
 struct Serial_Ops{
     char command[BUFFSIZE];
@@ -32,23 +39,16 @@ void main(void) {
     TRISA=0x00;
     T0_init();
     serial_init();
+    tarti_init();
     
     tarti.wr_index=0;
     tarti.rd_index=0;
     
     PORTBbits.RB7 =1;
     
-    hell=RCREG;
-    
     while (1) {
-        if(timetick>=10000){
-            
-            timetick=0;
-            //while(!TXSTAbits.TRMT);
-            //TXREG='F';            
-        }
-        
-        /*if(tarti.rd_index != tarti.wr_index){
+
+        if(tarti.rd_index != tarti.wr_index){
             if(tarti.command[tarti.rd_index]=='a'){
                 PORTBbits.RB7 =1;
             }else{
@@ -56,22 +56,26 @@ void main(void) {
                     PORTBbits.RB7=0;
                 }
             }
+            
+
+            if(tarti.command[tarti.rd_index]=='o'){
+                Read_tarti();
+                PORTBbits.RB7 ^=1;
+                
+                for(int k=0;k<24;k++){
+                while(!TXSTAbits.TRMT);
+                TXREG=(tarti_data[k]+'0');
+                }
+                
+            }
             tarti.rd_index++;
-        }*/
-        
-        if(tarti.rd_index>=24)
+            
+            if(tarti.rd_index>=24)
             tarti.rd_index=0;
         
-        if(tarti.wr_index>=24)
-            tarti.wr_index=0;
-        
-        if(tarti.wr_index%4==0)
-            PORTBbits.RB7 ^=1;
-        
+        }
     }
 
-    
-    
     return;
 }
 
@@ -104,6 +108,8 @@ void serial_init(){
     
     PIE1bits.RCIE=1;
     SPBRG=129;
+    
+    PIR1bits.RCIF=0;
 }
 
 void interrupt kes(void){
@@ -113,12 +119,51 @@ void interrupt kes(void){
         
     }
     
+    if(timetick>=10000){
+            timetick=0;
+        }
+    
     if(PIR1bits.RCIF){
         tarti.command[tarti.wr_index]=RCREG;
-        while(!TXSTAbits.TRMT);
-        TXREG='F';
-        tarti.wr_index++;
-        
-      
+        //while(!TXSTAbits.TRMT);
+        tarti.wr_index++; 
     }   
+    
+    if(tarti.wr_index>=24)
+    tarti.wr_index=0;
+    
 }
+void tarti_init(){
+    //DATA=1; //data pin input
+    //SCK=0; //serial clock output
+    TRISBbits.TRISB2=0;
+    TRISBbits.TRISB5=1;
+}
+
+void Read_tarti(){
+    int i=-1;
+    counter=23;
+    while(counter>=0){
+        tarti_data[counter]=0;
+        counter--;
+    }
+    DATA=1;
+    SCK=0;
+    while(DATA);
+    while(i<24){
+        SCK=0;
+        i++;
+        SCK=1;
+        if(DATA)
+            tarti_data[i]=1;
+        
+        
+                    
+    }
+    
+    SCK=1;
+    tarti_data[23] ^=1;
+    SCK=0;
+    
+   
+} 
