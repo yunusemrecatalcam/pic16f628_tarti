@@ -12,8 +12,8 @@
 
 #define _XTAL_FREQ  20000000
 #define BUFFSIZE    24
-#define SCK         PORTBbits.RB2
-#define DATA        PORTBbits.RB5
+#define SCK         PORTAbits.RA0
+#define DATA        PORTAbits.RA3
 
 uint32_t timetick=0;
 
@@ -22,7 +22,7 @@ void serial_init(void);
 
 void Read_tarti(void);
 void tarti_init(void);
-int tarti_data[BUFFSIZE]={1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+int tarti_data[BUFFSIZE]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 int counter=BUFFSIZE;
 
 
@@ -35,20 +35,20 @@ struct Serial_Ops{
 struct Serial_Ops tarti;
 
 void main(void) {
+    CMCON=0x07;
     TRISB=0b00000110;
-    TRISA=0x00;
+    
     T0_init();
     serial_init();
     tarti_init();
     
     tarti.wr_index=0;
     tarti.rd_index=0;
-    
-    PORTBbits.RB7 =1;
+    SCK=0;
     
     while (1) {
 
-        if(tarti.rd_index != tarti.wr_index){
+        /*if(tarti.rd_index != tarti.wr_index){
             if(tarti.command[tarti.rd_index]=='a'){
                 PORTBbits.RB7 =1;
             }else{
@@ -73,7 +73,24 @@ void main(void) {
             if(tarti.rd_index>=24)
             tarti.rd_index=0;
         
-        }
+        }*/
+        //SCK=0;
+        while(DATA==1);
+        PORTAbits.RA4=1;
+        PORTAbits.RA4=0;
+        
+        Read_tarti();
+        for(int k=0;k<24;k++){
+                while(!TXSTAbits.TRMT);
+                TXREG=(tarti_data[k]+'0');
+                }
+        while(!TXSTAbits.TRMT);
+        TXREG='\r';
+        while(!TXSTAbits.TRMT);
+        TXREG='\n';
+        
+        //__delay_ms(500);
+        
     }
 
     return;
@@ -133,37 +150,45 @@ void interrupt kes(void){
     tarti.wr_index=0;
     
 }
+
 void tarti_init(){
-    //DATA=1; //data pin input
-    //SCK=0; //serial clock output
-    TRISBbits.TRISB2=0;
-    TRISBbits.TRISB5=1;
+    
+    TRISAbits.TRISA0=0;
+    TRISAbits.TRISA3=1;
+    TRISAbits.TRISA4=0;
+    SCK=0;
+   
 }
 
 void Read_tarti(){
-    int i=-1;
-    counter=23;
-    while(counter>=0){
-        tarti_data[counter]=0;
-        counter--;
-    }
-    DATA=1;
+    
+    int i;
+
     SCK=0;
-    while(DATA);
-    while(i<24){
-        SCK=0;
-        i++;
+    while(DATA==1);
+    
+    for(int kl=0;kl<25;kl++){//channel a 128
         SCK=1;
-        if(DATA)
-            tarti_data[i]=1;
-        
-        
-                    
+        SCK=0;
     }
+    
+    
+    //for(char averaging  = 0; averaging < 8; averaging++) {
+        while(DATA==1);
+        for(i=0;i<24;i++){
+            SCK=1;
+            //if(DATA==1)
+                tarti_data[i]=DATA;
+            SCK=0;
+        
+            
+        }
     
     SCK=1;
     tarti_data[23] ^=1;
     SCK=0;
-    
+    //}
+    //PORTBbits.RB7 ^=1;
    
-} 
+}
+

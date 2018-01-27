@@ -13,28 +13,28 @@
 [v _memcpyee memcpyee `(v  1 e 1 0 ]
 "37 C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
 [v _main main `(v  1 e 1 0 ]
-"82
+"99
 [v _T0_init T0_init `(v  1 e 1 0 ]
-"96
+"113
 [v _serial_init serial_init `(v  1 e 1 0 ]
-"115
+"132
 [v _kes kes `II(v  1 e 1 0 ]
-"136
+"154
 [v _tarti_init tarti_init `(v  1 e 1 0 ]
-"143
+"163
 [v _Read_tarti Read_tarti `(v  1 e 1 0 ]
-[s S37 . 1 `uc 1 RB0 1 0 :1:0 
-`uc 1 RB1 1 0 :1:1 
-`uc 1 RB2 1 0 :1:2 
-`uc 1 RB3 1 0 :1:3 
-`uc 1 RB4 1 0 :1:4 
-`uc 1 RB5 1 0 :1:5 
-`uc 1 RB6 1 0 :1:6 
-`uc 1 RB7 1 0 :1:7 
+[s S37 . 1 `uc 1 RA0 1 0 :1:0 
+`uc 1 RA1 1 0 :1:1 
+`uc 1 RA2 1 0 :1:2 
+`uc 1 RA3 1 0 :1:3 
+`uc 1 RA4 1 0 :1:4 
+`uc 1 RA5 1 0 :1:5 
+`uc 1 RA6 1 0 :1:6 
+`uc 1 RA7 1 0 :1:7 
 ]
-"243 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f628a.h
+"181 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f628a.h
 [u S46 . 1 `S37 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES46  1 e 1 @6 ]
+[v _PORTAbits PORTAbits `VES46  1 e 1 @5 ]
 [s S84 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
@@ -83,6 +83,8 @@
 [v _TXREG TXREG `VEuc  1 e 1 @25 ]
 "758
 [v _RCREG RCREG `VEuc  1 e 1 @26 ]
+"765
+[v _CMCON CMCON `VEuc  1 e 1 @31 ]
 [s S116 . 1 `uc 1 PS 1 0 :3:0 
 `uc 1 PSA 1 0 :1:3 
 `uc 1 T0SE 1 0 :1:4 
@@ -97,8 +99,18 @@
 ]
 [u S127 . 1 `S116 1 . 1 0 `S123 1 . 1 0 ]
 [v _OPTION_REGbits OPTION_REGbits `VES127  1 e 1 @129 ]
-"905
-[v _TRISA TRISA `VEuc  1 e 1 @133 ]
+[s S235 . 1 `uc 1 TRISA0 1 0 :1:0 
+`uc 1 TRISA1 1 0 :1:1 
+`uc 1 TRISA2 1 0 :1:2 
+`uc 1 TRISA3 1 0 :1:3 
+`uc 1 TRISA4 1 0 :1:4 
+`uc 1 TRISA5 1 0 :1:5 
+`uc 1 TRISA6 1 0 :1:6 
+`uc 1 TRISA7 1 0 :1:7 
+]
+"922
+[u S244 . 1 `S235 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES244  1 e 1 @133 ]
 "967
 [v _TRISB TRISB `VEuc  1 e 1 @134 ]
 [s S170 . 1 `uc 1 TRISB0 1 0 :1:0 
@@ -143,42 +155,42 @@
 [v _timetick timetick `ul  1 e 4 0 ]
 "25
 [v _tarti_data tarti_data `[24]i  1 e 48 0 ]
-"26
-[v _counter counter `i  1 e 2 0 ]
 [s S19 Serial_Ops 28 `[24]uc 1 command 24 0 `i 1 wr_index 2 24 `i 1 rd_index 2 26 ]
 "35
 [v _tarti tarti `S19  1 e 28 0 ]
 "37
 [v _main main `(v  1 e 1 0 ]
 {
-"65
-[v main@k k `i  1 a 2 2 ]
-"80
+"83
+[v main@k k `i  1 a 2 8 ]
+"97
 } 0
-"136
+"154
 [v _tarti_init tarti_init `(v  1 e 1 0 ]
 {
-"141
+"161
 } 0
-"96
+"113
 [v _serial_init serial_init `(v  1 e 1 0 ]
 {
-"113
+"130
 } 0
-"82
+"99
 [v _T0_init T0_init `(v  1 e 1 0 ]
 {
-"94
+"111
 } 0
-"143
+"163
 [v _Read_tarti Read_tarti `(v  1 e 1 0 ]
 {
-"144
-[v Read_tarti@i i `i  1 a 2 0 ]
-"169
+"170
+[v Read_tarti@kl kl `i  1 a 2 4 ]
+"165
+[v Read_tarti@i i `i  1 a 2 6 ]
+"193
 } 0
-"115
+"132
 [v _kes kes `II(v  1 e 1 0 ]
 {
-"135
+"152
 } 0
