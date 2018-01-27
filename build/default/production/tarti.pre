@@ -944,9 +944,11 @@ void serial_init(void);
 
 void Read_tarti(void);
 void tarti_init(void);
+int bin_to_dec(int bin[]);
 int tarti_data[24]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+int tarti_data_buff[24];
 int counter=24;
-
+int dec_array[24];
 
 struct Serial_Ops{
 char command[24];
@@ -967,15 +969,17 @@ tarti_init();
 tarti.wr_index=0;
 tarti.rd_index=0;
 PORTAbits.RA0=0;
-
+PORTBbits.RB7=0;
 while (1) {
 
-# 78
+# 80
 while(PORTAbits.RA3==1);
 PORTAbits.RA4=1;
 PORTAbits.RA4=0;
 
 Read_tarti();
+
+
 for(int k=0;k<24;k++){
 while(!TXSTAbits.TRMT);
 TXREG=(tarti_data[k]+'0');
@@ -1068,23 +1072,38 @@ PORTAbits.RA0=1;
 PORTAbits.RA0=0;
 }
 
-
-
 while(PORTAbits.RA3==1);
 for(i=0;i<24;i++){
 PORTAbits.RA0=1;
-
 tarti_data[i]=PORTAbits.RA3;
 PORTAbits.RA0=0;
-
-
 }
 
 PORTAbits.RA0=1;
 tarti_data[23] ^=1;
 PORTAbits.RA0=0;
 
+}
 
+int bin_to_dec(int bin[]){
+int actual=0;
+tarti_data_buff=bin[];
+for(int i=23;i>=0;i--){
+for(int t=(23-i);t>0;t--){
+bin[i] *=2;
+}
+actual += bin[i];
+}
+
+for(int s=23;s>=0;s--){
+dec_array[s]=0;
+}
+
+for(int s=23;s>=0;s--){
+dec_array[s]=actual % ((24-s)*10);
+}
+
+return actual;
 
 }
 
