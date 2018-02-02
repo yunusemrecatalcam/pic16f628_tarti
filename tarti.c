@@ -15,81 +15,83 @@
 #define BUFFSIZE    24
 #define SCK         PORTAbits.RA0
 #define DATA        PORTAbits.RA3
+#define LED         PORTBbits.RB7
+
+#define DECARRSIZE  12
 
 uint32_t timetick=0;
 
 void T0_init(void);
 void serial_init(void);
 
-void Read_tarti(void);
+void read_tarti(void);
 void tarti_init(void);
-int bin_to_dec(int bin[]);
-int tarti_data[BUFFSIZE]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-//int tarti_data_buff[BUFFSIZE];
-int counter=BUFFSIZE;
-char dec_array[24];
+void bin_to_dec();
+void set_offset(void);
+void measure_force(void);
+void write_dec(int32_t);
+
+
+int24_t measure_val = 0;
+int24_t offset=0;
+int24_t force=0;
+
+uint8_t dec_array[DECARRSIZE];
 
 struct Serial_Ops{
-    char command[BUFFSIZE];
-    int wr_index;
-    int rd_index;
+    uint8_t     command[BUFFSIZE];
+    uint16_t    wr_index;
+    uint16_t    rd_index;
 };
 
 struct Serial_Ops tarti;
 
 void main(void) {
-    CMCON=0x07;
-    TRISB=0b00000110;
+    CMCON = 0x07;
+    TRISB = 0b00000110;
     
     T0_init();
     serial_init();
     tarti_init();
     
-    tarti.wr_index=0;
-    tarti.rd_index=0;
-    SCK=0;
-    TRISBbits.TRISB7=0;
-    PORTBbits.RB7=1;
+    tarti.wr_index = 0;
+    tarti.rd_index = 0;
+    
+    SCK = 0;
+    LED = 1;
+    
+    __delay_ms(4000);
+    read_tarti();
+    set_offset();
+    set_offset();
+    set_offset();
+    set_offset();
+    //measure_force();
+    
+    for(int cnt=0; cnt<10; cnt++){
+            while(!TXSTAbits.TRMT);
+            TXREG=(dec_array[cnt]);
+    }
+    
+    while(!TXSTAbits.TRMT);
+    TXREG='\r';
+    while(!TXSTAbits.TRMT);
+    TXREG='\n';
+    while(!TXSTAbits.TRMT);
+    TXREG='p';
     while (1) {
         
-        /*if(tarti.rd_index != tarti.wr_index){
-            if(tarti.command[tarti.rd_index]=='a'){
-                PORTBbits.RB7 =1;
-            }else{
-                if(tarti.command[tarti.rd_index]=='k'){
-                    PORTBbits.RB7=0;
-                }
-            }
-            
+        //check_command();
 
-            if(tarti.command[tarti.rd_index]=='o'){
-                Read_tarti();
-                PORTBbits.RB7 ^=1;
-                
-                for(int k=0;k<24;k++){
+        //Read_tarti();
+        //bin_to_dec(tarti_data);
+        //averaging(10);
+        measure_force();
+        
+        for(int cnt=0; cnt<DECARRSIZE; cnt++){
                 while(!TXSTAbits.TRMT);
-                TXREG=(tarti_data[k]+'0');
-                }
-                
-            }
-            tarti.rd_index++;
-            
-            if(tarti.rd_index>=24)
-            tarti.rd_index=0;
-        
-        }*/
-        //SCK=0;
-        while(DATA==1);
-        PORTAbits.RA4=1;
-        PORTAbits.RA4=0;
-        
-        Read_tarti();
-        bin_to_dec(tarti_data);
-        
-        for(int k=0;k<24;k++){
-                while(!TXSTAbits.TRMT);
-                TXREG=(dec_array[k]);
-                }
+                TXREG=(dec_array[cnt]);
+        }
         while(!TXSTAbits.TRMT);
         TXREG='\r';
         while(!TXSTAbits.TRMT);
@@ -166,10 +168,8 @@ void tarti_init(){
    
 }
 
-void Read_tarti(){
+void read_tarti(){
     
-    int i;
-
     SCK=0;
     while(DATA==1);
     
@@ -178,41 +178,90 @@ void Read_tarti(){
         SCK=0;
     }
  
-        while(DATA==1);
-        for(i=0;i<24;i++){
-            SCK=1;
-            tarti_data[i]=DATA;
-            SCK=0;   
-        }
+    while(DATA==1);
+    measure_val = 0;
+    for(int i=0; i<24; i++){
+        SCK=1;
+        measure_val <<= 1;
+        
+        SCK=0;  
+        measure_val |= DATA;
+    }
     
     SCK=1;
-    tarti_data[23] ^=1;
+    measure_val ^=0x800000;
     SCK=0;
   
 }
 
-int bin_to_dec(int bin[]){
-    int actual=0;
-    for(int i=23;i>=0;i--){
-        for(int t=(23-i);t>0;t--){
-            bin[i] *=2;
-        }
-        actual += bin[i];
-    }
+void bin_to_dec(){
+    //sprintf(dec_array,"%d",measure_val);   
+    write_dec(measure_val);
     
-    for(int s=23;s>=0;s--){
-        dec_array[s]=0;
-    }
-    
-    //for(int s=23;s>=0;s--){
-      //  dec_array[s]=(actual % ((24-s)*10)) / ((23-s)*10);
-    //}
-    
-    sprintf(dec_array,"%d",actual);
-    
-    return actual;
- 
 }
 
+void set_offset(){
+    read_tarti();
+    offset = -measure_val;//-5 * (int32_t)measure_val;
+    //sprintf(dec_array,"%d",offset);
+    write_dec(offset);
+}
 
+void measure_force(){
+    read_tarti();
+    force= measure_val + offset;//( 5 * (int32_t)measure_val + offset);
+    //sprintf(dec_array,"%d",force);
+    write_dec(force);
+}
 
+void check_command(){
+    /*if(tarti.rd_index != tarti.wr_index){
+            if(tarti.command[tarti.rd_index]=='a'){
+                PORTBbits.RB7 =1;
+            }else{
+                if(tarti.command[tarti.rd_index]=='k'){
+                    PORTBbits.RB7=0;
+                }
+            }
+            
+
+            if(tarti.command[tarti.rd_index]=='o'){
+                Read_tarti();
+                PORTBbits.RB7 ^=1;
+                
+                for(int k=0;k<24;k++){
+                while(!TXSTAbits.TRMT);
+                TXREG=(tarti_data[k]+'0');
+                }
+                
+            }
+            tarti.rd_index++;
+            
+            if(tarti.rd_index>=24)
+            tarti.rd_index=0;
+        
+        }*/
+}
+
+void write_dec(int32_t value){
+    int i=0;
+    value *= 5;
+    if(value < 0)
+    {
+        dec_array[0] = '-';
+        value = -value;
+    }
+    else
+        dec_array[0] = '+';
+    
+    dec_array[DECARRSIZE - 1] = NULL;
+    i=DECARRSIZE - 2;
+    
+    while(value){
+        dec_array[i--]= value%10 + '0';
+        value /= 10;
+    }
+    
+    for(;i>0;i--)
+        dec_array[i] = '0';
+}
