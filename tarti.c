@@ -16,7 +16,7 @@
 #define SCK         PORTAbits.RA0
 #define DATA        PORTAbits.RA3
 #define LED         PORTBbits.RB7
-
+#define AVERAGECNT  5
 #define DECARRSIZE  12
 
 uint32_t timetick=0;
@@ -201,16 +201,25 @@ void bin_to_dec(){
 }
 
 void set_offset(){
+    int32_t sum=0;
+    for(int i=0;i<AVERAGECNT;i++){
     read_tarti();
-    offset = -measure_val;//-5 * (int32_t)measure_val;
-    //sprintf(dec_array,"%d",offset);
+    sum += -measure_val;//-5 * (int32_t)measure_val;
+    }
+    sum /= AVERAGECNT;
+    offset=sum;
     write_dec(offset);
 }
 
 void measure_force(){
+    int32_t sum=0;
+    for(int i=0;i<AVERAGECNT;i++){
     read_tarti();
-    force= measure_val + offset;//( 5 * (int32_t)measure_val + offset);
-    //sprintf(dec_array,"%d",force);
+    //( 5 * (int32_t)measure_val + offset);
+    sum += measure_val;
+    }
+    sum /=AVERAGECNT;
+    force=sum + offset;
     write_dec(force);
 }
 
@@ -245,7 +254,8 @@ void check_command(){
 
 void write_dec(int32_t value){
     int i=0;
-    value *= 5;
+    value *=22;
+    value /=10000;
     if(value < 0)
     {
         dec_array[0] = '-';

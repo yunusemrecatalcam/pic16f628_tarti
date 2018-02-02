@@ -31,9 +31,9 @@
 [v _read_tarti read_tarti `(v  1 e 1 0 ]
 "203
 [v _set_offset set_offset `(v  1 e 1 0 ]
-"210
+"214
 [v _measure_force measure_force `(v  1 e 1 0 ]
-"246
+"255
 [v _write_dec write_dec `(v  1 e 1 0 ]
 [s S37 . 1 `uc 1 RA0 1 0 :1:0 
 `uc 1 RA1 1 0 :1:1 
@@ -192,9 +192,9 @@
 [v _main main `(v  1 e 1 0 ]
 {
 "91
-[v main@cnt_335 cnt `i  1 a 2 2 ]
+[v main@cnt_335 cnt `i  1 a 2 40 ]
 "71
-[v main@cnt cnt `i  1 a 2 0 ]
+[v main@cnt cnt `i  1 a 2 38 ]
 "105
 } 0
 "162
@@ -205,26 +205,34 @@
 "203
 [v _set_offset set_offset `(v  1 e 1 0 ]
 {
-"208
+"205
+[v set_offset@i i `i  1 a 2 29 ]
+"204
+[v set_offset@sum sum `l  1 a 4 31 ]
+"212
 } 0
 "121
 [v _serial_init serial_init `(v  1 e 1 0 ]
 {
 "138
 } 0
-"210
+"214
 [v _measure_force measure_force `(v  1 e 1 0 ]
 {
+"216
+[v measure_force@i i `i  1 a 2 26 ]
 "215
+[v measure_force@sum sum `l  1 a 4 28 ]
+"224
 } 0
-"246
+"255
 [v _write_dec write_dec `(v  1 e 1 0 ]
 {
-"247
+"256
 [v write_dec@i i `i  1 a 2 20 ]
-"246
+"255
 [v write_dec@value value `l  1 p 4 15 ]
-"267
+"277
 } 0
 "15 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul32.c
 [v ___lmul __lmul `(ul  1 e 4 0 ]

@@ -1258,125 +1258,184 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tarti.c: 203: void set_offset(){
 [e :U _set_offset ]
 [f ]
-[; ;tarti.c: 204: read_tarti();
 "204
-[e ( _read_tarti ..  ]
-[; ;tarti.c: 205: offset = -measure_val;
+[v _sum `l ~T0 @X0 1 a ]
+[; ;tarti.c: 204: int32_t sum=0;
+[e = _sum -> -> 0 `i `l ]
+[; ;tarti.c: 205: for(int i=0;i<5;i++){
 "205
-[e = _offset -U _measure_val ]
-[; ;tarti.c: 207: write_dec(offset);
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 5 `i 107  ]
+[e $U 108  ]
+[e :U 107 ]
+{
+[; ;tarti.c: 206: read_tarti();
+"206
+[e ( _read_tarti ..  ]
+[; ;tarti.c: 207: sum += -measure_val;
 "207
-[e ( _write_dec (1 -> _offset `l ]
-[; ;tarti.c: 208: }
+[e =+ _sum -> -U _measure_val `l ]
 "208
+}
+"205
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 5 `i 107  ]
+[e :U 108 ]
+"208
+}
+[; ;tarti.c: 208: }
+[; ;tarti.c: 209: sum /= 5;
+"209
+[e =/ _sum -> -> 5 `uc `l ]
+[; ;tarti.c: 210: offset=sum;
+"210
+[e = _offset -> _sum `m ]
+[; ;tarti.c: 211: write_dec(offset);
+"211
+[e ( _write_dec (1 -> _offset `l ]
+[; ;tarti.c: 212: }
+"212
 [e :UE 106 ]
 }
-"210
+"214
 [v _measure_force `(v ~T0 @X0 1 ef ]
 {
-[; ;tarti.c: 210: void measure_force(){
+[; ;tarti.c: 214: void measure_force(){
 [e :U _measure_force ]
 [f ]
-[; ;tarti.c: 211: read_tarti();
-"211
-[e ( _read_tarti ..  ]
-[; ;tarti.c: 212: force= measure_val + offset;
-"212
-[e = _force + _measure_val _offset ]
-[; ;tarti.c: 214: write_dec(force);
-"214
-[e ( _write_dec (1 -> _force `l ]
-[; ;tarti.c: 215: }
 "215
-[e :UE 107 ]
-}
+[v _sum `l ~T0 @X0 1 a ]
+[; ;tarti.c: 215: int32_t sum=0;
+[e = _sum -> -> 0 `i `l ]
+[; ;tarti.c: 216: for(int i=0;i<5;i++){
+"216
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 5 `i 111  ]
+[e $U 112  ]
+[e :U 111 ]
+{
+[; ;tarti.c: 217: read_tarti();
 "217
+[e ( _read_tarti ..  ]
+[; ;tarti.c: 219: sum += measure_val;
+"219
+[e =+ _sum -> _measure_val `l ]
+"220
+}
+"216
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 5 `i 111  ]
+[e :U 112 ]
+"220
+}
+[; ;tarti.c: 220: }
+[; ;tarti.c: 221: sum /=5;
+"221
+[e =/ _sum -> -> 5 `uc `l ]
+[; ;tarti.c: 222: force=sum + offset;
+"222
+[e = _force -> + _sum -> _offset `l `m ]
+[; ;tarti.c: 223: write_dec(force);
+"223
+[e ( _write_dec (1 -> _force `l ]
+[; ;tarti.c: 224: }
+"224
+[e :UE 110 ]
+}
+"226
 [v _check_command `(v ~T0 @X0 1 ef ]
 {
-[; ;tarti.c: 217: void check_command(){
+[; ;tarti.c: 226: void check_command(){
 [e :U _check_command ]
 [f ]
-[; ;tarti.c: 244: }
-"244
-[e :UE 108 ]
+[; ;tarti.c: 253: }
+"253
+[e :UE 114 ]
 }
-"246
+"255
 [v _write_dec `(v ~T0 @X0 1 ef1`l ]
 {
-[; ;tarti.c: 246: void write_dec(int32_t value){
+[; ;tarti.c: 255: void write_dec(int32_t value){
 [e :U _write_dec ]
 [v _value `l ~T0 @X0 1 r1 ]
 [f ]
-"247
+"256
 [v _i `i ~T0 @X0 1 a ]
-[; ;tarti.c: 247: int i=0;
+[; ;tarti.c: 256: int i=0;
 [e = _i -> 0 `i ]
-[; ;tarti.c: 248: value *= 5;
-"248
-[e =* _value -> -> 5 `i `l ]
-[; ;tarti.c: 249: if(value < 0)
-"249
-[e $ ! < _value -> -> 0 `i `l 110  ]
-[; ;tarti.c: 250: {
-"250
-{
-[; ;tarti.c: 251: dec_array[0] = '-';
-"251
-[e = *U + &U _dec_array * -> -> -> 0 `i `ui `ux -> -> # *U &U _dec_array `ui `ux -> -> 45 `ui `uc ]
-[; ;tarti.c: 252: value = -value;
-"252
-[e = _value -U _value ]
-"253
-}
-[; ;tarti.c: 253: }
-[e $U 111  ]
-"254
-[e :U 110 ]
-[; ;tarti.c: 254: else
-[; ;tarti.c: 255: dec_array[0] = '+';
-"255
-[e = *U + &U _dec_array * -> -> -> 0 `i `ui `ux -> -> # *U &U _dec_array `ui `ux -> -> 43 `ui `uc ]
-[e :U 111 ]
-[; ;tarti.c: 257: dec_array[12 - 1] = (0);
+[; ;tarti.c: 257: value *=22;
 "257
-[e = *U + &U _dec_array * -> -> - -> 12 `i -> 1 `i `ui `ux -> -> # *U &U _dec_array `ui `ux -> -> 0 `i `uc ]
-[; ;tarti.c: 258: i=12 - 2;
+[e =* _value -> -> 22 `i `l ]
+[; ;tarti.c: 258: value /=10000;
 "258
-[e = _i - -> 12 `i -> 2 `i ]
-[; ;tarti.c: 260: while(value){
+[e =/ _value -> -> 10000 `us `l ]
+[; ;tarti.c: 259: if(value < 0)
+"259
+[e $ ! < _value -> -> 0 `i `l 116  ]
+[; ;tarti.c: 260: {
 "260
-[e $U 112  ]
-[e :U 113 ]
 {
-[; ;tarti.c: 261: dec_array[i--]= value%10 + '0';
+[; ;tarti.c: 261: dec_array[0] = '-';
 "261
-[e = *U + &U _dec_array * -> -> -- _i -> 1 `i `ui `ux -> -> # *U &U _dec_array `ui `ux -> + % _value -> -> 10 `i `l -> -> 48 `ui `l `uc ]
-[; ;tarti.c: 262: value /= 10;
+[e = *U + &U _dec_array * -> -> -> 0 `i `ui `ux -> -> # *U &U _dec_array `ui `ux -> -> 45 `ui `uc ]
+[; ;tarti.c: 262: value = -value;
 "262
-[e =/ _value -> -> 10 `uc `l ]
+[e = _value -U _value ]
 "263
 }
-[e :U 112 ]
-"260
-[e $ != _value -> -> 0 `i `l 113  ]
-[e :U 114 ]
 [; ;tarti.c: 263: }
-[; ;tarti.c: 265: for(;i>0;i--)
-"265
-{
-[e $ > _i -> 0 `i 115  ]
-[e $U 116  ]
-"266
-[e :U 115 ]
-[; ;tarti.c: 266: dec_array[i] = '0';
-[e = *U + &U _dec_array * -> -> _i `ui `ux -> -> # *U &U _dec_array `ui `ux -> -> 48 `ui `uc ]
-"265
-[e -- _i -> 1 `i ]
-[e $ > _i -> 0 `i 115  ]
+[e $U 117  ]
+"264
 [e :U 116 ]
-"266
-}
-[; ;tarti.c: 267: }
+[; ;tarti.c: 264: else
+[; ;tarti.c: 265: dec_array[0] = '+';
+"265
+[e = *U + &U _dec_array * -> -> -> 0 `i `ui `ux -> -> # *U &U _dec_array `ui `ux -> -> 43 `ui `uc ]
+[e :U 117 ]
+[; ;tarti.c: 267: dec_array[12 - 1] = (0);
 "267
-[e :UE 109 ]
+[e = *U + &U _dec_array * -> -> - -> 12 `i -> 1 `i `ui `ux -> -> # *U &U _dec_array `ui `ux -> -> 0 `i `uc ]
+[; ;tarti.c: 268: i=12 - 2;
+"268
+[e = _i - -> 12 `i -> 2 `i ]
+[; ;tarti.c: 270: while(value){
+"270
+[e $U 118  ]
+[e :U 119 ]
+{
+[; ;tarti.c: 271: dec_array[i--]= value%10 + '0';
+"271
+[e = *U + &U _dec_array * -> -> -- _i -> 1 `i `ui `ux -> -> # *U &U _dec_array `ui `ux -> + % _value -> -> 10 `i `l -> -> 48 `ui `l `uc ]
+[; ;tarti.c: 272: value /= 10;
+"272
+[e =/ _value -> -> 10 `uc `l ]
+"273
+}
+[e :U 118 ]
+"270
+[e $ != _value -> -> 0 `i `l 119  ]
+[e :U 120 ]
+[; ;tarti.c: 273: }
+[; ;tarti.c: 275: for(;i>0;i--)
+"275
+{
+[e $ > _i -> 0 `i 121  ]
+[e $U 122  ]
+"276
+[e :U 121 ]
+[; ;tarti.c: 276: dec_array[i] = '0';
+[e = *U + &U _dec_array * -> -> _i `ui `ux -> -> # *U &U _dec_array `ui `ux -> -> 48 `ui `uc ]
+"275
+[e -- _i -> 1 `i ]
+[e $ > _i -> 0 `i 121  ]
+[e :U 122 ]
+"276
+}
+[; ;tarti.c: 277: }
+"277
+[e :UE 115 ]
 }

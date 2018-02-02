@@ -1178,27 +1178,37 @@ write_dec(measure_val);
 }
 
 void set_offset(){
+int32_t sum=0;
+for(int i=0;i<5;i++){
 read_tarti();
-offset = -measure_val;
-
+sum += -measure_val;
+}
+sum /= 5;
+offset=sum;
 write_dec(offset);
 }
 
 void measure_force(){
+int32_t sum=0;
+for(int i=0;i<5;i++){
 read_tarti();
-force= measure_val + offset;
 
+sum += measure_val;
+}
+sum /=5;
+force=sum + offset;
 write_dec(force);
 }
 
 void check_command(){
 
-# 244
+# 253
 }
 
 void write_dec(int32_t value){
 int i=0;
-value *= 5;
+value *=22;
+value /=10000;
 if(value < 0)
 {
 dec_array[0] = '-';
