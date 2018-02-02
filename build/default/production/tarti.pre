@@ -936,7 +936,70 @@ typedef int16_t intptr_t;
 
 typedef uint16_t uintptr_t;
 
-# 18 "tarti.c"
+# 4 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\__size_t.h"
+typedef unsigned size_t;
+
+# 7 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdarg.h"
+typedef void * va_list[1];
+
+#pragma intrinsic(__va_start)
+extern void * __va_start(void);
+
+#pragma intrinsic(__va_arg)
+extern void * __va_arg(void *, ...);
+
+# 43 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdio.h"
+struct __prbuf
+{
+char * ptr;
+void (* func)(char);
+};
+
+# 29 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\errno.h"
+extern int errno;
+
+# 12 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\conio.h"
+extern void init_uart(void);
+
+extern char getch(void);
+extern char getche(void);
+extern void putch(char);
+extern void ungetch(char);
+
+extern __bit kbhit(void);
+
+# 23
+extern char * cgets(char *);
+extern void cputs(const char *);
+
+# 88 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdio.h"
+extern int cprintf(char *, ...);
+#pragma printf_check(cprintf)
+
+
+
+extern int _doprnt(struct __prbuf *, const register char *, register va_list);
+
+
+# 180
+#pragma printf_check(vprintf) const
+#pragma printf_check(vsprintf) const
+
+extern char * gets(char *);
+extern int puts(const char *);
+extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
+extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
+extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
+extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
+extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
+extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
+
+#pragma printf_check(printf) const
+#pragma printf_check(sprintf) const
+extern int sprintf(char *, const char *, ...);
+extern int printf(const char *, ...);
+
+# 19 "tarti.c"
 uint32_t timetick=0;
 
 void T0_init(void);
@@ -946,9 +1009,9 @@ void Read_tarti(void);
 void tarti_init(void);
 int bin_to_dec(int bin[]);
 int tarti_data[24]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-int tarti_data_buff[24];
+
 int counter=24;
-int dec_array[24];
+char dec_array[24];
 
 struct Serial_Ops{
 char command[24];
@@ -969,20 +1032,21 @@ tarti_init();
 tarti.wr_index=0;
 tarti.rd_index=0;
 PORTAbits.RA0=0;
-PORTBbits.RB7=0;
+TRISBbits.TRISB7=0;
+PORTBbits.RB7=1;
 while (1) {
 
-# 80
+# 82
 while(PORTAbits.RA3==1);
 PORTAbits.RA4=1;
 PORTAbits.RA4=0;
 
 Read_tarti();
-
+bin_to_dec(tarti_data);
 
 for(int k=0;k<24;k++){
 while(!TXSTAbits.TRMT);
-TXREG=(tarti_data[k]+'0');
+TXREG=(dec_array[k]);
 }
 while(!TXSTAbits.TRMT);
 TXREG='\r';
@@ -1087,7 +1151,6 @@ PORTAbits.RA0=0;
 
 int bin_to_dec(int bin[]){
 int actual=0;
-tarti_data_buff=bin[];
 for(int i=23;i>=0;i--){
 for(int t=(23-i);t>0;t--){
 bin[i] *=2;
@@ -1099,9 +1162,8 @@ for(int s=23;s>=0;s--){
 dec_array[s]=0;
 }
 
-for(int s=23;s>=0;s--){
-dec_array[s]=actual % ((24-s)*10);
-}
+# 211
+sprintf(dec_array,"%d",actual);
 
 return actual;
 

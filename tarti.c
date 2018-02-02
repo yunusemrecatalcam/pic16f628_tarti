@@ -9,6 +9,7 @@
 #include <xc.h>
 #include "config.h"
 #include<stdint.h>
+#include<stdio.h>
 
 #define _XTAL_FREQ  20000000
 #define BUFFSIZE    24
@@ -24,9 +25,9 @@ void Read_tarti(void);
 void tarti_init(void);
 int bin_to_dec(int bin[]);
 int tarti_data[BUFFSIZE]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-int tarti_data_buff[BUFFSIZE];
+//int tarti_data_buff[BUFFSIZE];
 int counter=BUFFSIZE;
-int dec_array[24];
+char dec_array[24];
 
 struct Serial_Ops{
     char command[BUFFSIZE];
@@ -47,9 +48,10 @@ void main(void) {
     tarti.wr_index=0;
     tarti.rd_index=0;
     SCK=0;
-    PORTBbits.RB7=0;
+    TRISBbits.TRISB7=0;
+    PORTBbits.RB7=1;
     while (1) {
-
+        
         /*if(tarti.rd_index != tarti.wr_index){
             if(tarti.command[tarti.rd_index]=='a'){
                 PORTBbits.RB7 =1;
@@ -82,11 +84,11 @@ void main(void) {
         PORTAbits.RA4=0;
         
         Read_tarti();
-        //bin_to_dec(tarti_data);
+        bin_to_dec(tarti_data);
         
         for(int k=0;k<24;k++){
                 while(!TXSTAbits.TRMT);
-                TXREG=(tarti_data[k]+'0');
+                TXREG=(dec_array[k]);
                 }
         while(!TXSTAbits.TRMT);
         TXREG='\r';
@@ -202,11 +204,15 @@ int bin_to_dec(int bin[]){
         dec_array[s]=0;
     }
     
-    for(int s=23;s>=0;s--){
-        dec_array[s]=actual % ((24-s)*10);
-    }
+    //for(int s=23;s>=0;s--){
+      //  dec_array[s]=(actual % ((24-s)*10)) / ((23-s)*10);
+    //}
+    
+    sprintf(dec_array,"%d",actual);
     
     return actual;
  
 }
+
+
 
