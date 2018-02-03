@@ -30,13 +30,17 @@ void bin_to_dec();
 void set_offset(void);
 void measure_force(void);
 void write_dec(int32_t);
-
+void send_data(void);
+void check_command(void);
+char return_n_before(char[],int,unsigned int);
 
 int24_t measure_val = 0;
 int24_t offset=0;
 int24_t force=0;
 
 uint8_t dec_array[DECARRSIZE];
+
+int measure_flag=0;
 
 struct Serial_Ops{
     uint8_t     command[BUFFSIZE];
@@ -60,50 +64,24 @@ void main(void) {
     SCK = 0;
     LED = 1;
     
-    __delay_ms(4000);
     read_tarti();
     set_offset();
-    set_offset();
-    set_offset();
-    set_offset();
-    //measure_force();
-    
-    for(int cnt=0; cnt<10; cnt++){
-            while(!TXSTAbits.TRMT);
-            TXREG=(dec_array[cnt]);
-    }
-    
-    while(!TXSTAbits.TRMT);
-    TXREG='\r';
-    while(!TXSTAbits.TRMT);
-    TXREG='\n';
-    while(!TXSTAbits.TRMT);
-    TXREG='p';
+
     while (1) {
         
-        //check_command();
-
-        //Read_tarti();
-        //bin_to_dec(tarti_data);
-        //averaging(10);
-        measure_force();
+        check_command();
         
-        for(int cnt=5; cnt<DECARRSIZE; cnt++){
-                if(cnt==8){
-                    break;
-                }
-                
-                while(!TXSTAbits.TRMT);
-                TXREG=(dec_array[cnt]);
-                if(cnt==5){
-                    while(!TXSTAbits.TRMT);
-                    TXREG='.';
-                }
+        if(measure_flag==1){
+        measure_force();
+        send_data();
+        measure_flag=0;
+        }else{
+            if(measure_flag==2){
+                set_offset();
+                measure_flag=0;
+            }
         }
-        while(!TXSTAbits.TRMT);
-        TXREG='\r';
-        while(!TXSTAbits.TRMT);
-        TXREG='\n';
+           
         
         //__delay_ms(500);
         
@@ -163,7 +141,7 @@ void interrupt kes(void){
     }   
     
     if(tarti.wr_index>=24)
-    tarti.wr_index=0;
+        tarti.wr_index=0;
     
 }
 
@@ -232,32 +210,23 @@ void measure_force(){
 }
 
 void check_command(){
-    /*if(tarti.rd_index != tarti.wr_index){
-            if(tarti.command[tarti.rd_index]=='a'){
-                PORTBbits.RB7 =1;
+    if(tarti.rd_index != tarti.wr_index){
+            if(tarti.command[tarti.rd_index]==']' && (return_n_before(tarti.command,tarti.rd_index,1)=='O' || return_n_before(tarti.command,tarti.rd_index,1)=='o' ) && return_n_before(tarti.command,tarti.rd_index,2)=='['){
+                measure_flag=1;
+                PORTBbits.RB7 ^=1;
             }else{
-                if(tarti.command[tarti.rd_index]=='k'){
-                    PORTBbits.RB7=0;
-                }
+                if(tarti.command[tarti.rd_index]==']' && (return_n_before(tarti.command,tarti.rd_index,1)=='D' || return_n_before(tarti.command,tarti.rd_index,1)=='d' ) && return_n_before(tarti.command,tarti.rd_index,2)=='['){
+                    measure_flag=2;
+                    PORTBbits.RB7 ^=1;
+                }    
             }
             
-
-            if(tarti.command[tarti.rd_index]=='o'){
-                Read_tarti();
-                PORTBbits.RB7 ^=1;
-                
-                for(int k=0;k<24;k++){
-                while(!TXSTAbits.TRMT);
-                TXREG=(tarti_data[k]+'0');
-                }
-                
-            }
-            tarti.rd_index++;
+            tarti.rd_index=tarti.wr_index;
             
             if(tarti.rd_index>=24)
             tarti.rd_index=0;
         
-        }*/
+        }
 }
 
 void write_dec(int32_t value){
@@ -284,4 +253,34 @@ void write_dec(int32_t value){
         dec_array[i] = '0';
 }
 
+void send_data(){
+    for(int cnt=5; cnt<DECARRSIZE; cnt++){
+                if(cnt==8){
+                    break;
+                }
+                
+                while(!TXSTAbits.TRMT);
+                TXREG=(dec_array[cnt]);
+                if(cnt==5){
+                    while(!TXSTAbits.TRMT);
+                    TXREG='.';
+                }
+        }
+        while(!TXSTAbits.TRMT);
+        TXREG='\r';
+        while(!TXSTAbits.TRMT);
+        TXREG='\n';
+}
  
+
+char return_n_before(char array[],int position,unsigned int n){
+    while(n>0){
+        if(position==0){
+            position=sizeof(array)/sizeof(array[0]);
+        }else{
+            position--;
+        }
+        n--;
+    }
+    return array[position];
+}

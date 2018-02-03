@@ -11,51 +11,54 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\Monster\AppData\Local\Temp\se2g.obj
+$dist/default/production\tarti.X.production.obj
+cinit CODE 0 11 11 F 2
+text1 CODE 0 554 554 9 2
+text2 CODE 0 291 291 87 2
+text3 CODE 0 532 532 16 2
+text4 CODE 0 401 401 53 2
+text5 CODE 0 205 205 8C 2
+text6 CODE 0 20 20 BF 2
+text7 CODE 0 4A2 4A2 41 2
+text8 CODE 0 318 318 79 2
+text9 CODE 0 176 176 8F 2
+text10 CODE 0 391 391 70 2
+text11 CODE 0 DF DF 97 2
+text12 CODE 0 50D 50D 25 2
+text13 CODE 0 548 548 C 2
+text14 CODE 0 454 454 4E 2
+maintext CODE 0 4E3 4E3 2A 2
+cstackCOMMON COMMON 1 70 70 5 1
+cstackBANK0 BANK0 1 47 47 23 1
+intentry CODE 0 4 4 C 2
+bssBANK0 BANK0 1 20 20 27 1
+bssBANK1 BANK1 1 A0 A0 A 1
+clrtext CODE 0 55D 55D 8 2
+bssCOMMON COMMON 1 75 75 4 1
+$C:\Users\Monster\AppData\Local\Temp\sf84.obj
 reset_vec CODE 0 0 0 1 2
 end_init CODE 0 10 10 1 2
 config CONFIG 0 2007 2007 1 2
-$dist/default/production\tarti.X.production.obj
-cinit CODE 0 11 11 F 2
-text1 CODE 0 4D5 4D5 9 2
-text2 CODE 0 2AE 2AE 87 2
-text3 CODE 0 4B3 4B3 16 2
-text4 CODE 0 222 222 8C 2
-text5 CODE 0 DE DE B5 2
-text6 CODE 0 472 472 41 2
-text7 CODE 0 335 335 79 2
-text8 CODE 0 193 193 8F 2
-text9 CODE 0 3AE 3AE 70 2
-text10 CODE 0 4C9 4C9 C 2
-text11 CODE 0 41E 41E 54 2
-maintext CODE 0 20 20 BE 2
-cstackCOMMON COMMON 1 70 70 5 1
-cstackBANK0 BANK0 1 20 20 2A 1
-intentry CODE 0 4 4 C 2
-bssBANK0 BANK0 1 4A 4A 13 1
-bssBANK1 BANK1 1 A0 A0 1C 1
-clrtext CODE 0 4DE 4DE 8 2
-bssCOMMON COMMON 1 75 75 4 1
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
 # is described on a single line as follows:
 #    <class name> <range> <delta>
 # Addresses given in the range are in hexadecimal and units of delta.
 %UNUSED
-RAM 5D-6F 1
-RAM BC-EF 1
+RAM 6A-6F 1
+RAM AA-EF 1
 RAM 120-14F 1
-BANK0 5D-6F 1
-BANK1 BC-EF 1
+BANK0 6A-6F 1
+BANK1 AA-EF 1
 BANK2 120-14F 1
 CONST 1-3 2
-CONST 4E6-7FF 2
+CONST 565-7FF 2
 ENTRY 1-3 2
-ENTRY 4E6-7FF 2
+ENTRY 565-7FF 2
 IDLOC 2000-2003 2
-STACK BC-EF 1
+STACK AA-EF 1
 CODE 1-3 2
-CODE 4E6-7FF 2
+CODE 565-7FF 2
 SFR0 0-1F 1
 SFR1 80-9F 1
 SFR2 100-11F 1
@@ -63,9 +66,9 @@ SFR3 180-1EF 1
 COMMON 79-7D 1
 EEDATA 2100-217F 2
 STRCODE 1-3 2
-STRCODE 4E6-7FF 2
+STRCODE 565-7FF 2
 STRING 1-3 2
-STRING 4E6-7FF 2
+STRING 565-7FF 2
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
 # The beginning of the section is indicated by %LINETAB.
@@ -80,229 +83,244 @@ STRING 4E6-7FF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\tarti.X.production.obj
-11 cinit CODE >175:C:\Users\Monster\AppData\Local\Temp\se2g.
-11 cinit CODE >178:C:\Users\Monster\AppData\Local\Temp\se2g.
-11 cinit CODE >225:C:\Users\Monster\AppData\Local\Temp\se2g.
-12 cinit CODE >226:C:\Users\Monster\AppData\Local\Temp\se2g.
-13 cinit CODE >227:C:\Users\Monster\AppData\Local\Temp\se2g.
-14 cinit CODE >228:C:\Users\Monster\AppData\Local\Temp\se2g.
-15 cinit CODE >231:C:\Users\Monster\AppData\Local\Temp\se2g.
-16 cinit CODE >232:C:\Users\Monster\AppData\Local\Temp\se2g.
-17 cinit CODE >233:C:\Users\Monster\AppData\Local\Temp\se2g.
-18 cinit CODE >234:C:\Users\Monster\AppData\Local\Temp\se2g.
-19 cinit CODE >235:C:\Users\Monster\AppData\Local\Temp\se2g.
-1A cinit CODE >238:C:\Users\Monster\AppData\Local\Temp\se2g.
-1B cinit CODE >239:C:\Users\Monster\AppData\Local\Temp\se2g.
-1C cinit CODE >240:C:\Users\Monster\AppData\Local\Temp\se2g.
-1D cinit CODE >241:C:\Users\Monster\AppData\Local\Temp\se2g.
-1E cinit CODE >247:C:\Users\Monster\AppData\Local\Temp\se2g.
-1E cinit CODE >249:C:\Users\Monster\AppData\Local\Temp\se2g.
-1F cinit CODE >250:C:\Users\Monster\AppData\Local\Temp\se2g.
-4 intentry CODE >148:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-41E text11 CODE >148:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-41E text11 CODE >149:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-421 text11 CODE >150:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-42F text11 CODE >151:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-430 text11 CODE >155:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-440 text11 CODE >156:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-448 text11 CODE >159:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-44A text11 CODE >160:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-454 text11 CODE >162:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-45A text11 CODE >165:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-463 text11 CODE >166:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-465 text11 CODE >168:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-4C9 text10 CODE >115:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-4C9 text10 CODE >116:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-4CA text10 CODE >117:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-4CB text10 CODE >118:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-4CC text10 CODE >120:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-4CF text10 CODE >121:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-4D0 text10 CODE >122:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-4D1 text10 CODE >123:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-4D2 text10 CODE >124:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-4D3 text10 CODE >125:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-4D4 text10 CODE >127:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-3AE text9 CODE >179:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-3AE text9 CODE >181:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-3B1 text9 CODE >182:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-3B3 text9 CODE >184:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-3C0 text9 CODE >185:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-3C3 text9 CODE >186:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-3C4 text9 CODE >184:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-3D5 text9 CODE >189:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-3D9 text9 CODE >190:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-3DF text9 CODE >191:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-3EC text9 CODE >192:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-3EF text9 CODE >193:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-3F7 text9 CODE >195:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-3F8 text9 CODE >196:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-406 text9 CODE >191:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-417 text9 CODE >199:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-41A text9 CODE >200:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-41C text9 CODE >201:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-41D text9 CODE >203:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-193 text8 CODE >6:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
-193 text8 CODE >14:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
-196 text8 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
-198 text8 CODE >16:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
-1A3 text8 CODE >17:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
-1A5 text8 CODE >18:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
-1A5 text8 CODE >19:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
-1A7 text8 CODE >20:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
-1B2 text8 CODE >21:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
-1B6 text8 CODE >23:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
-1BE text8 CODE >24:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
-1C4 text8 CODE >25:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
-1C6 text8 CODE >26:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
-1C8 text8 CODE >27:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
-1D1 text8 CODE >28:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
-1D5 text8 CODE >26:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
-1D6 text8 CODE >31:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
-1DF text8 CODE >32:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
-1EF text8 CODE >33:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
-1FD text8 CODE >34:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
-1FE text8 CODE >36:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
-207 text8 CODE >37:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
-20B text8 CODE >39:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
-20E text8 CODE >40:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
-219 text8 CODE >41:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
-335 text7 CODE >5:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
-335 text7 CODE >13:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
-338 text7 CODE >14:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
-33A text7 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
-345 text7 CODE >16:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
-347 text7 CODE >17:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
-347 text7 CODE >18:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
-349 text7 CODE >19:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
-354 text7 CODE >20:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
-35A text7 CODE >21:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
-35C text7 CODE >22:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
-35E text7 CODE >23:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
-367 text7 CODE >24:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
-36B text7 CODE >22:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
-36C text7 CODE >27:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
-37C text7 CODE >28:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
-38A text7 CODE >29:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
-393 text7 CODE >30:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
-397 text7 CODE >32:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
-39A text7 CODE >33:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
-3A5 text7 CODE >34:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
-472 text6 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul32.c
-472 text6 CODE >119:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul32.c
-47C text6 CODE >121:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul32.c
-47E text6 CODE >122:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul32.c
-492 text6 CODE >123:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul32.c
-49B text6 CODE >124:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul32.c
-4A4 text6 CODE >125:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul32.c
-4AA text6 CODE >128:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul32.c
-DE text5 CODE >263:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-DE text5 CODE >264:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-E2 text5 CODE >265:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-FD text5 CODE >266:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-118 text5 CODE >267:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-11A text5 CODE >269:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-11E text5 CODE >270:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-129 text5 CODE >271:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-12A text5 CODE >273:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-12E text5 CODE >275:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-12F text5 CODE >276:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-133 text5 CODE >278:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-139 text5 CODE >279:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-15B text5 CODE >280:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-176 text5 CODE >278:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-177 text5 CODE >283:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-182 text5 CODE >284:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-18C text5 CODE >283:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-222 text4 CODE >222:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-222 text4 CODE >223:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-22C text4 CODE >224:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-239 text4 CODE >225:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-23A text4 CODE >227:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-25A text4 CODE >224:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-26B text4 CODE >229:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-288 text4 CODE >230:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-29E text4 CODE >231:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-2AD text4 CODE >232:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-4B3 text3 CODE >129:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-4B3 text3 CODE >130:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-4B6 text3 CODE >131:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-4B7 text3 CODE >132:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-4B8 text3 CODE >133:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-4B9 text3 CODE >135:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-4BC text3 CODE >136:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-4BD text3 CODE >137:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-4BE text3 CODE >139:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-4C1 text3 CODE >140:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-4C2 text3 CODE >142:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-4C3 text3 CODE >143:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-4C5 text3 CODE >145:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-4C8 text3 CODE >146:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-2AE text2 CODE >211:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-2AE text2 CODE >212:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-2B8 text2 CODE >213:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-2C5 text2 CODE >214:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-2C6 text2 CODE >215:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-2F1 text2 CODE >213:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-302 text2 CODE >217:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-31F text2 CODE >218:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-325 text2 CODE >219:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-334 text2 CODE >220:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-4D5 text1 CODE >170:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-4D5 text1 CODE >172:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-4D8 text1 CODE >173:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-4D9 text1 CODE >174:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-4DA text1 CODE >175:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-4DD text1 CODE >177:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-20 maintext CODE >49:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-20 maintext CODE >50:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-24 maintext CODE >51:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-28 maintext CODE >53:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-29 maintext CODE >54:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-2A maintext CODE >55:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-2B maintext CODE >57:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-2F maintext CODE >58:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-31 maintext CODE >60:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-34 maintext CODE >61:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-35 maintext CODE >63:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-44 maintext CODE >64:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-45 maintext CODE >65:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-46 maintext CODE >66:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-47 maintext CODE >67:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-48 maintext CODE >68:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-49 maintext CODE >71:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-58 maintext CODE >72:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-5C maintext CODE >73:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-64 maintext CODE >71:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-75 maintext CODE >76:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-79 maintext CODE >77:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-7D maintext CODE >78:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-81 maintext CODE >79:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-85 maintext CODE >80:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-89 maintext CODE >81:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-8D maintext CODE >89:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-8E maintext CODE >91:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-9F maintext CODE >92:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-A6 maintext CODE >96:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-AA maintext CODE >97:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-B2 maintext CODE >98:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-B7 maintext CODE >99:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-BB maintext CODE >100:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-BF maintext CODE >91:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-BF maintext CODE >101:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-D0 maintext CODE >103:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-D4 maintext CODE >104:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-D8 maintext CODE >105:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-DC maintext CODE >106:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
-4DE clrtext CODE >212:C:\Users\Monster\AppData\Local\Temp\se2g.
-4DE clrtext CODE >213:C:\Users\Monster\AppData\Local\Temp\se2g.
-4DF clrtext CODE >214:C:\Users\Monster\AppData\Local\Temp\se2g.
-4DF clrtext CODE >215:C:\Users\Monster\AppData\Local\Temp\se2g.
-4E0 clrtext CODE >216:C:\Users\Monster\AppData\Local\Temp\se2g.
-4E1 clrtext CODE >217:C:\Users\Monster\AppData\Local\Temp\se2g.
-4E2 clrtext CODE >218:C:\Users\Monster\AppData\Local\Temp\se2g.
-4E3 clrtext CODE >219:C:\Users\Monster\AppData\Local\Temp\se2g.
-4E4 clrtext CODE >220:C:\Users\Monster\AppData\Local\Temp\se2g.
-4E5 clrtext CODE >221:C:\Users\Monster\AppData\Local\Temp\se2g.
+11 cinit CODE >179:C:\Users\Monster\AppData\Local\Temp\sf84.
+11 cinit CODE >182:C:\Users\Monster\AppData\Local\Temp\sf84.
+11 cinit CODE >232:C:\Users\Monster\AppData\Local\Temp\sf84.
+12 cinit CODE >233:C:\Users\Monster\AppData\Local\Temp\sf84.
+13 cinit CODE >234:C:\Users\Monster\AppData\Local\Temp\sf84.
+14 cinit CODE >235:C:\Users\Monster\AppData\Local\Temp\sf84.
+15 cinit CODE >238:C:\Users\Monster\AppData\Local\Temp\sf84.
+16 cinit CODE >239:C:\Users\Monster\AppData\Local\Temp\sf84.
+17 cinit CODE >240:C:\Users\Monster\AppData\Local\Temp\sf84.
+18 cinit CODE >241:C:\Users\Monster\AppData\Local\Temp\sf84.
+19 cinit CODE >242:C:\Users\Monster\AppData\Local\Temp\sf84.
+1A cinit CODE >245:C:\Users\Monster\AppData\Local\Temp\sf84.
+1B cinit CODE >246:C:\Users\Monster\AppData\Local\Temp\sf84.
+1C cinit CODE >247:C:\Users\Monster\AppData\Local\Temp\sf84.
+1D cinit CODE >248:C:\Users\Monster\AppData\Local\Temp\sf84.
+1E cinit CODE >254:C:\Users\Monster\AppData\Local\Temp\sf84.
+1E cinit CODE >256:C:\Users\Monster\AppData\Local\Temp\sf84.
+1F cinit CODE >257:C:\Users\Monster\AppData\Local\Temp\sf84.
+4 intentry CODE >126:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+454 text14 CODE >126:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+454 text14 CODE >127:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+457 text14 CODE >128:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+465 text14 CODE >129:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+466 text14 CODE >133:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+476 text14 CODE >134:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+47E text14 CODE >137:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+480 text14 CODE >138:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+488 text14 CODE >140:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+48E text14 CODE >143:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+495 text14 CODE >144:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+497 text14 CODE >146:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+548 text13 CODE >93:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+548 text13 CODE >94:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+549 text13 CODE >95:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+54A text13 CODE >96:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+54B text13 CODE >98:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+54E text13 CODE >99:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+54F text13 CODE >100:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+550 text13 CODE >101:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+551 text13 CODE >102:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+552 text13 CODE >103:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+553 text13 CODE >105:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+50D text12 CODE >276:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+510 text12 CODE >277:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+514 text12 CODE >278:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+518 text12 CODE >279:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+51C text12 CODE >280:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+51D text12 CODE >281:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+523 text12 CODE >282:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+523 text12 CODE >283:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+529 text12 CODE >277:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+52A text12 CODE >285:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+DF text11 CODE >212:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+DF text11 CODE >213:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+E9 text11 CODE >214:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+11C text11 CODE >215:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+11E text11 CODE >218:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+153 text11 CODE >219:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+159 text11 CODE >220:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+166 text11 CODE >224:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+16C text11 CODE >226:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+173 text11 CODE >227:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+391 text10 CODE >157:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+391 text10 CODE >159:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+394 text10 CODE >160:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+396 text10 CODE >162:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+3A3 text10 CODE >163:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+3A6 text10 CODE >164:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+3A7 text10 CODE >162:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+3B8 text10 CODE >167:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+3BC text10 CODE >168:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+3C2 text10 CODE >169:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+3CF text10 CODE >170:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+3D2 text10 CODE >171:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+3DA text10 CODE >173:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+3DB text10 CODE >174:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+3E9 text10 CODE >169:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+3FA text10 CODE >177:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+3FD text10 CODE >178:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+3FF text10 CODE >179:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+400 text10 CODE >181:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+176 text9 CODE >6:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
+176 text9 CODE >14:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
+179 text9 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
+17B text9 CODE >16:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
+186 text9 CODE >17:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
+188 text9 CODE >18:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
+188 text9 CODE >19:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
+18A text9 CODE >20:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
+195 text9 CODE >21:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
+199 text9 CODE >23:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
+1A1 text9 CODE >24:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
+1A7 text9 CODE >25:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
+1A9 text9 CODE >26:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
+1AB text9 CODE >27:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
+1B4 text9 CODE >28:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
+1B8 text9 CODE >26:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
+1B9 text9 CODE >31:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
+1C2 text9 CODE >32:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
+1D2 text9 CODE >33:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
+1E0 text9 CODE >34:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
+1E1 text9 CODE >36:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
+1EA text9 CODE >37:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
+1EE text9 CODE >39:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
+1F1 text9 CODE >40:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
+1FC text9 CODE >41:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
+318 text8 CODE >5:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
+318 text8 CODE >13:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
+31B text8 CODE >14:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
+31D text8 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
+328 text8 CODE >16:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
+32A text8 CODE >17:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
+32A text8 CODE >18:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
+32C text8 CODE >19:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
+337 text8 CODE >20:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
+33D text8 CODE >21:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
+33F text8 CODE >22:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
+341 text8 CODE >23:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
+34A text8 CODE >24:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
+34E text8 CODE >22:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
+34F text8 CODE >27:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
+35F text8 CODE >28:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
+36D text8 CODE >29:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
+376 text8 CODE >30:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
+37A text8 CODE >32:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
+37D text8 CODE >33:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
+388 text8 CODE >34:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\almod.c
+4A2 text7 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul32.c
+4A2 text7 CODE >119:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul32.c
+4AC text7 CODE >121:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul32.c
+4AE text7 CODE >122:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul32.c
+4C2 text7 CODE >123:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul32.c
+4CB text7 CODE >124:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul32.c
+4D4 text7 CODE >125:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul32.c
+4DA text7 CODE >128:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul32.c
+20 text6 CODE >232:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+20 text6 CODE >233:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+24 text6 CODE >234:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+3F text6 CODE >235:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+5A text6 CODE >236:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+5C text6 CODE >238:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+62 text6 CODE >239:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+6F text6 CODE >240:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+70 text6 CODE >242:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+76 text6 CODE >244:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+79 text6 CODE >245:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+7F text6 CODE >247:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+85 text6 CODE >248:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+A7 text6 CODE >249:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+C2 text6 CODE >247:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+C3 text6 CODE >252:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+CE text6 CODE >253:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+D8 text6 CODE >252:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+205 text5 CODE >200:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+205 text5 CODE >201:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+20F text5 CODE >202:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+21C text5 CODE >203:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+21D text5 CODE >205:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+23D text5 CODE >202:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+24E text5 CODE >207:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+26B text5 CODE >208:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+281 text5 CODE >209:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+290 text5 CODE >210:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+401 text4 CODE >256:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+401 text4 CODE >257:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+412 text4 CODE >258:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+419 text4 CODE >262:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+41D text4 CODE >263:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+425 text4 CODE >264:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+42A text4 CODE >265:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+42E text4 CODE >266:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+432 text4 CODE >257:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+432 text4 CODE >267:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+443 text4 CODE >269:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+447 text4 CODE >270:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+44B text4 CODE >271:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+44F text4 CODE >272:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+453 text4 CODE >273:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+532 text3 CODE >107:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+532 text3 CODE >108:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+535 text3 CODE >109:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+536 text3 CODE >110:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+537 text3 CODE >111:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+538 text3 CODE >113:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+53B text3 CODE >114:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+53C text3 CODE >115:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+53D text3 CODE >117:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+540 text3 CODE >118:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+541 text3 CODE >120:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+542 text3 CODE >121:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+544 text3 CODE >123:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+547 text3 CODE >124:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+291 text2 CODE >189:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+291 text2 CODE >190:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+29B text2 CODE >191:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+2A8 text2 CODE >192:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+2A9 text2 CODE >193:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+2D4 text2 CODE >191:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+2E5 text2 CODE >195:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+302 text2 CODE >196:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+308 text2 CODE >197:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+317 text2 CODE >198:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+554 text1 CODE >148:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+554 text1 CODE >150:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+557 text1 CODE >151:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+558 text1 CODE >152:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+559 text1 CODE >153:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+55C text1 CODE >155:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+4E3 maintext CODE >53:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+4E3 maintext CODE >54:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+4E7 maintext CODE >55:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+4EB maintext CODE >57:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+4EC maintext CODE >58:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+4ED maintext CODE >59:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+4EE maintext CODE >61:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+4F2 maintext CODE >62:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+4F4 maintext CODE >64:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+4F5 maintext CODE >65:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+4F6 maintext CODE >67:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+4F7 maintext CODE >68:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+4F8 maintext CODE >74:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+4F9 maintext CODE >75:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+4FA maintext CODE >76:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+4FB maintext CODE >77:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+4FF maintext CODE >72:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+500 maintext CODE >74:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+506 maintext CODE >79:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+50B maintext CODE >80:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+55D clrtext CODE >219:C:\Users\Monster\AppData\Local\Temp\sf84.
+55D clrtext CODE >220:C:\Users\Monster\AppData\Local\Temp\sf84.
+55E clrtext CODE >221:C:\Users\Monster\AppData\Local\Temp\sf84.
+55E clrtext CODE >222:C:\Users\Monster\AppData\Local\Temp\sf84.
+55F clrtext CODE >223:C:\Users\Monster\AppData\Local\Temp\sf84.
+560 clrtext CODE >224:C:\Users\Monster\AppData\Local\Temp\sf84.
+561 clrtext CODE >225:C:\Users\Monster\AppData\Local\Temp\sf84.
+562 clrtext CODE >226:C:\Users\Monster\AppData\Local\Temp\sf84.
+563 clrtext CODE >227:C:\Users\Monster\AppData\Local\Temp\sf84.
+564 clrtext CODE >228:C:\Users\Monster\AppData\Local\Temp\sf84.
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -317,61 +335,70 @@ DC maintext CODE >106:C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
 %SYMTAB
 ___latbits 0 0 ABS 0 - dist/default/production\tarti.X.production.obj
 __Hspace_0 2008 0 ABS 0 - -
-__Hspace_1 BC 0 ABS 0 - -
+__Hspace_1 AA 0 ABS 0 - -
 __Hspace_2 0 0 ABS 0 - -
 __Hspace_3 0 0 ABS 0 - -
+return_n_before@position 47 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
+send_data@cnt 47 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
+_return_n_before A1A 0 CODE 0 text12 dist/default/production\tarti.X.production.obj
 __Hstrings 0 0 ABS 0 strings -
-___sp 0 0 STACK 2 stack C:\Users\Monster\AppData\Local\Temp\se2g.obj
-_main 40 0 CODE 0 maintext dist/default/production\tarti.X.production.obj
+___sp 0 0 STACK 2 stack C:\Users\Monster\AppData\Local\Temp\sf84.obj
+_main 9C6 0 CODE 0 maintext dist/default/production\tarti.X.production.obj
 btemp 7E 0 ABS 0 - dist/default/production\tarti.X.production.obj
-start 20 0 CODE 0 init C:\Users\Monster\AppData\Local\Temp\se2g.obj
+start 20 0 CODE 0 init C:\Users\Monster\AppData\Local\Temp\sf84.obj
 __size_of___aldiv 0 0 ABS 0 - dist/default/production\tarti.X.production.obj
 __size_of___almod 0 0 ABS 0 - dist/default/production\tarti.X.production.obj
 __CFG_BOREN$OFF 0 0 ABS 0 - dist/default/production\tarti.X.production.obj
 __size_of_main 0 0 ABS 0 - dist/default/production\tarti.X.production.obj
 __HbssCOMMON 0 0 ABS 0 bssCOMMON -
-set_offset@i 3D 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
-?___lmul 20 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
-_dec_array 4A 0 BANK0 1 bssBANK0 dist/default/production\tarti.X.production.obj
+set_offset@i 64 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
+?___lmul 47 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
+_dec_array A0 0 BANK1 1 bssBANK1 dist/default/production\tarti.X.production.obj
 _OPTION_REGbits 81 0 ABS 0 - dist/default/production\tarti.X.production.obj
 __size_of_read_tarti 0 0 ABS 0 - dist/default/production\tarti.X.production.obj
 __Hpowerup 0 0 CODE 0 powerup -
-___almod@sign 2A 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
-intlevel0 0 0 ENTRY 0 functab C:\Users\Monster\AppData\Local\Temp\se2g.obj
-intlevel1 0 0 ENTRY 0 functab C:\Users\Monster\AppData\Local\Temp\se2g.obj
-intlevel2 0 0 ENTRY 0 functab C:\Users\Monster\AppData\Local\Temp\se2g.obj
-intlevel3 0 0 ENTRY 0 functab C:\Users\Monster\AppData\Local\Temp\se2g.obj
-intlevel4 0 0 ENTRY 0 functab C:\Users\Monster\AppData\Local\Temp\se2g.obj
-intlevel5 0 0 ENTRY 0 functab C:\Users\Monster\AppData\Local\Temp\se2g.obj
+___almod@sign 51 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
+intlevel0 0 0 ENTRY 0 functab C:\Users\Monster\AppData\Local\Temp\sf84.obj
+intlevel1 0 0 ENTRY 0 functab C:\Users\Monster\AppData\Local\Temp\sf84.obj
+intlevel2 0 0 ENTRY 0 functab C:\Users\Monster\AppData\Local\Temp\sf84.obj
+intlevel3 0 0 ENTRY 0 functab C:\Users\Monster\AppData\Local\Temp\sf84.obj
+intlevel4 0 0 ENTRY 0 functab C:\Users\Monster\AppData\Local\Temp\sf84.obj
+intlevel5 0 0 ENTRY 0 functab C:\Users\Monster\AppData\Local\Temp\sf84.obj
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
-___aldiv@divisor 20 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
+___aldiv@divisor 47 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
 wtemp0 7E 0 ABS 0 - dist/default/production\tarti.X.production.obj
 __Hfunctab 0 0 ENTRY 0 functab -
-___aldiv@sign 2A 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
+___aldiv@sign 51 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
+__size_of_check_command 0 0 ABS 0 - dist/default/production\tarti.X.production.obj
 __Hclrtext 0 0 ABS 0 clrtext -
-_measure_force 444 0 CODE 0 text4 dist/default/production\tarti.X.production.obj
-__end_of___lmul 966 0 CODE 0 text6 dist/default/production\tarti.X.production.obj
-main@cnt 46 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
+_measure_force 40A 0 CODE 0 text5 dist/default/production\tarti.X.production.obj
+__end_of_send_data 8A8 0 CODE 0 text4 dist/default/production\tarti.X.production.obj
+__size_of_send_data 0 0 ABS 0 - dist/default/production\tarti.X.production.obj
+__end_of___lmul 9C6 0 CODE 0 text7 dist/default/production\tarti.X.production.obj
+__size_of_return_n_before 0 0 ABS 0 - dist/default/production\tarti.X.production.obj
 __Lmaintext 0 0 ABS 0 maintext -
-__end_of___aldiv 444 0 CODE 0 text8 dist/default/production\tarti.X.production.obj
-__end_of___almod 75C 0 CODE 0 text7 dist/default/production\tarti.X.production.obj
-read_tarti@i 26 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
+__end_of_check_command 2EC 0 CODE 0 text11 dist/default/production\tarti.X.production.obj
+__end_of___aldiv 40A 0 CODE 0 text9 dist/default/production\tarti.X.production.obj
+__end_of___almod 722 0 CODE 0 text8 dist/default/production\tarti.X.production.obj
+_send_data 802 0 CODE 0 text4 dist/default/production\tarti.X.production.obj
+read_tarti@i 4D 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
 __size_of_set_offset 0 0 ABS 0 - dist/default/production\tarti.X.production.obj
-main@cnt_335 48 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
 __CFG_MCLRE$OFF 0 0 ABS 0 - dist/default/production\tarti.X.production.obj
 start_initialization 22 0 CODE 0 cinit dist/default/production\tarti.X.production.obj
 __size_of_T0_init 0 0 ABS 0 - dist/default/production\tarti.X.production.obj
 _TRISAbits 85 0 ABS 0 - dist/default/production\tarti.X.production.obj
 _TRISBbits 86 0 ABS 0 - dist/default/production\tarti.X.production.obj
-___aldiv@quotient 2B 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
-___almod@dividend 24 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
-clear_ram0 9BC 0 CODE 0 clrtext dist/default/production\tarti.X.production.obj
-__pcstackBANK0 20 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
-__end_of_serial_init 992 0 CODE 0 text3 dist/default/production\tarti.X.production.obj
+___aldiv@quotient 52 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
+return_n_before@n 49 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
+___almod@dividend 4B 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
+clear_ram0 ABA 0 CODE 0 clrtext dist/default/production\tarti.X.production.obj
+__pcstackBANK0 47 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
+__end_of_serial_init A90 0 CODE 0 text3 dist/default/production\tarti.X.production.obj
 __size_of_measure_force 0 0 ABS 0 - dist/default/production\tarti.X.production.obj
-___int_sp 0 0 STACK 2 stack C:\Users\Monster\AppData\Local\Temp\se2g.obj
-_measure_val 5A 0 BANK0 1 bssBANK0 dist/default/production\tarti.X.production.obj
+_measure_flag 29 0 BANK0 1 bssBANK0 dist/default/production\tarti.X.production.obj
+___int_sp 0 0 STACK 2 stack C:\Users\Monster\AppData\Local\Temp\sf84.obj
+_measure_val 26 0 BANK0 1 bssBANK0 dist/default/production\tarti.X.production.obj
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -389,7 +416,7 @@ __Lbank3 0 0 BANK3 1 bank3 -
 __Lcinit 22 0 CODE 0 cinit -
 __Lidloc 0 0 IDLOC 0 idloc -
 __Lstack 0 0 STACK 2 stack -
-_tarti_init 9AA 0 CODE 0 text1 dist/default/production\tarti.X.production.obj
+_tarti_init AA8 0 CODE 0 text1 dist/default/production\tarti.X.production.obj
 _PORTAbits 5 0 ABS 0 - dist/default/production\tarti.X.production.obj
 _PORTBbits 6 0 ABS 0 - dist/default/production\tarti.X.production.obj
 _INTCONbits B 0 ABS 0 - dist/default/production\tarti.X.production.obj
@@ -409,47 +436,50 @@ __Lsfr1 0 0 ABS 0 sfr1 -
 __Lsfr2 0 0 ABS 0 sfr2 -
 __Lsfr3 0 0 ABS 0 sfr3 -
 __Ltext 0 0 ABS 0 text -
-___lmul 8E4 0 CODE 0 text6 dist/default/production\tarti.X.production.obj
+___lmul 944 0 CODE 0 text7 dist/default/production\tarti.X.production.obj
 __LcstackBANK0 0 0 ABS 0 cstackBANK0 -
-__end_of_measure_force 55C 0 CODE 0 text4 dist/default/production\tarti.X.production.obj
+__end_of_measure_force 522 0 CODE 0 text5 dist/default/production\tarti.X.production.obj
 __HcstackCOMMON 0 0 ABS 0 cstackCOMMON -
-set_offset@sum 3F 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
+set_offset@sum 66 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
 __S0 2008 0 ABS 0 - -
-__S1 BC 0 ABS 0 - -
+__S1 AA 0 ABS 0 - -
 __S2 0 0 ABS 0 - -
 __S3 0 0 ABS 0 - -
-_kes 83C 0 CODE 0 text11 dist/default/production\tarti.X.production.obj
-___almod@counter 29 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
+_kes 8A8 0 CODE 0 text14 dist/default/production\tarti.X.production.obj
+___almod@counter 50 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
 saved_w 7E 0 ABS 0 - dist/default/production\tarti.X.production.obj
-__end_of_T0_init 9AA 0 CODE 0 text10 dist/default/production\tarti.X.production.obj
-__end_of_kes 8E4 0 CODE 0 text11 dist/default/production\tarti.X.production.obj
-measure_force@sum 3C 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
+__end_of_T0_init AA8 0 CODE 0 text13 dist/default/production\tarti.X.production.obj
+__end_of_kes 944 0 CODE 0 text14 dist/default/production\tarti.X.production.obj
+measure_force@sum 63 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
 __Lintentry 8 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec C:\Users\Monster\AppData\Local\Temp\se2g.obj
+reset_vec 0 0 CODE 0 reset_vec C:\Users\Monster\AppData\Local\Temp\sf84.obj
 __size_of___lmul 0 0 ABS 0 - dist/default/production\tarti.X.production.obj
 __LbssBANK0 0 0 ABS 0 bssBANK0 -
 __LbssBANK1 0 0 ABS 0 bssBANK1 -
-__end_of_tarti_init 9BC 0 CODE 0 text1 dist/default/production\tarti.X.production.obj
+__end_of_tarti_init ABA 0 CODE 0 text1 dist/default/production\tarti.X.production.obj
 _RCSTAbits 18 0 ABS 0 - dist/default/production\tarti.X.production.obj
 _PIE1bits 8C 0 ABS 0 - dist/default/production\tarti.X.production.obj
-__ptext10 992 0 CODE 0 text10 dist/default/production\tarti.X.production.obj
-__ptext11 83C 0 CODE 0 text11 dist/default/production\tarti.X.production.obj
-___aldiv 326 0 CODE 0 text8 dist/default/production\tarti.X.production.obj
-___almod 66A 0 CODE 0 text7 dist/default/production\tarti.X.production.obj
-_offset 57 0 BANK0 1 bssBANK0 dist/default/production\tarti.X.production.obj
-__pmaintext 40 0 CODE 0 maintext dist/default/production\tarti.X.production.obj
-___lmul@multiplier 20 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
+__ptext10 722 0 CODE 0 text10 dist/default/production\tarti.X.production.obj
+__ptext11 1BE 0 CODE 0 text11 dist/default/production\tarti.X.production.obj
+__ptext12 A1A 0 CODE 0 text12 dist/default/production\tarti.X.production.obj
+__ptext13 A90 0 CODE 0 text13 dist/default/production\tarti.X.production.obj
+__ptext14 8A8 0 CODE 0 text14 dist/default/production\tarti.X.production.obj
+___aldiv 2EC 0 CODE 0 text9 dist/default/production\tarti.X.production.obj
+___almod 630 0 CODE 0 text8 dist/default/production\tarti.X.production.obj
+_offset 23 0 BANK0 1 bssBANK0 dist/default/production\tarti.X.production.obj
+__pmaintext 9C6 0 CODE 0 maintext dist/default/production\tarti.X.production.obj
+___lmul@multiplier 47 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
 __Lcommon 0 0 ABS 0 common -
 __Lconfig 400E 0 CONFIG 0 config -
 __CFG_CP$OFF 0 0 ABS 0 - dist/default/production\tarti.X.production.obj
 __size_of_serial_init 0 0 ABS 0 - dist/default/production\tarti.X.production.obj
 __CFG_WDTE$OFF 0 0 ABS 0 - dist/default/production\tarti.X.production.obj
-_read_tarti 75C 0 CODE 0 text9 dist/default/production\tarti.X.production.obj
-measure_force@i 3A 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
-__end_of_write_dec 326 0 CODE 0 text5 dist/default/production\tarti.X.production.obj
+_read_tarti 722 0 CODE 0 text10 dist/default/production\tarti.X.production.obj
+measure_force@i 61 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
+__end_of_write_dec 1BE 0 CODE 0 text6 dist/default/production\tarti.X.production.obj
 __size_of_write_dec 0 0 ABS 0 - dist/default/production\tarti.X.production.obj
-stackhi 0 0 ABS 0 - C:\Users\Monster\AppData\Local\Temp\se2g.obj
-stacklo 0 0 ABS 0 - C:\Users\Monster\AppData\Local\Temp\se2g.obj
+stackhi 0 0 ABS 0 - C:\Users\Monster\AppData\Local\Temp\sf84.obj
+stacklo 0 0 ABS 0 - C:\Users\Monster\AppData\Local\Temp\sf84.obj
 __CFG_LVP$OFF 0 0 ABS 0 - dist/default/production\tarti.X.production.obj
 __Lspace_0 0 0 ABS 0 - -
 __Lspace_1 0 0 ABS 0 - -
@@ -457,51 +487,52 @@ __Lspace_2 0 0 ABS 0 - -
 __Lspace_3 0 0 ABS 0 - -
 __pbssCOMMON 75 0 COMMON 1 bssCOMMON dist/default/production\tarti.X.production.obj
 __HcstackBANK0 0 0 ABS 0 cstackBANK0 -
-read_tarti@kl 24 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
+read_tarti@kl 4B 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
 _PIR1bits C 0 ABS 0 - dist/default/production\tarti.X.production.obj
 __Lend_init 20 0 CODE 0 end_init -
 __LcstackCOMMON 0 0 ABS 0 cstackCOMMON -
-_write_dec 1BC 0 CODE 0 text5 dist/default/production\tarti.X.production.obj
+_write_dec 40 0 CODE 0 text6 dist/default/production\tarti.X.production.obj
 end_of_initialization 3C 0 CODE 0 cinit dist/default/production\tarti.X.production.obj
 __Hintentry 20 0 CODE 0 intentry -
-___almod@divisor 20 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
+___almod@divisor 47 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
 __Lstrings 0 0 ABS 0 strings -
-?___aldiv 20 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
-?___almod 20 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
+?___aldiv 47 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
+?___almod 47 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
 __Hreset_vec 2 0 CODE 0 reset_vec -
 __HbssBANK0 0 0 ABS 0 bssBANK0 -
 __HbssBANK1 0 0 ABS 0 bssBANK1 -
-__ptext1 9AA 0 CODE 0 text1 dist/default/production\tarti.X.production.obj
-__ptext2 55C 0 CODE 0 text2 dist/default/production\tarti.X.production.obj
-__ptext3 966 0 CODE 0 text3 dist/default/production\tarti.X.production.obj
-__ptext4 444 0 CODE 0 text4 dist/default/production\tarti.X.production.obj
-__ptext5 1BC 0 CODE 0 text5 dist/default/production\tarti.X.production.obj
-__ptext6 8E4 0 CODE 0 text6 dist/default/production\tarti.X.production.obj
-__ptext7 66A 0 CODE 0 text7 dist/default/production\tarti.X.production.obj
-__ptext8 326 0 CODE 0 text8 dist/default/production\tarti.X.production.obj
-__ptext9 75C 0 CODE 0 text9 dist/default/production\tarti.X.production.obj
-__end_of_read_tarti 83C 0 CODE 0 text9 dist/default/production\tarti.X.production.obj
-___aldiv@dividend 24 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
+return_n_before@array 4C 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
+__ptext1 AA8 0 CODE 0 text1 dist/default/production\tarti.X.production.obj
+__ptext2 522 0 CODE 0 text2 dist/default/production\tarti.X.production.obj
+__ptext3 A64 0 CODE 0 text3 dist/default/production\tarti.X.production.obj
+__ptext4 802 0 CODE 0 text4 dist/default/production\tarti.X.production.obj
+__ptext5 40A 0 CODE 0 text5 dist/default/production\tarti.X.production.obj
+__ptext6 40 0 CODE 0 text6 dist/default/production\tarti.X.production.obj
+__ptext7 944 0 CODE 0 text7 dist/default/production\tarti.X.production.obj
+__ptext8 630 0 CODE 0 text8 dist/default/production\tarti.X.production.obj
+__ptext9 2EC 0 CODE 0 text9 dist/default/production\tarti.X.production.obj
+__end_of_read_tarti 802 0 CODE 0 text10 dist/default/production\tarti.X.production.obj
+___aldiv@dividend 4B 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
 __Lpowerup 0 0 CODE 0 powerup -
 __Leeprom_data 0 0 EEDATA 3 eeprom_data -
-write_dec@i 34 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
+write_dec@i 5B 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
 __Lreset_vec 0 0 CODE 0 reset_vec -
 _timetick 75 0 COMMON 1 bssCOMMON dist/default/production\tarti.X.production.obj
 __CFG_FOSC$HS 0 0 ABS 0 - dist/default/production\tarti.X.production.obj
-write_dec@value 2F 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
+write_dec@value 56 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
 __end_of__initialization 3C 0 CODE 0 cinit dist/default/production\tarti.X.production.obj
-_set_offset 55C 0 CODE 0 text2 dist/default/production\tarti.X.production.obj
+_set_offset 522 0 CODE 0 text2 dist/default/production\tarti.X.production.obj
 __Lfunctab 0 0 ENTRY 0 functab -
 __Lclrtext 0 0 ABS 0 clrtext -
-___lmul@product 29 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
-___lmul@multiplicand 24 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
-_T0_init 992 0 CODE 0 text10 dist/default/production\tarti.X.production.obj
+___lmul@product 50 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
+___lmul@multiplicand 4B 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
+_T0_init A90 0 CODE 0 text13 dist/default/production\tarti.X.production.obj
 __pcstackCOMMON 70 0 COMMON 1 cstackCOMMON dist/default/production\tarti.X.production.obj
 _TXSTAbits 98 0 ABS 0 - dist/default/production\tarti.X.production.obj
 __size_of_tarti_init 0 0 ABS 0 - dist/default/production\tarti.X.production.obj
 __Hend_init 22 0 CODE 0 end_init -
-___aldiv@counter 29 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
-__end_of_main 1BC 0 CODE 0 maintext dist/default/production\tarti.X.production.obj
+___aldiv@counter 50 0 BANK0 1 cstackBANK0 dist/default/production\tarti.X.production.obj
+__end_of_main A1A 0 CODE 0 maintext dist/default/production\tarti.X.production.obj
 _CMCON 1F 0 ABS 0 - dist/default/production\tarti.X.production.obj
 _RCREG 1A 0 ABS 0 - dist/default/production\tarti.X.production.obj
 _SPBRG 99 0 ABS 0 - dist/default/production\tarti.X.production.obj
@@ -510,17 +541,19 @@ _TXREG 19 0 ABS 0 - dist/default/production\tarti.X.production.obj
 __Hram 0 0 ABS 0 ram -
 __Lram 0 0 ABS 0 ram -
 interrupt_function 8 0 CODE 0 intentry dist/default/production\tarti.X.production.obj
-_force 54 0 BANK0 1 bssBANK0 dist/default/production\tarti.X.production.obj
+_force 20 0 BANK0 1 bssBANK0 dist/default/production\tarti.X.production.obj
 __CFG_CPD$OFF 0 0 ABS 0 - dist/default/production\tarti.X.production.obj
-_tarti A0 0 BANK1 1 bssBANK1 dist/default/production\tarti.X.production.obj
+_tarti 2B 0 BANK0 1 bssBANK0 dist/default/production\tarti.X.production.obj
+__end_of_return_n_before A64 0 CODE 0 text12 dist/default/production\tarti.X.production.obj
 __pintentry 8 0 CODE 0 intentry dist/default/production\tarti.X.production.obj
 __size_of_kes 0 0 ABS 0 - dist/default/production\tarti.X.production.obj
 __initialization 22 0 CODE 0 cinit dist/default/production\tarti.X.production.obj
 __CFG_PWRTE$OFF 0 0 ABS 0 - dist/default/production\tarti.X.production.obj
-__pbssBANK0 4A 0 BANK0 1 bssBANK0 dist/default/production\tarti.X.production.obj
+__pbssBANK0 20 0 BANK0 1 bssBANK0 dist/default/production\tarti.X.production.obj
 __pbssBANK1 A0 0 BANK1 1 bssBANK1 dist/default/production\tarti.X.production.obj
-_serial_init 966 0 CODE 0 text3 dist/default/production\tarti.X.production.obj
-__end_of_set_offset 66A 0 CODE 0 text2 dist/default/production\tarti.X.production.obj
+_check_command 1BE 0 CODE 0 text11 dist/default/production\tarti.X.production.obj
+_serial_init A64 0 CODE 0 text3 dist/default/production\tarti.X.production.obj
+__end_of_set_offset 630 0 CODE 0 text2 dist/default/production\tarti.X.production.obj
 # %SPLITSTAB Section
 # This section enumerates all the psect splits performed by the assembler.
 # The beginning of the section is indicated by %SPLITSTAB.
@@ -547,8 +580,8 @@ __end_of_set_offset 66A 0 CODE 0 text2 dist/default/production\tarti.X.productio
 # All other numeric quantities are in decimal.
 %SEGMENTS
 cstackCOMMON 1 70 70 9 1
-cstackBANK0 1 20 20 3D 1
-intentry 0 4 8 4E2 2
+intentry 0 4 8 561 2
 reset_vec 0 0 0 1 2
-bssBANK1 1 A0 A0 1C 1
+bssBANK0 1 20 20 4A 1
+bssBANK1 1 A0 A0 A 1
 config 0 2007 400E 1 2
