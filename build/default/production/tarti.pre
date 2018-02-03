@@ -1017,7 +1017,7 @@ int24_t measure_val = 0;
 int24_t offset=0;
 int24_t force=0;
 
-uint8_t dec_array[12];
+uint8_t dec_array[10];
 
 struct Serial_Ops{
 uint8_t command[24];
@@ -1065,9 +1065,17 @@ while (1) {
 # 89
 measure_force();
 
-for(int cnt=0; cnt<12; cnt++){
+for(int cnt=5; cnt<10; cnt++){
+if(cnt==8){
+break;
+}
+
 while(!TXSTAbits.TRMT);
 TXREG=(dec_array[cnt]);
+if(cnt==5){
+while(!TXSTAbits.TRMT);
+TXREG='.';
+}
 }
 while(!TXSTAbits.TRMT);
 TXREG='\r';
@@ -1202,7 +1210,7 @@ write_dec(force);
 
 void check_command(){
 
-# 253
+# 261
 }
 
 void write_dec(int32_t value){
@@ -1217,8 +1225,8 @@ value = -value;
 else
 dec_array[0] = '+';
 
-dec_array[12 - 1] = (0);
-i=12 - 2;
+dec_array[10 - 1] = (0);
+i=10 - 2;
 
 while(value){
 dec_array[i--]= value%10 + '0';
@@ -1228,3 +1236,4 @@ value /= 10;
 for(;i>0;i--)
 dec_array[i] = '0';
 }
+

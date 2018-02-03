@@ -19,21 +19,21 @@
 [v _memcpyee memcpyee `(v  1 e 1 0 ]
 "49 C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
 [v _main main `(v  1 e 1 0 ]
-"107
+"115
 [v _T0_init T0_init `(v  1 e 1 0 ]
-"121
+"129
 [v _serial_init serial_init `(v  1 e 1 0 ]
-"140
+"148
 [v _kes kes `II(v  1 e 1 0 ]
-"162
+"170
 [v _tarti_init tarti_init `(v  1 e 1 0 ]
-"171
+"179
 [v _read_tarti read_tarti `(v  1 e 1 0 ]
-"203
+"211
 [v _set_offset set_offset `(v  1 e 1 0 ]
-"214
+"222
 [v _measure_force measure_force `(v  1 e 1 0 ]
-"255
+"263
 [v _write_dec write_dec `(v  1 e 1 0 ]
 [s S37 . 1 `uc 1 RA0 1 0 :1:0 
 `uc 1 RA1 1 0 :1:1 
@@ -184,7 +184,7 @@
 "37
 [v _force force `m  1 e 3 0 ]
 "39
-[v _dec_array dec_array `[12]uc  1 e 12 0 ]
+[v _dec_array dec_array `[10]uc  1 e 10 0 ]
 [s S19 Serial_Ops 28 `[24]uc 1 command 24 0 `ui 1 wr_index 2 24 `ui 1 rd_index 2 26 ]
 "47
 [v _tarti tarti `S19  1 e 28 0 ]
@@ -195,44 +195,44 @@
 [v main@cnt_335 cnt `i  1 a 2 40 ]
 "71
 [v main@cnt cnt `i  1 a 2 38 ]
-"105
+"113
 } 0
-"162
+"170
 [v _tarti_init tarti_init `(v  1 e 1 0 ]
 {
-"169
+"177
 } 0
-"203
+"211
 [v _set_offset set_offset `(v  1 e 1 0 ]
 {
-"205
+"213
 [v set_offset@i i `i  1 a 2 29 ]
-"204
-[v set_offset@sum sum `l  1 a 4 31 ]
 "212
+[v set_offset@sum sum `l  1 a 4 31 ]
+"220
 } 0
-"121
+"129
 [v _serial_init serial_init `(v  1 e 1 0 ]
 {
-"138
+"146
 } 0
-"214
+"222
 [v _measure_force measure_force `(v  1 e 1 0 ]
 {
-"216
-[v measure_force@i i `i  1 a 2 26 ]
-"215
-[v measure_force@sum sum `l  1 a 4 28 ]
 "224
+[v measure_force@i i `i  1 a 2 26 ]
+"223
+[v measure_force@sum sum `l  1 a 4 28 ]
+"232
 } 0
-"255
+"263
 [v _write_dec write_dec `(v  1 e 1 0 ]
 {
-"256
+"264
 [v write_dec@i i `i  1 a 2 20 ]
-"255
+"263
 [v write_dec@value value `l  1 p 4 15 ]
-"277
+"285
 } 0
 "15 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul32.c
 [v ___lmul __lmul `(ul  1 e 4 0 ]
@@ -268,22 +268,22 @@
 [v ___aldiv@dividend dividend `l  1 p 4 4 ]
 "42
 } 0
-"171 C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
+"179 C:\Users\Monster\MPLABXProjects\tarti.X\tarti.c
 [v _read_tarti read_tarti `(v  1 e 1 0 ]
 {
-"183
+"191
 [v read_tarti@i i `i  1 a 2 6 ]
-"176
+"184
 [v read_tarti@kl kl `i  1 a 2 4 ]
-"195
+"203
 } 0
-"107
+"115
 [v _T0_init T0_init `(v  1 e 1 0 ]
 {
-"119
+"127
 } 0
-"140
+"148
 [v _kes kes `II(v  1 e 1 0 ]
 {
-"160
+"168
 } 0

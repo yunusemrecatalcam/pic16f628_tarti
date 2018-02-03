@@ -17,7 +17,7 @@
 #define DATA        PORTAbits.RA3
 #define LED         PORTBbits.RB7
 #define AVERAGECNT  5
-#define DECARRSIZE  12
+#define DECARRSIZE  10
 
 uint32_t timetick=0;
 
@@ -88,9 +88,17 @@ void main(void) {
         //averaging(10);
         measure_force();
         
-        for(int cnt=0; cnt<DECARRSIZE; cnt++){
+        for(int cnt=5; cnt<DECARRSIZE; cnt++){
+                if(cnt==8){
+                    break;
+                }
+                
                 while(!TXSTAbits.TRMT);
                 TXREG=(dec_array[cnt]);
+                if(cnt==5){
+                    while(!TXSTAbits.TRMT);
+                    TXREG='.';
+                }
         }
         while(!TXSTAbits.TRMT);
         TXREG='\r';
@@ -275,3 +283,5 @@ void write_dec(int32_t value){
     for(;i>0;i--)
         dec_array[i] = '0';
 }
+
+ 
